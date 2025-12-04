@@ -1,0 +1,53 @@
+:root {
+  /* Colors */
+  --color-primary: #004d99;
+  /* Deep Blue from the site */
+  --color-secondary: #333333;
+  /* Dark Grey for text */
+  --color-accent: #f0f0f0;
+  /* Light Grey for backgrounds */
+  --color-white: #ffffff;
+  --color-text-light: #666666;
+
+  /* Fonts */
+  --font-main: 'Nanum Gothic', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-secondary);
+  background-color: var(--color-white);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
