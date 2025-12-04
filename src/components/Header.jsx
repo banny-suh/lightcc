@@ -13,7 +13,9 @@ const Header = () => {
     <header className="header">
       <div className="container header__container">
         <div className="header__logo">
-          <Link to="/">빛의교회</Link>
+          <Link to="/">
+            <img src="/images/logo.png" alt="빛의교회" className="logo-image" />
+          </Link>
         </div>
 
         <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>

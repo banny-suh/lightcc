@@ -1,0 +1,163 @@
+.sermon-section {
+    position: relative;
+    width: 100%;
+    padding: 80px 0;
+    background-image: url('/images/sermon_bg.png');
+    /* Fallback or generated image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+    color: white;
+    text-align: center;
+}
+
+.sermon-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark overlay */
+    z-index: 1;
+}
+
+.sermon-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sermon-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.video-wrapper:hover .video-thumbnail {
+    opacity: 1;
+}
+
+/* Custom Green Overlay Design mimicking the reference */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(100, 200, 50, 0.8) 0%, rgba(50, 150, 0, 0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-text-top {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.thumbnail-text-url {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.8rem;
+}
+
+.thumbnail-main-text {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.thumbnail-large-text {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.play-button::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 5px;
+}
+
+.video-wrapper:hover .play-button {
+    background-color: rgba(200, 50, 50, 0.9);
+    /* Red hover like youtube */
+    transform: translate(-50%, -50%) scale(1.1);
+    border-color: transparent;
+}
+
+.more-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff8c73;
+    /* Salmon/Peach color */
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+.more-button:hover {
+    background-color: #ff6b4a;
+}

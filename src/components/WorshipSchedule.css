@@ -1,0 +1,67 @@
+.worship-schedule {
+    background-color: #f0f0f0;
+    /* Light grey background */
+    padding: 40px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.worship-schedule__container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.schedule-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    border: 1px solid #e6d8d8;
+    /* Light pinkish border */
+    border-radius: 4px;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-content {
+    font-size: 0.95rem;
+    color: #004d99;
+    /* Deep Blue text */
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.schedule-item {
+    display: inline-block;
+}
+
+.schedule-item strong {
+    font-weight: 800;
+    margin-right: 5px;
+}
+
+.divider {
+    margin: 0 10px;
+    color: #ccc;
+}
+
+@media (max-width: 900px) {
+    .worship-schedule__container {
+        flex-direction: column;
+    }
+
+    .schedule-content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .divider {
+        display: none;
+    }
+}

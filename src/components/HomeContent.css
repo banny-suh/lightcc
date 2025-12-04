@@ -1,0 +1,185 @@
+.home-content {
+    background-color: #fcfbf9;
+    /* Light beige background */
+    padding: 80px 0;
+    text-align: center;
+    color: #333;
+}
+
+.home-content__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    gap: 30px;
+}
+
+.home-content__banner-left {
+    text-align: right;
+    font-family: "Nanum Myeongjo", serif;
+    /* Use a serif font for Korean if available */
+}
+
+.home-content__banner-left h2 {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #5d7c89;
+    /* Muted blue-grey */
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.home-content__banner-left h2 span {
+    display: block;
+}
+
+.home-content__banner-divider {
+    width: 2px;
+    height: 100px;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='100' viewBox='0 0 20 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0 Q 20 10 10 20 Q 0 30 10 40 Q 20 50 10 60 Q 0 70 10 80 Q 20 90 10 100' stroke='%23ccc' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+.home-content__banner-right {
+    text-align: left;
+}
+
+.home-content__banner-right h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.home-content__banner-right .light {
+    color: #e60000;
+    /* Red */
+    display: block;
+}
+
+.home-content__banner-right .community {
+    color: #e60000;
+    /* Red */
+    font-size: 2rem;
+    display: block;
+}
+
+.home-content__banner-right .church {
+    color: #e60000;
+    /* Red */
+    display: block;
+}
+
+.home-content__text-section {
+    margin-bottom: 60px;
+}
+
+.home-content__text-section h3 {
+    color: #004d99;
+    /* Deep Blue */
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.home-content__text-section p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-content__carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: calc(20% - 8px);
+    /* Show 5 items */
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    position: relative;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #555;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.carousel-arrow:hover {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-arrow.prev {
+    left: 30px;
+}
+
+.carousel-arrow.next {
+    right: 30px;
+}
+
+@media (max-width: 1024px) {
+    .carousel-item {
+        min-width: calc(33.333% - 7px);
+        /* Show 3 items */
+    }
+}
+
+@media (max-width: 768px) {
+    .home-content__banner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .home-content__banner-divider {
+        width: 100px;
+        height: 2px;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 10 0 20 10 Q 30 20 40 10 Q 50 0 60 10 Q 70 20 80 10 Q 90 0 100 10' stroke='%23ccc' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+    }
+
+    .home-content__banner-left,
+    .home-content__banner-right {
+        text-align: center;
+    }
+
+    .carousel-item {
+        min-width: calc(50% - 5px);
+        /* Show 2 items */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        min-width: 100%;
+        /* Show 1 item */
+    }
+}

@@ -1,0 +1,136 @@
+.gallery-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Poster Carousel */
+.poster-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.poster-carousel::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+.poster-item {
+    min-width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.poster-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Lists Section */
+.lists-container {
+    display: flex;
+    gap: 40px;
+}
+
+.list-column {
+    flex: 1;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3b5c6b;
+    padding-bottom: 10px;
+}
+
+.list-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #004d99;
+    margin-right: 10px;
+}
+
+.list-arrow {
+    font-size: 1.5rem;
+    color: #5d7c89;
+}
+
+.list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.list-item:hover {
+    background-color: #f0f0f0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.list-item-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 20px;
+}
+
+.list-item-date {
+    color: #999;
+    font-size: 0.85rem;
+    min-width: 80px;
+    text-align: right;
+}
+
+.new-badge {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+    .lists-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .poster-item {
+        min-width: 200px;
+        height: 280px;
+    }
+}
