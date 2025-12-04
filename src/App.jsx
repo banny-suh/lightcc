@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TopBar from './components/TopBar';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Jesus from './pages/Jesus';
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <TopBar />
         <Header />
         <main>
           <Routes>
