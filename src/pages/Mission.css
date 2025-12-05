@@ -1,0 +1,286 @@
+.mission-page {
+    background-color: #f9f9f9;
+}
+
+/* Tab Navigation */
+.mission-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 30px 20px;
+    background-color: #fff;
+    flex-wrap: wrap;
+}
+
+.mission-tab {
+    padding: 10px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.mission-tab:hover {
+    background-color: #f0f0f0;
+}
+
+.mission-tab.active {
+    background-color: #e60000;
+    color: white;
+    border-color: #e60000;
+}
+
+/* Hero Section */
+.project-hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-start;
+    padding: 40px;
+}
+
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.project-logo {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background: rgba(162, 216, 208, 0.95);
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Content Section */
+.project-content-section {
+    background-color: #fff;
+    padding: 60px 20px;
+}
+
+.project-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #2d7a5f;
+    margin-bottom: 15px;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+}
+
+.slider-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-page {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.project-gallery-item {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slider-btn:hover {
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.slider-btn-prev {
+    left: -22px;
+}
+
+.slider-btn-next {
+    right: -22px;
+}
+
+/* Slider Indicators */
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.slider-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s;
+}
+
+.slider-indicator:hover {
+    background: #bbb;
+}
+
+.slider-indicator.active {
+    background: #2d7a5f;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .project-hero {
+        height: 400px;
+        padding: 30px;
+    }
+
+    .slider-page {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+
+    .project-content-section {
+        padding: 40px 20px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    .slider-btn-prev {
+        left: -15px;
+    }
+
+    .slider-btn-next {
+        right: -15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mission-tabs {
+        gap: 8px;
+        padding: 20px 15px;
+    }
+
+    .mission-tab {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .project-hero {
+        height: 350px;
+        padding: 20px;
+    }
+
+    .project-logo {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+
+    .project-content-section {
+        padding: 30px 15px;
+    }
+
+    .project-title {
+        font-size: 1.6rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+    }
+
+    .slider-page {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .slider-btn-prev {
+        left: -10px;
+    }
+
+    .slider-btn-next {
+        right: -10px;
+    }
+
+    .slider-indicator {
+        width: 8px;
+        height: 8px;
+    }
+
+    .slider-indicator.active {
+        width: 24px;
+    }
+}
