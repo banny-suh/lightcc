@@ -1,0 +1,155 @@
+.jesus-page {
+    background-color: #fff;
+}
+
+/* Hero Section */
+.jesus-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.jesus-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 140, 0, 0.4);
+}
+
+.jesus-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.jesus-hero-badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.3;
+    z-index: 3;
+    color: #ff6b4a;
+}
+
+.jesus-hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.jesus-hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Content Sections */
+.jesus-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.jesus-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.jesus-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Alternate layout */
+.jesus-section.reverse {
+    direction: rtl;
+}
+
+.jesus-section.reverse>* {
+    direction: ltr;
+}
+
+.jesus-section-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.jesus-section-content {
+    padding: 20px;
+}
+
+.jesus-section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-bottom: 25px;
+}
+
+.jesus-section-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.jesus-section-highlight {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #004d99;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #ff6b4a;
+}
+
+.jesus-section-detail {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #777;
+}
+
+@media (max-width: 900px) {
+    .jesus-hero-title {
+        font-size: 2rem;
+    }
+
+    .jesus-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .jesus-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .jesus-section.reverse {
+        direction: ltr;
+    }
+
+    .jesus-hero-badge {
+        font-size: 0.75rem;
+        top: 20px;
+        right: 20px;
+    }
+}
