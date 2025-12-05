@@ -1,0 +1,156 @@
+.community-page {
+    background-color: #f9f9f9;
+}
+
+/* Tab Navigation */
+.community-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 30px 20px;
+    background-color: #f5f5f5;
+    flex-wrap: wrap;
+}
+
+.community-tab {
+    padding: 10px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.community-tab:hover {
+    background-color: #f0f0f0;
+}
+
+.community-tab.active {
+    background-color: #e60000;
+    color: white;
+    border-color: #e60000;
+}
+
+/* Hero Section */
+.community-hero {
+    background: linear-gradient(135deg, #ffb700 0%, #ffa500 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.community-hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.community-hero-divider {
+    width: 100px;
+    height: 3px;
+    background: white;
+    margin: 0 auto 30px;
+    opacity: 0.7;
+}
+
+.community-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* Image Gallery */
+.community-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.community-gallery-item {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Info Section */
+.community-info {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.info-badge {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #ff8c73;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-bottom: 40px;
+}
+
+.community-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.community-info-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.info-card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.info-card-value {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+    .community-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .community-tabs {
+        gap: 8px;
+        padding: 20px 15px;
+    }
+
+    .community-tab {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .community-hero-title {
+        font-size: 2rem;
+    }
+
+    .community-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .community-info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
