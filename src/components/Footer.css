@@ -1,0 +1,129 @@
+.footer {
+    background-color: #3a3a3a;
+    color: #ccc;
+    padding: 40px 0 30px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Social Icon */
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #ccc;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    background-color: #ff0000;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Navigation Links */
+.footer-nav {
+    margin-bottom: 25px;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+}
+
+/* Logo */
+.footer-logo {
+    margin-bottom: 15px;
+}
+
+.footer-logo-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Credit */
+.footer-credit {
+    margin-bottom: 25px;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Legal Links */
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.footer-legal a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}
+
+.footer-divider {
+    color: #666;
+}
+
+/* Copyright */
+.footer-copyright {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .footer-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-divider {
+        display: none;
+    }
+}

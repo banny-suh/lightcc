@@ -1,0 +1,161 @@
+.donation-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.donation-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.donation-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-bottom: 10px;
+}
+
+.donation-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #004d99 20%, #004d99 80%, transparent);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.donation-divider::after {
+    content: '●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f9f9f9;
+    color: #004d99;
+    font-size: 1.5rem;
+    padding: 0 10px;
+}
+
+/* Bank Section */
+.bank-section {
+    margin-bottom: 40px;
+}
+
+.bank-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.bank-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0066cc, #004d99);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.bank-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Account Boxes */
+.account-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.account-box {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.account-label {
+    padding: 15px;
+    background: #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.account-number {
+    padding: 20px;
+    background: linear-gradient(135deg, #ff8c73 0%, #ff6b4a 100%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Info Section */
+.donation-info {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.info-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.info-text {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.info-details {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.info-link {
+    display: inline-block;
+    color: #004d99;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.info-link:hover {
+    color: #003366;
+}
+
+@media (max-width: 600px) {
+    .account-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .donation-title {
+        font-size: 1.5rem;
+    }
+
+    .bank-name {
+        font-size: 1.5rem;
+    }
+
+    .account-number {
+        font-size: 1.2rem;
+    }
+}

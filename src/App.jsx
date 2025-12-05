@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Jesus from './pages/Jesus';
 import Worship from './pages/Worship';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/welcome" element={<Welcome />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
