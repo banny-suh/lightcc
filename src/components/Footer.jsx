@@ -37,7 +37,7 @@ const Footer = () => {
 
                 {/* Credit */}
                 <div className="footer-credit">
-                    Designed by 심원수
+                    Designed by Gemini 3 Pro
                 </div>
 
                 {/* Legal Links */}
