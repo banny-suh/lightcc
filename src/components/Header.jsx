@@ -40,6 +40,8 @@ const Header = () => {
           MENU
         </button>
       </div>
+      {/* Overlay for mobile menu */}
+      <div className={`menu-overlay ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(false)}></div>
     </header>
   );
 };

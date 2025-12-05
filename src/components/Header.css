@@ -85,32 +85,73 @@
 @media (max-width: 768px) {
     .header__toggle {
         display: block;
+        z-index: 1002;
+        /* Ensure button is clickable if needed, though usually overlay covers */
     }
 
     .header__nav {
-        position: absolute;
-        top: 100px;
-        /* Match header height */
-        left: 0;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        /* Hide off-screen */
+        width: 280px;
+        height: 100vh;
         background-color: var(--color-white);
         flex-direction: column;
-        padding: var(--spacing-md);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        display: none;
+        padding: 80px 20px 20px;
+        /* Top padding for logo/close button space */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        /* Always flex, just hidden by position */
+        transition: left 0.3s ease-in-out;
+        z-index: 1001;
+        align-items: flex-start;
+        /* Align items to left */
     }
 
     .header__nav--open {
-        display: flex;
+        left: 0;
     }
 
     .header__menu {
         flex-direction: column;
-        gap: var(--spacing-md);
-        text-align: center;
+        gap: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .header__menu li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 10px;
+    }
+
+    .header__menu a {
+        display: block;
+        font-size: 1.1rem;
+        width: 100%;
     }
 
     .logo-text {
         font-size: 1.5rem;
+    }
+
+    /* Overlay Styles */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
     }
 }

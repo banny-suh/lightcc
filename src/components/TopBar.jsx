@@ -31,9 +31,9 @@ const TopBar = () => {
             <div className="top-bar">
                 <div className="container top-bar__container">
                     <div className="top-bar__left">
-                        <div className="top-bar__menu-icon">
+                        {/* <div className="top-bar__menu-icon">
                             <FaBars />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="top-bar__right">
