@@ -261,6 +261,15 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .course-main-grid,
+    .course-sub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-advanced-grid {
+        grid-template-columns: 1fr;
+    }
+
     .nurture-info-grid {
         grid-template-columns: 1fr;
     }
