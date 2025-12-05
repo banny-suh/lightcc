@@ -10,22 +10,21 @@ const News = () => {
         '교회소식',
         '교회주보',
         '교회행사',
-        '연금안내',
+        '헌금안내',
         '교회스케줄',
         '기도요청',
         '심방요청',
         '차량등록',
-        '하동실 신청',
-        '영상촬영 피싱 신청',
+        '하.동.삶 신청',
+        '영성훈련 피정 신청',
         '오늘의기도'
     ];
 
-    // 샘플 뉴스 데이터
+    // 교회소식 데이터 (newsData)
     const newsData = [
         {
             id: 1,
             title: '故 박완서 집사 소천',
-            category: '교회소식',
             date: '2025-09-21',
             views: 137,
             likes: 0,
@@ -34,8 +33,7 @@ const News = () => {
         },
         {
             id: 2,
-            title: '5월 26일 쁘 유배송 집사 (강금숙 권사의 부군, 지녀 유도형) 소천',
-            category: '교회소식',
+            title: '5월 26일 故 유해종 집사 (강금숙 권사의 부군, 자녀 유도형) 소천',
             date: '2025-05-27',
             views: 223,
             likes: 0,
@@ -44,18 +42,7 @@ const News = () => {
         },
         {
             id: 3,
-            title: '2025년 5월은 Welcome home',
-            category: '교회행사',
-            date: '2025-05-13',
-            views: 259,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 4,
-            title: '4월 28일 이미도 집사 모신(故 백연옥 성도) 소천',
-            category: '교회소식',
+            title: '4월 28일 이미도 집사 모친(故 백연옥 성도) 소천',
             date: '2025-04-29',
             views: 207,
             likes: 0,
@@ -63,111 +50,10 @@ const News = () => {
             thumbnail: null
         },
         {
-            id: 5,
-            title: '2025 고난주간 특별집회 \'십자가를 알까지고\'',
-            category: '교회행사',
-            date: '2025-04-04',
-            views: 247,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 6,
-            title: '2025 상반기 LBS 개강',
-            category: '교회행사',
-            date: '2025-03-18',
-            views: 175,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 7,
-            title: '2025 케냐 아웃리치',
-            category: '교회행사',
-            date: '2025-01-21',
-            views: 306,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 8,
+            id: 4,
             title: '1월 9일 박상원 집사 부친(故 박재도 성도) 소천',
-            category: '교회소식',
             date: '2025-01-11',
             views: 280,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 9,
-            title: '[케네이오프라인] 꿈꾸는 운동장 기증 가이드',
-            category: '기도요청',
-            date: '2024-12-27',
-            views: 389,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 10,
-            title: '2025 신년 특별 새벽예배',
-            category: '교회행사',
-            date: '2024-12-22',
-            views: 307,
-            likes: 2,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 11,
-            title: '12월 셋째주 주보',
-            category: '교회주보',
-            date: '2024-12-15',
-            views: 450,
-            likes: 5,
-            comments: 2,
-            thumbnail: null
-        },
-        {
-            id: 12,
-            title: '2025년 연금 납부 안내',
-            category: '연금안내',
-            date: '2024-12-10',
-            views: 320,
-            likes: 3,
-            comments: 1,
-            thumbnail: null
-        },
-        {
-            id: 13,
-            title: '교회 주차장 이용 안내',
-            category: '교회시설물',
-            date: '2024-12-05',
-            views: 280,
-            likes: 1,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 14,
-            title: '새벽기도 심방 요청',
-            category: '심방요청',
-            date: '2024-12-01',
-            views: 195,
-            likes: 2,
-            comments: 3,
-            thumbnail: null
-        },
-        {
-            id: 15,
-            title: '교회 차량 등록 신청서',
-            category: '차량등록',
-            date: '2024-11-28',
-            views: 210,
             likes: 0,
             comments: 0,
             thumbnail: null
@@ -176,14 +62,21 @@ const News = () => {
 
     const itemsPerPage = 10;
 
-    // 활성 탭에 따른 뉴스 필터링
-    const filteredNews = newsData.filter(news => news.category === activeSubTab);
-    const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
+    // 활성 탭에 따른 데이터 선택
+    let currentTabData = [];
+    if (activeSubTab === '교회소식') {
+        currentTabData = newsData;
+    } else {
+        // 다른 탭을 위한 데이터는 추후 추가 예정
+        currentTabData = [];
+    }
 
-    // 현재 페이지에 표시할 뉴스 계산
+    const totalPages = Math.ceil(currentTabData.length / itemsPerPage);
+
+    // 현재 페이지에 표시할 아이템 계산
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentNews = filteredNews.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = currentTabData.slice(indexOfFirstItem, indexOfLastItem);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -220,26 +113,27 @@ const News = () => {
             </div>
 
             <div className="news-list">
-                {currentNews.length > 0 ? (
-                    currentNews.map((news) => (
-                        <div key={news.id} className="news-item">
-                            {news.thumbnail && (
+                {currentItems.length > 0 ? (
+                    currentItems.map((item) => (
+                        <div key={item.id} className="news-item">
+                            {item.thumbnail && (
                                 <div className="news-thumbnail">
-                                    <img src={news.thumbnail} alt={news.title} />
+                                    <img src={item.thumbnail} alt={item.title} />
                                 </div>
                             )}
                             <div className="news-content">
-                                <h3 className="news-item-title">{news.title}</h3>
+                                <h3 className="news-item-title">{item.title}</h3>
                                 <div className="news-meta">
-                                    <span className="news-category">{news.category}</span>
-                                    <span className="news-date">{news.date}</span>
-                                    <span className="news-views">조회수 {news.views}</span>
-                                    <span className="news-likes">♡ {news.likes}</span>
+                                    {/* 카테고리는 더 이상 표시하지 않거나 탭 이름으로 대체 가능 */}
+                                    {/* <span className="news-category">{activeSubTab}</span> */}
+                                    <span className="news-date">{item.date}</span>
+                                    <span className="news-views">조회수 {item.views}</span>
+                                    <span className="news-likes">♡ {item.likes}</span>
                                 </div>
                             </div>
                             <div className="news-comments">
                                 <span className="comment-icon">💬</span>
-                                <span className="comment-count">{news.comments}</span>
+                                <span className="comment-count">{item.comments}</span>
                             </div>
                         </div>
                     ))
