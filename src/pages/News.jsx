@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './News.css';
+import ChurchCalendar from '../components/ChurchCalendar';
 
 const News = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -70,79 +71,6 @@ const News = () => {
         { id: 4, title: '송구영신예배', date: '2025-12-31', type: 'special' }
     ];
 
-    const [currentDate, setCurrentDate] = useState(new Date(2025, 11, 1)); // 2025년 12월
-    const [viewType, setViewType] = useState('month'); // month, week, day
-
-    const getDaysInMonth = (year, month) => {
-        return new Date(year, month + 1, 0).getDate();
-    };
-
-    const getFirstDayOfMonth = (year, month) => {
-        return new Date(year, month, 1).getDay();
-    };
-
-    const handlePrevMonth = () => {
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
-    };
-
-    const handleNextMonth = () => {
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
-    };
-
-    const renderCalendar = () => {
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        const daysInMonth = getDaysInMonth(year, month);
-        const firstDay = getFirstDayOfMonth(year, month);
-        const days = [];
-
-        // Previous month empty cells
-        for (let i = 0; i < firstDay; i++) {
-            const prevMonthDate = new Date(year, month, 0 - (firstDay - 1 - i));
-            days.push(
-                <div key={`prev-${i}`} className="calendar-day other-month">
-                    <span className="day-number">{prevMonthDate.getDate()}</span>
-                </div>
-            );
-        }
-
-        // Current month cells
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            const events = scheduleData.filter(event => event.date === dateStr);
-            const isSunday = new Date(year, month, day).getDay() === 0;
-
-            days.push(
-                <div key={day} className={`calendar-day ${isSunday ? 'sunday' : ''}`}>
-                    <span className="day-number">{day}</span>
-                    <div className="day-events">
-                        {events.map(event => (
-                            <div key={event.id} className={`calendar-event ${event.type}`}>
-                                {event.title}
-                            </div>
-                        ))}
-                        {/* Special handling for holidays like Christmas */}
-                        {month === 11 && day === 25 && <span className="holiday-text">성탄절</span>}
-                        {month === 0 && day === 1 && <span className="holiday-text">신정</span>}
-                    </div>
-                </div>
-            );
-        }
-
-        // Next month empty cells to fill the grid (assuming 6 rows max)
-        const totalCells = 42; // 6 rows * 7 cols
-        const remainingCells = totalCells - days.length;
-        for (let i = 1; i <= remainingCells; i++) {
-            days.push(
-                <div key={`next-${i}`} className="calendar-day other-month">
-                    <span className="day-number">{i}</span>
-                </div>
-            );
-        }
-
-        return days;
-    };
-
     // 활성 탭에 따른 데이터 선택
     let currentTabData = [];
     if (activeSubTab === '교회소식') {
@@ -195,37 +123,7 @@ const News = () => {
 
             {activeSubTab === '교회스케줄' ? (
                 <div className="schedule-container">
-                    <div className="schedule-controls">
-                        <div className="schedule-date-nav">
-                            <h2 className="schedule-current-date">
-                                {currentDate.getFullYear()}년 {currentDate.getMonth() + 1}월
-                            </h2>
-                            <div className="schedule-nav-buttons">
-                                <button onClick={handlePrevMonth}>&lt;</button>
-                                <button onClick={handleNextMonth}>&gt;</button>
-                            </div>
-                        </div>
-                        <div className="schedule-view-type">
-                            <button className={viewType === 'day' ? 'active' : ''} onClick={() => setViewType('day')}>일</button>
-                            <button className={viewType === 'week' ? 'active' : ''} onClick={() => setViewType('week')}>주</button>
-                            <button className={viewType === 'month' ? 'active' : ''} onClick={() => setViewType('month')}>월</button>
-                        </div>
-                    </div>
-
-                    <div className="calendar-grid">
-                        <div className="calendar-header">
-                            <div className="sunday">일</div>
-                            <div>월</div>
-                            <div>화</div>
-                            <div>수</div>
-                            <div>목</div>
-                            <div>금</div>
-                            <div>토</div>
-                        </div>
-                        <div className="calendar-body">
-                            {renderCalendar()}
-                        </div>
-                    </div>
+                    <ChurchCalendar events={scheduleData} />
                 </div>
             ) : (
                 <div className="news-list">
