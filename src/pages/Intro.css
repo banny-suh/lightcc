@@ -1,0 +1,882 @@
+.intro-page {
+    background-color: #f9f9f9;
+}
+
+/* Tab Navigation */
+.intro-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 30px 20px;
+    background-color: #f5f5f5;
+    flex-wrap: wrap;
+}
+
+.intro-tab {
+    padding: 10px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.intro-tab:hover {
+    background-color: #f0f0f0;
+}
+
+.intro-tab.active {
+    background-color: #e60000;
+    color: white;
+    border-color: #e60000;
+}
+
+/* Hero Section */
+.intro-hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-image: url('/images/pastor_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+}
+
+.intro-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.intro-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.intro-hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #e60000;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.intro-hero-subtitle {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 400;
+    max-width: 500px;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    padding-top: 15px;
+}
+
+/* Content Section */
+.intro-content-section {
+    background-color: #faf8f6;
+    padding: 80px 20px;
+    min-height: 400px;
+}
+
+.intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-content-section.no-padding {
+    padding: 0;
+    background-color: transparent;
+    min-height: auto;
+}
+
+.intro-section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.intro-text-block {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.intro-text-block p {
+    font-size: 1.05rem;
+    color: #333;
+    margin: 8px 0;
+}
+
+.intro-signature {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.intro-signature p {
+    font-size: 1rem;
+    color: #666;
+    margin: 10px 0;
+}
+
+.intro-church-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff6600 !important;
+    margin-top: 20px !important;
+}
+
+/* Core Values Section */
+.core-values {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #85c4bb;
+}
+
+.value-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    background-color: #85c4bb;
+    position: relative;
+}
+
+.value-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/value_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.value-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.value-title-en {
+    font-size: 5rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.value-divider {
+    width: 1px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.value-info {
+    text-align: left;
+}
+
+.value-title-kr {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #004d66;
+    margin-bottom: 20px;
+}
+
+.value-description {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.8;
+}
+
+/* Alternate sections - right aligned titles */
+.value-section-2 .value-content,
+.value-section-4 .value-content {
+    grid-template-columns: 1fr 1px 1fr;
+}
+
+.value-section-2 .value-title-en,
+.value-section-4 .value-title-en {
+    text-align: right;
+    order: 3;
+}
+
+.value-section-2 .value-divider,
+.value-section-4 .value-divider {
+    order: 2;
+}
+
+.value-section-2 .value-info,
+.value-section-4 .value-info {
+    order: 1;
+}
+
+/* Staff Section */
+.staff-section {
+    width: 100%;
+}
+
+/* Senior Pastor Section */
+.senior-pastor-section {
+    background-color: #2d2d2d;
+    background-image: url('/images/church_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 80px 40px;
+}
+
+.senior-pastor-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.senior-pastor-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.senior-pastor-photo {
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.senior-pastor-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.senior-pastor-info {
+    padding-top: 20px;
+}
+
+.senior-pastor-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.senior-pastor-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 25px;
+}
+
+.senior-pastor-description p {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.8;
+    margin: 8px 0;
+}
+
+/* Staff Category */
+.staff-category {
+    background-color: #f5f5f5;
+    padding: 60px 40px;
+}
+
+.staff-category-label {
+    display: inline-block;
+    background-color: #e60000;
+    color: white;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    border-radius: 2px;
+}
+
+.staff-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.staff-card {
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.staff-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.staff-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.staff-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #004d99;
+    padding: 20px 20px 10px;
+    margin: 0;
+}
+
+.staff-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    padding: 0 20px 20px;
+    margin: 0;
+}
+
+/* History Section */
+.history-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.history-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.history-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-bottom: 15px;
+}
+
+.history-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #004d99;
+    margin: 0 auto 20px;
+}
+
+.history-subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+.history-years {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.history-year-btn {
+    padding: 8px 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.history-year-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.history-year-btn.active {
+    background-color: #ff6b6b;
+    color: white;
+    border-color: #ff6b6b;
+}
+
+.history-timeline {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.history-timeline-year {
+    background-color: #f8f9fa;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004d99;
+    border-bottom: 1px solid #ddd;
+}
+
+.history-events {
+    padding: 30px;
+}
+
+.history-event {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.history-event:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.history-event-date {
+    font-size: 0.95rem;
+    color: #004d99;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.history-event-content {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Location Section */
+.location-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.location-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.location-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-bottom: 15px;
+}
+
+.location-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #004d99 20%, #004d99 80%, transparent);
+    margin: 0 auto;
+    position: relative;
+}
+
+.location-divider::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #004d99;
+    border-radius: 50%;
+}
+
+.location-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.location-church-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004d99;
+    margin-bottom: 15px;
+}
+
+.location-address {
+    font-size: 1.05rem;
+    color: #333;
+}
+
+.location-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.location-contact-item {
+    text-align: center;
+}
+
+.location-contact-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #85c4bb;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.location-contact-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.location-contact-value {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.location-map {
+    width: 100%;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.location-map iframe {
+    display: block;
+}
+
+.location-subway {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.location-subway-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-subway-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .intro-hero {
+        height: 400px;
+        padding: 40px;
+    }
+
+    .intro-hero-title {
+        font-size: 2.8rem;
+    }
+
+    .intro-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .intro-content-section {
+        padding: 60px 20px;
+    }
+
+    .intro-section-title {
+        font-size: 1.5rem;
+    }
+
+    .intro-text-block p {
+        font-size: 1rem;
+    }
+
+    /* Core Values Responsive */
+    .value-content {
+        gap: 40px;
+    }
+
+    .value-title-en {
+        font-size: 4rem;
+    }
+
+    .value-title-kr {
+        font-size: 1.2rem;
+    }
+
+    .value-description {
+        font-size: 0.95rem;
+    }
+
+    .value-divider {
+        height: 150px;
+    }
+
+    /* Staff Responsive */
+    .senior-pastor-content {
+        grid-template-columns: 250px 1fr;
+        gap: 40px;
+    }
+
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .staff-category {
+        padding: 50px 30px;
+    }
+
+    /* History Responsive */
+    .history-title {
+        font-size: 1.7rem;
+    }
+
+    .history-timeline-year {
+        font-size: 1.3rem;
+    }
+
+    /* Location Responsive */
+    .location-contacts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .intro-tabs {
+        gap: 8px;
+        padding: 20px 15px;
+    }
+
+    .intro-tab {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .intro-hero {
+        height: 350px;
+        padding: 30px 20px;
+    }
+
+    .intro-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .intro-hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .intro-content-section {
+        padding: 40px 15px;
+    }
+
+    .intro-section-title {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+    }
+
+    .intro-text-block {
+        margin-bottom: 25px;
+    }
+
+    .intro-text-block p {
+        font-size: 0.95rem;
+    }
+
+    .intro-signature {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+
+    /* Core Values Mobile */
+    .value-section {
+        min-height: auto;
+        padding: 60px 20px;
+    }
+
+    .value-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .value-title-en {
+        font-size: 2.5rem;
+        text-align: center !important;
+        order: 1 !important;
+    }
+
+    .value-divider {
+        width: 100px;
+        height: 1px;
+        margin: 0 auto;
+        order: 2 !important;
+    }
+
+    .value-info {
+        order: 3 !important;
+        text-align: center;
+    }
+
+    .value-title-kr {
+        font-size: 1.1rem;
+    }
+
+    .value-description {
+        font-size: 0.9rem;
+    }
+
+    /* Staff Mobile */
+    .senior-pastor-section {
+        padding: 50px 20px;
+    }
+
+    .senior-pastor-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .senior-pastor-photo {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .senior-pastor-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .senior-pastor-description {
+        text-align: center;
+    }
+
+    .senior-pastor-description p {
+        font-size: 0.9rem;
+    }
+
+    .staff-category {
+        padding: 40px 20px;
+    }
+
+    .staff-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .staff-name {
+        font-size: 1.1rem;
+    }
+
+    .staff-description {
+        font-size: 0.85rem;
+    }
+
+    /* History Mobile */
+    .history-section {
+        padding: 30px 15px;
+    }
+
+    .history-title {
+        font-size: 1.5rem;
+    }
+
+    .history-year-btn {
+        padding: 6px 15px;
+        font-size: 0.85rem;
+    }
+
+    .history-timeline-year {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    .history-events {
+        padding: 20px;
+    }
+
+    .history-event-date {
+        font-size: 0.9rem;
+    }
+
+    .history-event-content {
+        font-size: 0.9rem;
+    }
+
+    /* Location Mobile */
+    .location-section {
+        padding: 30px 15px;
+    }
+
+    .location-title {
+        font-size: 1.5rem;
+    }
+
+    .location-church-name {
+        font-size: 1.3rem;
+    }
+
+    .location-address {
+        font-size: 0.95rem;
+    }
+
+    .location-contacts {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .location-map {
+        margin-bottom: 30px;
+    }
+
+    .location-subway {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .location-subway-text {
+        font-size: 0.95rem;
+    }
+}
