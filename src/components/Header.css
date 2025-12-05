@@ -49,10 +49,17 @@
     color: #333;
     transition: color 0.3s ease;
     text-decoration: none;
+    padding-bottom: 5px;
+    position: relative;
 }
 
 .header__menu a:hover {
     color: var(--color-primary);
+}
+
+.header__menu a.active {
+    color: #ff0000;
+    border-bottom: 3px solid #ff0000;
 }
 
 .header__toggle {
