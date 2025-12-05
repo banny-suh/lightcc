@@ -1,0 +1,287 @@
+.nurture-page {
+    background-color: #f9f9f9;
+}
+
+/* Tab Navigation */
+.nurture-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 30px 20px;
+    background-color: #fff;
+    flex-wrap: wrap;
+}
+
+.nurture-tab {
+    padding: 10px 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.nurture-tab:hover {
+    background-color: #f0f0f0;
+}
+
+.nurture-tab.active {
+    background-color: #e60000;
+    color: white;
+    border-color: #e60000;
+}
+
+/* Hero Section */
+.nurture-hero {
+    background: linear-gradient(135deg, #a8d8d0 0%, #8cc9bf 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.nurture-hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.nurture-hero-divider {
+    width: 100px;
+    height: 3px;
+    background: white;
+    margin: 0 auto 30px;
+    opacity: 0.7;
+}
+
+.nurture-hero-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* Image Gallery */
+.nurture-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nurture-gallery-item {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Info Section */
+.nurture-info {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.nurture-info-badge {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #ff8c73;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-bottom: 30px;
+}
+
+.course-section {
+    margin-bottom: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.course-section:last-child {
+    margin-bottom: 0;
+}
+
+.course-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd 10%, #ddd 90%, transparent);
+    margin: 30px 0 40px;
+    position: relative;
+}
+
+.course-divider::after {
+    content: '●';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f9f9f9;
+    color: #ff8c73;
+    font-size: 1rem;
+    padding: 0 10px;
+}
+
+.course-main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.course-main-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.course-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.course-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.course-sub-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.course-advanced-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.course-advanced-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.course-advanced-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Materials Section */
+.nurture-materials {
+    padding: 40px 20px 60px;
+    text-align: center;
+}
+
+.materials-badge {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #ff8c73;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+.materials-subtitle {
+    color: #ff6b4a;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.material-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.material-card:hover {
+    transform: translateY(-5px);
+}
+
+.material-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 0.9rem;
+    padding: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .nurture-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .materials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nurture-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .nurture-tabs {
+        gap: 8px;
+        padding: 20px 15px;
+    }
+
+    .nurture-tab {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .nurture-hero-title {
+        font-size: 2rem;
+    }
+
+    .materials-grid {
+        grid-template-columns: 1fr;
+    }
+}
