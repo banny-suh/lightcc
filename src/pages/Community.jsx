@@ -148,7 +148,7 @@ const Community = () => {
             </div>
 
             {/* Info Section */}
-            <div className="community-info">
+            <div key={`${activeTab}-info`} className="community-info">
                 <span className="info-badge">예배안내</span>
                 <div className="community-info-grid">
                     <div className="community-info-card">

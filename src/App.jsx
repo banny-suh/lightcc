@@ -17,7 +17,7 @@ function App() {
   return (
     <Router basename="/lightcc">
       <div className="App">
-        <TopBar />
+        {/* <TopBar /> */}
         <Header />
         <main>
           <Routes>

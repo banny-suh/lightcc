@@ -3,35 +3,63 @@
 }
 
 /* Tab Navigation */
+/* Tab Navigation */
 .mission-tabs {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 30px 20px;
-    background-color: #fff;
+    justify-content: flex-end;
+    gap: 32px;
+    padding: 20px 90px;
+    background-color: #ffffff;
     flex-wrap: wrap;
+    position: sticky;
+    top: 100px;
+    /* Matches Header height */
+    z-index: 100;
+    margin-bottom: 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .mission-tab {
-    padding: 10px 25px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 25px;
+    padding: 12px 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
     cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #666;
-    transition: all 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #999;
+    transition: color 0.3s ease;
+    position: relative;
+    letter-spacing: -0.5px;
 }
 
 .mission-tab:hover {
-    background-color: #f0f0f0;
+    color: #333;
+    background-color: transparent;
 }
 
 .mission-tab.active {
-    background-color: #e60000;
-    color: white;
-    border-color: #e60000;
+    background-color: transparent;
+    color: #000;
+    font-weight: 700;
+    box-shadow: none;
+    transform: none;
+    border: none;
+}
+
+.mission-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.mission-tab.active::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -225,13 +253,32 @@
 
 @media (max-width: 600px) {
     .mission-tabs {
-        gap: 8px;
-        padding: 20px 15px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0 20px;
+        gap: 24px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        background-color: #ffffff;
+        box-shadow: none;
+        border-bottom: 1px solid #f0f0f0;
+        height: 60px;
+        align-items: center;
+    }
+
+    .mission-tabs::-webkit-scrollbar {
+        display: none;
     }
 
     .mission-tab {
-        padding: 8px 18px;
-        font-size: 0.85rem;
+        padding: 18px 0;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .mission-tab::after {
+        bottom: 0;
     }
 
     .project-hero {
