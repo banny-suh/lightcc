@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="footer-container">
                 {/* Social Media */}
                 <div className="footer-social">
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@lightcommunitychurch3349" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                         <FaYoutube />
                     </a>
                 </div>

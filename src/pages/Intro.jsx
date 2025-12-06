@@ -100,7 +100,7 @@ const Intro = () => {
                         <div className="senior-pastor-section">
                             <div className="senior-pastor-content">
                                 <div className="senior-pastor-photo">
-                                    <img src="/images/pastor_main.jpg" alt="천정훈 담임목사" />
+                                    <img src={`${import.meta.env.BASE_URL}images/pastor_main.jpg`} alt="천정훈 담임목사" />
                                 </div>
                                 <div className="senior-pastor-info">
                                     <h2 className="senior-pastor-title">천정훈 담임목사</h2>
@@ -121,7 +121,7 @@ const Intro = () => {
                             <div className="staff-grid">
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/pastor1.jpg" alt="이진석 목사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/pastor1.jpg`} alt="이진석 목사" />
                                     </div>
                                     <h3 className="staff-name">이진석 목사</h3>
                                     <p className="staff-description">
@@ -130,7 +130,7 @@ const Intro = () => {
                                 </div>
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/pastor2.jpg" alt="최인호 전도사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/pastor2.jpg`} alt="최인호 전도사" />
                                     </div>
                                     <h3 className="staff-name">최인호 전도사</h3>
                                     <p className="staff-description">
@@ -139,7 +139,7 @@ const Intro = () => {
                                 </div>
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/pastor3.jpg" alt="신예찬 전도사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/pastor3.jpg`} alt="신예찬 전도사" />
                                     </div>
                                     <h3 className="staff-name">신예찬 전도사</h3>
                                     <p className="staff-description">
@@ -155,19 +155,19 @@ const Intro = () => {
                             <div className="staff-grid">
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/missionary1.jpg" alt="케냐 박동현 선교사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/missionary1.jpg`} alt="케냐 박동현 선교사" />
                                     </div>
                                     <h3 className="staff-name">케냐 박동현 선교사</h3>
                                 </div>
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/missionary2.jpg" alt="케냐 이영도 선교사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/missionary2.jpg`} alt="케냐 이영도 선교사" />
                                     </div>
                                     <h3 className="staff-name">케냐 이영도 선교사</h3>
                                 </div>
                                 <div className="staff-card">
                                     <div className="staff-photo">
-                                        <img src="/images/missionary3.jpg" alt="필리핀 박철원 선교사" />
+                                        <img src={`${import.meta.env.BASE_URL}images/missionary3.jpg`} alt="필리핀 박철원 선교사" />
                                     </div>
                                     <h3 className="staff-name">필리핀 박철원 선교사</h3>
                                 </div>

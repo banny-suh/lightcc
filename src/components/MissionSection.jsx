@@ -9,7 +9,7 @@ const MissionSection = () => {
                     {/* Left Side - Main Image */}
                     <div
                         className="mission-main-image"
-                        style={{ backgroundImage: 'url(/images/mission_main.png)' }}
+                        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_main.png)` }}
                     >
                         <div className="mission-badge">
                             <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#5d7c89' }}>
@@ -39,7 +39,7 @@ const MissionSection = () => {
                         {/* Video Thumbnail */}
                         <div
                             className="mission-video"
-                            style={{ backgroundImage: 'url(/images/mission_video.png)' }}
+                            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_video.png)` }}
                         >
                             <div className="video-play-icon">▶</div>
                             <div className="video-title">넉넉F로젝트</div>
@@ -49,7 +49,7 @@ const MissionSection = () => {
                         <div className="mission-cards">
                             <div
                                 className="mission-card"
-                                style={{ backgroundImage: 'url(/images/mission_domestic.png)' }}
+                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_domestic.png)` }}
                             >
                                 <div className="mission-card-content">
                                     <div className="mission-card-title">국내선교</div>
@@ -61,7 +61,7 @@ const MissionSection = () => {
 
                             <div
                                 className="mission-card"
-                                style={{ backgroundImage: 'url(/images/mission_overseas.png)' }}
+                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_overseas.png)` }}
                             >
                                 <div className="mission-card-content">
                                     <div className="mission-card-title">해외선교</div>
@@ -73,7 +73,7 @@ const MissionSection = () => {
 
                             <div
                                 className="mission-card"
-                                style={{ backgroundImage: 'url(/images/mission_campaign.png)' }}
+                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_campaign.png)` }}
                             >
                                 <div className="mission-card-content">
                                     <div className="mission-card-title">캠페인</div>

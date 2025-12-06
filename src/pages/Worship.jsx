@@ -23,7 +23,7 @@ const Worship = () => {
             {/* Hero Section */}
             <div
                 className="worship-hero"
-                style={{ backgroundImage: 'url(/images/worship_hero.png)' }}
+                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/worship_hero.png)` }}
             >
                 <div className="worship-hero-content">
                     <div className="worship-play-icon">▶</div>

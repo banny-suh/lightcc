@@ -49,7 +49,7 @@ const TopBar = () => {
 
                         <div className="top-bar__divider"></div>
 
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="top-bar__youtube">
+                        <a href="https://www.youtube.com/@lightcommunitychurch3349" target="_blank" rel="noopener noreferrer" className="top-bar__youtube">
                             <FaYoutube />
                         </a>
 

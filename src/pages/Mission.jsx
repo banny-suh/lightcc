@@ -8,11 +8,11 @@ const missionData = {
                 logo: 'Lightcc',
                 title: '생명을 주는 나무',
                 description: '매일 이웃을 찾아 건너며 돕는 등독적이며 따뜻한 나눔을 실천합니다.',
-                bgImage: '/images/mission_bg1.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
                 images: [
-                    '/images/mission_thumb1.png',
-                    '/images/mission_thumb2.png',
-                    '/images/mission_thumb3.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     '/images/mission_thumb4.png'
                 ]
             },
@@ -20,13 +20,13 @@ const missionData = {
                 logo: 'Lightcc Outreach',
                 title: 'Good Morning Project',
                 description: '매일 아침을 무료로 봉사 있으며 지역과 가정에서 복지 어르신들을 섬깁니다.',
-                bgImage: '/images/mission_bg2.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.png`,
                 images: [
-                    '/images/mission_thumb2.png',
-                    '/images/mission_thumb3.png',
-                    '/images/mission_thumb4.png',
-                    '/images/mission_thumb1.png',
-                    '/images/mission_thumb2.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     '/images/mission_thumb3.png'
                 ],
                 reverse: true
@@ -39,11 +39,11 @@ const missionData = {
                 logo: 'Lightcc Global',
                 title: '캄보디아 선교',
                 description: '캄보디아 지역 주민들을 위한 의료 봉사와 복음 전파 사역을 진행합니다.',
-                bgImage: '/images/mission_bg1.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
                 images: [
-                    '/images/mission_thumb3.png',
-                    '/images/mission_thumb4.png',
-                    '/images/mission_thumb1.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
                     '/images/mission_thumb2.png'
                 ]
             },
@@ -51,13 +51,13 @@ const missionData = {
                 logo: 'Lightcc Mission',
                 title: '드림하우스 건축',
                 description: '열악한 환경의 가정에 집을 지어주는 사랑의 집짓기 프로젝트입니다.',
-                bgImage: '/images/mission_bg2.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.png`,
                 images: [
-                    '/images/mission_thumb4.png',
-                    '/images/mission_thumb1.png',
-                    '/images/mission_thumb2.png',
-                    '/images/mission_thumb3.png',
-                    '/images/mission_thumb4.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
                     '/images/mission_thumb1.png'
                 ],
                 reverse: true
@@ -70,11 +70,11 @@ const missionData = {
                 logo: 'Lightcc Campaign',
                 title: 'Walking for Miracle',
                 description: '매년 진행되는 걷기 대회를 통해 이웃 사랑을 실천합니다.',
-                bgImage: '/images/mission_bg1.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
                 images: [
-                    '/images/mission_thumb1.png',
-                    '/images/mission_thumb3.png',
-                    '/images/mission_thumb2.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     '/images/mission_thumb4.png'
                 ]
             },
@@ -82,13 +82,13 @@ const missionData = {
                 logo: 'Lightcc Thursday',
                 title: 'Miracle on Thursday',
                 description: '매주 목요일 진행되는 기적의 나눔 캠페인입니다.',
-                bgImage: '/images/mission_bg2.png',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.png`,
                 images: [
-                    '/images/mission_thumb2.png',
-                    '/images/mission_thumb4.png',
-                    '/images/mission_thumb1.png',
-                    '/images/mission_thumb3.png',
-                    '/images/mission_thumb2.png',
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
+                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     '/images/mission_thumb4.png'
                 ],
                 reverse: true

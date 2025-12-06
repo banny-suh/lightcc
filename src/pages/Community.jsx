@@ -7,11 +7,11 @@ const communityData = {
         description: '2~9개월부터 7세 이하 어린이들이 함께 모여 행복하게 예배를 드리는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            '/images/community1.png',
-            '/images/community2.png',
-            '/images/community3.png',
-            '/images/community4.png',
-            '/images/community5.png'
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community3.png',
+            import.meta.env.BASE_URL + 'images/community4.png',
+            import.meta.env.BASE_URL + 'images/community5.png'
         ],
         target: '2~9개월~7세',
         time: '주일 오전 11:00',
@@ -22,11 +22,11 @@ const communityData = {
         description: '초등학교 1학년부터 6학년까지의 어린이들이 함께 모여 예배하는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            '/images/community2.png',
-            '/images/community3.png',
-            '/images/community4.png',
-            '/images/community5.png',
-            '/images/community1.png'
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community3.png',
+            import.meta.env.BASE_URL + 'images/community4.png',
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community1.png'
         ],
         target: '초등학교 1~6학년',
         time: '주일 오전 11:00',
@@ -37,11 +37,11 @@ const communityData = {
         description: '중고등학생들이 함께 모여 말씀과 찬양으로 예배하는 청소년 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            '/images/community3.png',
-            '/images/community4.png',
-            '/images/community5.png',
-            '/images/community1.png',
-            '/images/community2.png'
+            import.meta.env.BASE_URL + 'images/community3.png',
+            import.meta.env.BASE_URL + 'images/community4.png',
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community2.png'
         ],
         target: '중·고등학생',
         time: '주일 오전 9:00',
@@ -52,11 +52,11 @@ const communityData = {
         description: '은퇴하신 어르신들이 함께 모여 교제하며 신앙을 나누는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            '/images/community4.png',
-            '/images/community5.png',
-            '/images/community1.png',
-            '/images/community2.png',
-            '/images/community3.png'
+            import.meta.env.BASE_URL + 'images/community4.png',
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community3.png'
         ],
         target: '65세 이상',
         time: '주일 오전 11:00',
@@ -67,11 +67,11 @@ const communityData = {
         description: '청년들이 함께 모여 신앙과 삶을 나누며 성장하는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            '/images/community5.png',
-            '/images/community1.png',
-            '/images/community2.png',
-            '/images/community3.png',
-            '/images/community4.png'
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community3.png',
+            import.meta.env.BASE_URL + 'images/community4.png'
         ],
         target: '20~30대 청년',
         time: '주일 오후 2:00',
@@ -82,11 +82,11 @@ const communityData = {
         description: '열정과 에너지가 넘치는 장년 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            '/images/community1.png',
-            '/images/community3.png',
-            '/images/community5.png',
-            '/images/community2.png',
-            '/images/community4.png'
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community3.png',
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community4.png'
         ],
         target: '40~50대',
         time: '주일 오전 11:00',
@@ -97,11 +97,11 @@ const communityData = {
         description: '함께 움직이며 신앙을 실천하는 활동적인 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            '/images/community2.png',
-            '/images/community4.png',
-            '/images/community1.png',
-            '/images/community5.png',
-            '/images/community3.png'
+            import.meta.env.BASE_URL + 'images/community2.png',
+            import.meta.env.BASE_URL + 'images/community4.png',
+            import.meta.env.BASE_URL + 'images/community1.png',
+            import.meta.env.BASE_URL + 'images/community5.png',
+            import.meta.env.BASE_URL + 'images/community3.png'
         ],
         target: '전 연령',
         time: '주일 오후 3:00',

@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     padding: 80px 0;
-    background-image: url('/images/sermon_bg.png');
+    background-image: url('/lightcc/images/sermon_bg.png');
     /* Fallback or generated image */
     background-size: cover;
     background-position: center;

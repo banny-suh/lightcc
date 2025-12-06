@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import './GallerySection.css';
 
 const posters = [
-    '/images/poster1.png',
-    '/images/poster2.png',
-    '/images/poster3.png',
-    '/images/poster4.png',
-    '/images/poster5.png',
+    `${import.meta.env.BASE_URL}images/poster1.png`,
+    `${import.meta.env.BASE_URL}images/poster2.png`,
+    `${import.meta.env.BASE_URL}images/poster3.png`,
+    `${import.meta.env.BASE_URL}images/poster4.png`,
+    `${import.meta.env.BASE_URL}images/poster5.png`,
 ];
 
 const bulletins = [

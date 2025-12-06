@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './HomeContent.css';
 
 const activities = [
-    '/images/activity1.png',
-    '/images/activity2.png',
-    '/images/activity3.png',
-    '/images/activity4.png',
-    '/images/activity5.png',
-    '/images/activity1.png', // Repeat for infinite scroll illusion if needed, or just extra items
+    `${import.meta.env.BASE_URL}images/activity1.png`,
+    `${import.meta.env.BASE_URL}images/activity2.png`,
+    `${import.meta.env.BASE_URL}images/activity3.png`,
+    `${import.meta.env.BASE_URL}images/activity4.png`,
+    `${import.meta.env.BASE_URL}images/activity5.png`,
+    `${import.meta.env.BASE_URL}images/activity1.png`, // Repeat for infinite scroll illusion if needed, or just extra items
 ];
 
 const HomeContent = () => {

@@ -19,7 +19,7 @@ const Header = () => {
       <div className="container header__container">
         <div className="header__logo">
           <Link to="/">
-            <img src="/images/logo.png" alt="빛의교회" className="logo-image" />
+            <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt="빛의교회" className="logo-image" />
           </Link>
         </div>
 

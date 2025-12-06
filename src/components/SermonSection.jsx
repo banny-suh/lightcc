@@ -10,7 +10,7 @@ const SermonSection = () => {
 
                 <div className="video-wrapper">
                     {/* In a real app, this would be a video player or thumbnail */}
-                    <img src="/images/sermon_thumb.png" alt="Sermon Thumbnail" className="video-thumbnail" />
+                    <img src={`${import.meta.env.BASE_URL}images/sermon_thumb.png`} alt="Sermon Thumbnail" className="video-thumbnail" />
 
                     <div className="thumbnail-overlay">
                         <div className="thumbnail-text-top">

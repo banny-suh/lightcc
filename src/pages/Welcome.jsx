@@ -6,22 +6,22 @@ const Welcome = () => {
         {
             title: 'With God',
             subtitle: '우리의 힘',
-            image: '/images/value_god.jpg'
+            image: `${import.meta.env.BASE_URL}images/value_god.jpg`
         },
         {
             title: 'With the Word',
             subtitle: '우리의 원칙',
-            image: '/images/value_word.jpg'
+            image: `${import.meta.env.BASE_URL}images/value_word.jpg`
         },
         {
             title: 'With the People',
             subtitle: '우리의 관심',
-            image: '/images/value_people.jpg'
+            image: `${import.meta.env.BASE_URL}images/value_people.jpg`
         },
         {
             title: 'With the Future',
             subtitle: '우리의 확장',
-            image: '/images/value_future.jpg'
+            image: `${import.meta.env.BASE_URL}images/value_future.jpg`
         }
     ];
 
@@ -92,7 +92,7 @@ const Welcome = () => {
 
             {/* Interior Image Section */}
             <section className="welcome-interior-section">
-                <div className="welcome-interior-image" style={{ backgroundImage: "url('/images/worship_hero.png')" }}></div>
+                <div className="welcome-interior-image" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/worship_hero.png)` }}></div>
             </section>
 
             {/* Location Section */}
