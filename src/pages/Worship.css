@@ -14,6 +14,8 @@
     justify-content: center;
     color: white;
     text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .worship-hero::before {
@@ -30,7 +32,7 @@
     position: relative;
     z-index: 2;
     max-width: 800px;
-    padding: 0 20px;
+    padding: 0 var(--container-padding);
 }
 
 .worship-play-icon {
@@ -93,9 +95,9 @@
 
 /* Content Section */
 .worship-content {
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 80px var(--container-padding);
 }
 
 .worship-section {
@@ -126,7 +128,6 @@
 .worship-card {
     background: #fff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
     padding: 30px 25px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s;

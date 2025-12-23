@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -37,7 +38,7 @@ const Header = () => {
         </nav>
 
         <button className="header__toggle" onClick={toggleMenu}>
-          MENU
+          <FaBars />
         </button>
       </div>
       {/* Overlay for mobile menu */}

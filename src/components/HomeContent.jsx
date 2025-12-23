@@ -27,12 +27,13 @@ const HomeContent = () => {
                 <div className="home-content__banner">
                     <div className="home-content__banner-left">
                         <h2>
-                            <span>하나님의</span>
-                            <span>사랑으로</span>
+                            {/* <span>하나님의</span>
+                            <span>사랑으로</span> */}
+                            <span>하나님의 사랑으로</span>
                         </h2>
                         <h2 style={{ color: '#3b5c6b' }}>
                             <span>세상을 밝히는</span>
-                            <span style={{ fontWeight: 'bold' }}>빛의교회</span>
+                            {/* <span style={{ fontWeight: 'bold' }}>빛의교회</span> */}
                         </h2>
                     </div>
 
@@ -56,7 +57,7 @@ const HomeContent = () => {
                 </div>
             </div>
 
-            <div className="home-content__carousel">
+            <div className="home-content__carousel" hidden>
                 <button className="carousel-arrow prev" onClick={prevSlide}>&#10094;</button>
 
                 <div className="carousel-track" style={{ transform: `translateX(-${scrollIndex * 20}%)` }}>

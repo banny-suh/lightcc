@@ -1,26 +1,23 @@
 .worship-schedule {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     /* Light grey background */
     padding: 40px 0;
-    border-top: 1px solid #e0e0e0;
+    /* border-top: 1px solid #e0e0e0; */
 }
 
 .worship-schedule__container {
     display: flex;
     justify-content: center;
     gap: 20px;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--container-padding);
 }
 
 .schedule-box {
     flex: 1;
-    background-color: #f0f0f0;
     border: 1px solid #e6d8d8;
-    /* Light pinkish border */
-    border-radius: 4px;
-    padding: 25px 20px;
+    padding: 25px 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +28,6 @@
 .schedule-content {
     font-size: 0.95rem;
     color: #004d99;
-    /* Deep Blue text */
     font-weight: 500;
     line-height: 1.6;
 }

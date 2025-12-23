@@ -5,23 +5,23 @@ import './NewcomerSection.css';
 const steps = [
     {
         number: 'STEP ①',
-        title: '등록기도 작성',
-        description: '매번 진수 등록기도 작성'
+        title: '등록카드 작성',
+        description: '예배 전후 등록카드 작성'
     },
     {
         number: 'STEP ②',
         title: '새가족 교육',
-        description: '두주 과정'
+        description: '5주 과정'
     },
     {
         number: 'STEP ③',
         title: '새가족 환영',
-        description: '매번 중 환영인사'
+        description: '예배 중 환영인사'
     },
     {
         number: 'STEP ④',
         title: '공동체 편성',
-        description: '교인들로 후 공동체 편성'
+        description: '교인등록 후 공동체 편성'
     }
 ];
 
@@ -54,6 +54,14 @@ const NewcomerSection = () => {
         <section className="newcomer-section">
             <div className="newcomer-container">
                 {/* Steps Section */}
+                <div className="newcomer-welcome-image">
+                    <img src={`${import.meta.env.BASE_URL}images/newcomer_welcome.png`} alt="환영합니다" />
+                    <div className="welcome-overlay">
+                        <h3>환영합니다</h3>
+                        <p>빛의교회에 오신 여러분을 진심으로 축복합니다</p>
+                    </div>
+                </div>
+
                 <div className="steps-grid">
                     {steps.map((step, index) => (
                         <div key={index} className="step-item">
@@ -73,7 +81,7 @@ const NewcomerSection = () => {
                         빛의교회 새가족으로 등록하시면서 가장 많이 하시는 질문/답변을 정리했습니다.
                     </p>
                     <p className="faq-subtitle">
-                        추가적으로 궁금하신 사항들은 아래로 등록하여 통하여 빚내주시면 담당자 확인 후 답변을 회신해 드리겠습니다.
+                        추가적으로 궁금하신 사항들은 아래 '등록안내'를 통하여 문의주시면 담당자 확인 후 친절히 응대해드리겠습니다.
                     </p>
 
                     <div className="faq-button-container">

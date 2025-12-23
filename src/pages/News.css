@@ -1,5 +1,5 @@
 .news-page {
-    max-width: 1000px;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: 60px 20px;
     background-color: #fff;
@@ -328,7 +328,7 @@
 
 /* Schedule Calendar Styles */
 .schedule-container {
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: 20px 0;
 }

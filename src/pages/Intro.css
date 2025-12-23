@@ -8,7 +8,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 32px;
-    padding: 20px 90px;
     background-color: #ffffff;
     flex-wrap: wrap;
     position: sticky;
@@ -17,6 +16,8 @@
     z-index: 100;
     margin-bottom: 0;
     border-bottom: 1px solid #f0f0f0;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .intro-tab {
@@ -73,6 +74,8 @@
     display: flex;
     align-items: center;
     padding: 60px;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .intro-hero::before {
@@ -88,7 +91,7 @@
 .intro-hero-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
 }
@@ -114,7 +117,7 @@
 /* Content Section */
 .intro-content-section {
     background-color: #faf8f6;
-    padding: 80px 20px;
+    padding: 80px var(--container-padding);
     min-height: 400px;
 }
 
@@ -203,7 +206,7 @@
 .value-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: var(--max-width);
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
@@ -292,7 +295,7 @@
 .senior-pastor-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -356,7 +359,7 @@
 }
 
 .staff-grid {
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -410,7 +413,7 @@
 .history-section {
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 40px var(--container-padding);
 }
 
 .history-header {
@@ -514,9 +517,9 @@
 
 /* Location Section */
 .location-section {
-    max-width: 900px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 40px var(--container-padding);
 }
 
 .location-header {

@@ -11,11 +11,13 @@ import Mission from './pages/Mission';
 import Intro from './pages/Intro';
 import News from './pages/News';
 import Welcome from './pages/Welcome';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
   return (
     <Router basename="/lightcc">
+      <ScrollToTop />
       <div className="App">
         {/* <TopBar /> */}
         <Header />

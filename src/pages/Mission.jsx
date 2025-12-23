@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Mission.css';
 
 const missionData = {
@@ -98,8 +99,19 @@ const missionData = {
 };
 
 const Mission = () => {
+    const location = useLocation();
     const [activeTab, setActiveTab] = useState('국내선교');
-    const [sliderIndexes, setSliderIndexes] = useState({});
+
+    useEffect(() => {
+        if (location.state && location.state.activeTab) {
+            setActiveTab(location.state.activeTab);
+        }
+    }, [location.state]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [activeTab]);
+
     const tabs = Object.keys(missionData);
     const currentProjects = missionData[activeTab].projects;
 

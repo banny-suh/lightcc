@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Community.css';
 
 const communityData = {
@@ -113,6 +113,10 @@ const Community = () => {
     const [activeTab, setActiveTab] = useState('유아유치부');
     const tabs = Object.keys(communityData);
     const currentData = communityData[activeTab];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [activeTab]);
 
     return (
         <div className="community-page">

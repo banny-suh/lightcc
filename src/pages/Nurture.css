@@ -8,7 +8,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 32px;
-    padding: 20px 90px;
     background-color: #ffffff;
     flex-wrap: wrap;
     position: sticky;
@@ -17,6 +16,8 @@
     z-index: 100;
     margin-bottom: 0;
     border-bottom: 1px solid #f0f0f0;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .nurture-tab {
@@ -65,9 +66,11 @@
 /* Hero Section */
 .nurture-hero {
     background: linear-gradient(135deg, #a8d8d0 0%, #8cc9bf 100%);
-    padding: 80px 20px;
+    padding: 80px var(--container-padding);
     text-align: center;
     color: white;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .nurture-hero-title {
@@ -96,7 +99,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
@@ -109,7 +112,7 @@
 
 /* Info Section */
 .nurture-info {
-    padding: 60px 20px;
+    padding: 60px var(--container-padding);
     text-align: center;
 }
 
@@ -126,7 +129,7 @@
 
 .course-section {
     margin-bottom: 60px;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin-left: auto;
     margin-right: auto;
 }
@@ -222,7 +225,7 @@
 
 /* Materials Section */
 .nurture-materials {
-    padding: 40px 20px 60px;
+    padding: 40px var(--container-padding) 60px;
     text-align: center;
 }
 
@@ -249,7 +252,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 

@@ -8,7 +8,6 @@
     display: flex;
     justify-content: flex-end;
     gap: 32px;
-    padding: 20px 90px;
     background-color: #ffffff;
     flex-wrap: wrap;
     position: sticky;
@@ -17,6 +16,8 @@
     z-index: 100;
     margin-bottom: 0;
     border-bottom: 1px solid #f0f0f0;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .mission-tab {
@@ -72,6 +73,8 @@
     display: flex;
     align-items: flex-start;
     padding: 40px;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .project-hero::before {
@@ -98,12 +101,12 @@
 
 /* Content Section */
 .project-content-section {
-    background-color: #fff;
-    padding: 60px 20px;
+    /* background-color: #fff; */
+    padding: 60px var(--container-padding);
 }
 
 .project-content {
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
@@ -125,7 +128,7 @@
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    /* max-width: 900px; */
 }
 
 .slider-viewport {
@@ -150,7 +153,6 @@
     aspect-ratio: 4 / 3;
     background-size: cover;
     background-position: center;
-    border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 

@@ -45,7 +45,6 @@ const GallerySection = () => {
                     <div className="list-column">
                         <div className="list-header">
                             <span className="list-title">교회주보</span>
-                            <span className="list-arrow">»</span>
                         </div>
                         <ul className="list-items">
                             {bulletins.map((item, index) => (
@@ -61,7 +60,6 @@ const GallerySection = () => {
                     <div className="list-column">
                         <div className="list-header">
                             <span className="list-title">오늘의 기도</span>
-                            <span className="list-arrow">»</span>
                         </div>
                         <ul className="list-items">
                             {prayers.map((item, index) => (

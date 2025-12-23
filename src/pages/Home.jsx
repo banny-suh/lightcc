@@ -14,10 +14,10 @@ const Home = () => {
         <div className="home-page">
             <HeroSlider />
             <HomeContent />
-            <SermonSection />
-            <WorshipSchedule />
             <GallerySection />
             <NewcomerSection />
+            <SermonSection />
+            <WorshipSchedule />
             <MissionSection />
             <DonationSection />
             <LocationSection />
