@@ -3,7 +3,7 @@
     width: 100%;
     max-width: calc(var(--max-width) - var(--container-padding));
     padding: 60px 0;
-    background-image: url('/lightcc/images/sermon_bg.png');
+    background-image: url('/lightcc/images/sermon_bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

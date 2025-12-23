@@ -113,17 +113,37 @@
 }
 
 @media (max-width: 768px) {
+    .footer-nav {
+        max-width: 400px;
+        margin: 0 auto 30px;
+    }
+
     .footer-nav ul {
-        flex-direction: column;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px 10px;
+    }
+
+    .footer-nav li {
+        text-align: center;
+    }
+
+    .footer-nav a {
+        font-size: 0.8rem;
     }
 
     .footer-legal {
-        flex-direction: column;
-        gap: 8px;
+        gap: 10px;
     }
 
     .footer-divider {
-        display: none;
+        display: inline;
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-nav ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

@@ -197,19 +197,72 @@
 }
 
 @media (max-width: 600px) {
-    .account-boxes {
-        grid-template-columns: 1fr;
+    .donation-section {
+        padding: 50px 0;
     }
 
     .donation-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .donation-divider {
+        margin: 15px auto 40px;
+    }
+
+    .bank-logo-container {
+        margin-bottom: 30px;
     }
 
     .bank-name {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .account-boxes {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .account-box {
+        padding: 20px;
     }
 
     .account-number {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .donation-info {
+        margin-top: 40px;
+        padding: 30px 20px;
+    }
+
+    .info-title {
+        font-size: 1rem;
+    }
+
+    .info-text {
+        font-size: 0.9rem;
+        padding: 0 10px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .info-details {
+        padding: 30px 20px;
+        font-size: 0.9rem;
+        line-height: 2;
+        text-align: center;
+        /* Center on mobile for better balance */
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .info-link {
+        font-size: 1.1rem;
+        margin-top: 10px;
+        padding: 5px 15px;
+        background: rgba(0, 77, 153, 0.05);
+        display: inline-block;
+        border-radius: 4px;
+        word-break: break-all;
     }
 }

@@ -175,9 +175,9 @@
 }
 
 .faq-button:hover {
-    background-color: #003a75;
+    background-color: var(--color-dark-red);
     /* Slightly darker on hover */
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); */
     box-shadow: 0 6px 15px rgba(0, 77, 153, 0.3);
     color: white;
     padding-right: 40px;

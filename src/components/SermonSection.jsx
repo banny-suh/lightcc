@@ -20,7 +20,7 @@ const SermonSection = () => {
 
                 <div className="video-wrapper" onClick={openModal}>
                     {/* Thumbnail View */}
-                    <img src={`${import.meta.env.BASE_URL}images/sermon_thumb.png`} alt="Sermon Thumbnail" className="video-thumbnail" />
+                    <img src={`${import.meta.env.BASE_URL}images/sermon_thumb.jpg`} alt="Sermon Thumbnail" className="video-thumbnail" />
 
                     <div className="thumbnail-overlay">
                         <div className="thumbnail-text-top">

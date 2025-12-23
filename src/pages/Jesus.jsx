@@ -7,7 +7,7 @@ const sections = [
         description: "예수님은 십자가에 죽 으셨 습니다. 십자 하나님, 언약하신 우리구속을 위한 희생의 죽음을 이사야이 하나님 우리의 전죄하신 말씀입니다. 그 분은 한없이 하나님이시면서 동시에 한없이 인간이신 우리들과 같은 인성을 분담니다.",
         highlight: "빌립보서 2장 6-7절",
         detail: "그는 근본 하나님의 본체시나 하나님과 동등됨을 취할 것으로 여기지 아니하시고 오히려 자기를 비어 종의 형체를 가져 사람들과 같이 되었고",
-        image: `${import.meta.env.BASE_URL}images/jesus1.png`
+        image: `${import.meta.env.BASE_URL}images/jesus1.jpg`
     },
     {
         title: "예수님은 '구원자'입니다.",
@@ -38,18 +38,13 @@ const Jesus = () => {
             {/* Hero Section */}
             <div
                 className="jesus-hero"
-                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/jesus_hero.png)` }}
+                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/jesus_hero.jpg)` }}
             >
-                <div className="jesus-hero-badge">
-                    LIGHT<br />
-                    community<br />
-                    church
-                </div>
                 <div className="jesus-hero-content">
                     <h1 className="jesus-hero-title">예수님은 누구신가</h1>
                     <p className="jesus-hero-subtitle">
                         예수님은 우리를 위해 이 땅에 오셨습니다.<br />
-                        예수님 모든에게는 예수님이 필요합니다.
+                        <strong>우리 모두에게는 예수님이 필요합니다.</strong>
                     </p>
                 </div>
             </div>
