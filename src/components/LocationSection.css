@@ -18,32 +18,35 @@
 }
 
 .location-divider {
-    width: 100%;
-    height: 2px;
-    background: var(--color-primary);
-    /* background: linear-gradient(to right, transparent, #004d99 20%, #004d99 80%, transparent); */
-    margin-bottom: 40px;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-dark-red) 50%, transparent);
+    margin: 0 auto 40px;
     position: relative;
 }
 
 .location-divider::after {
-    content: '●';
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
-    /* color: var(--color-dark-blue); */
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    padding: 0 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--color-dark-red);
+    border-radius: 50%;
+}
+
+.location-header {
+    padding: 20px;
 }
 
 .location-church-name {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 800;
     color: var(--color-primary);
-    margin: 15px;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
 }
 
 .location-address {
@@ -61,15 +64,15 @@
 }
 
 .transport-icon {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     background-color: var(--color-dark-red);
     color: white;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    font-weight: bold;
+    font-size: 1rem;
 }
 
 .transport-text {
@@ -109,41 +112,67 @@
 .contact-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
+    margin-top: 40px;
 }
 
 .contact-item {
-    text-align: center;
-    padding: 25px 20px;
-    background: #fafafa;
-    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 24px;
+    background: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    text-align: left;
 }
 
-.contact-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    background-color: var(--color-accent);
+    color: var(--color-dark-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-label {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #ff6b4a;
-    margin-bottom: 8px;
-    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
 }
 
 .contact-value {
-    font-size: 1.1rem;
-    color: #333;
-    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--color-secondary);
+    font-weight: 600;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .contact-info {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 
+    .contact-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
     .map-container {
         height: 300px;
     }

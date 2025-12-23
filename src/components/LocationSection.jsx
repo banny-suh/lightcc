@@ -1,5 +1,4 @@
-import React from 'react';
-import { FaSubway } from 'react-icons/fa';
+import { FaSubway, FaPhoneAlt, FaFax, FaEnvelope } from 'react-icons/fa';
 import './LocationSection.css';
 
 const LocationSection = () => {
@@ -12,14 +11,16 @@ const LocationSection = () => {
                 <h2 className="location-title">오시는 길</h2>
                 <div className="location-divider"></div>
 
-                <h3 className="location-church-name">빛의교회</h3>
-                <p className="location-address">서울특별시 서초구 서초대로 115</p>
+                <div className="location-header">
+                    <h3 className="location-church-name">빛의교회</h3>
+                    <p className="location-address">서울특별시 서초구 서초대로 115</p>
 
-                <div className="location-transport">
-                    <div className="transport-icon">
-                        <FaSubway />
+                    <div className="location-transport">
+                        <div className="transport-icon">
+                            <FaSubway />
+                        </div>
+                        <span className="transport-text">지하철 7호선 내방역 4번 출구</span>
                     </div>
-                    <span className="transport-text">지하철 7호선 내방역 4번 출구</span>
                 </div>
 
                 {/* Map Container */}
@@ -38,18 +39,33 @@ const LocationSection = () => {
                 {/* Contact Information */}
                 <div className="contact-info">
                     <div className="contact-item">
-                        <span className="contact-label">Tel</span>
-                        <div className="contact-value">02-532-9826</div>
+                        <div className="contact-icon">
+                            <FaPhoneAlt />
+                        </div>
+                        <div className="contact-content">
+                            <span className="contact-label">Tel</span>
+                            <div className="contact-value">02-532-9826</div>
+                        </div>
                     </div>
 
                     <div className="contact-item">
-                        <span className="contact-label">Fax</span>
-                        <div className="contact-value">02-533-9826</div>
+                        <div className="contact-icon">
+                            <FaFax />
+                        </div>
+                        <div className="contact-content">
+                            <span className="contact-label">Fax</span>
+                            <div className="contact-value">02-533-9826</div>
+                        </div>
                     </div>
 
                     <div className="contact-item">
-                        <span className="contact-label">Email</span>
-                        <div className="contact-value">lightcc@kakao.com</div>
+                        <div className="contact-icon">
+                            <FaEnvelope />
+                        </div>
+                        <div className="contact-content">
+                            <span className="contact-label">Email</span>
+                            <div className="contact-value">lightcc@kakao.com</div>
+                        </div>
                     </div>
                 </div>
             </div>
