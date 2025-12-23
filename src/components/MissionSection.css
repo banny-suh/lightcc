@@ -218,14 +218,106 @@
 
 @media (max-width: 900px) {
     .mission-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        /* Slightly more breathable gap for mobile */
+    }
+
+    .mission-left,
+    .mission-right {
+        display: contents;
     }
 
     .mission-main-image {
-        min-height: 350px;
+        order: 1;
+        min-height: 280px;
+        aspect-ratio: 16 / 9;
+        /* margin-bottom: 5px; */
     }
 
-    .mission-cards {
+    .mission-text-box {
+        order: 3;
+        min-height: auto;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .mission-text-box h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+        word-break: keep-all;
+    }
+
+    .mission-text-box p {
+        font-size: 0.95rem;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .mission-video {
+        order: 2;
+        height: 240px;
+    }
+
+    .mission-cards-row {
+        order: 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+    }
+
+    .mission-right .mission-card {
+        order: 5;
+    }
+
+    .mission-card {
+        aspect-ratio: 1 / 1;
+        /* Squarish for 2-column mobile row */
+    }
+}
+
+@media (max-width: 600px) {
+    .mission-grid {
+        gap: 10px;
+    }
+
+    .mission-main-image {
+        min-height: 220px;
+    }
+
+    .mission-text-box {
+        padding: 40px 20px;
+    }
+
+    .mission-text-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .mission-video {
+        height: 200px;
+    }
+
+    .mission-cards-row {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .mission-right .mission-card {
+        aspect-ratio: 16 / 8;
+    }
+
+    .mission-card {
+        aspect-ratio: 16 / 8;
+    }
+
+    .mission-card-title {
+        font-size: 1.3rem;
+    }
+
+    .video-play-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
     }
 }
