@@ -36,13 +36,13 @@ const DonationSection = () => {
                 <div className="donation-info">
                     <p className="info-title">송금시 표기방법</p>
                     <p className="info-text">
-                        개좌입금시 입금자명을 이름/성명/월/헌금명으로 기입하여주시기 바랍니다.
+                        계좌입금시 입금자명을 이름/생년/월/헌금명으로 기입해주시기 바랍니다.
                     </p>
 
                     <p className="info-details">
-                        주일헌금 : 홍 | 성명표 : 심 | 감사헌금 : 김 | 선교헌금 : 선<br />
-                        예) 홍길동 오월분 월 성도님의 성함은 연중<br />
-                        <span className="info-link">김밥8303실</span>
+                        <strong>주일헌금 : 주 | 십일조 : 십 | 감사헌금 : 감 | 선교헌금 : 선</strong><br />
+                        예) 83년 3월생 김 빛 성도님의 십일조 헌금<br />
+                        <span className="info-link">김빛8303십</span>
                     </p>
                 </div>
             </div>
