@@ -55,7 +55,7 @@ const NewcomerSection = () => {
             <div className="newcomer-container">
                 {/* Steps Section */}
                 <div className="newcomer-welcome-image">
-                    <img src={`${import.meta.env.BASE_URL}images/newcomer_welcome.png`} alt="환영합니다" />
+                    <img src={`${import.meta.env.BASE_URL}images/welcome.jpg`} alt="환영합니다" />
                     <div className="welcome-overlay">
                         <h3>환영합니다</h3>
                         <p>빛의교회에 오신 여러분을 진심으로 축복합니다</p>

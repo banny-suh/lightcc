@@ -27,14 +27,14 @@ const MissionSection = () => {
                         {/* Main Image */}
                         <div
                             className="mission-main-image"
-                            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_main.png)` }}
+                            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/w4m.jpg)` }}
                         />
 
                         {/* Cards Row (Domestic + Overseas) */}
                         <div className="mission-cards-row">
                             <div
                                 className="mission-card"
-                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_domestic.png)` }}
+                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_domestic.jpg)` }}
                                 onClick={() => handleMissionClick('국내선교')}
                             >
                                 <div className="mission-card-content">
@@ -47,7 +47,7 @@ const MissionSection = () => {
 
                             <div
                                 className="mission-card"
-                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_overseas.png)` }}
+                                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_overseas.jpg)` }}
                                 onClick={() => handleMissionClick('해외선교')}
                             >
                                 <div className="mission-card-content">
@@ -68,9 +68,12 @@ const MissionSection = () => {
                                 하나님의 사랑으로<br />
                                 세상을 밝히는 빛의교회!
                             </h2>
-                            <p>
-                                빛의교회는 선교하는 교회로서 세상을 밝히는 것이 우리의 사명입니다. 빛의교회를 통해서 하나님을 만나시고 평생의 동역자를 만나시고 하나님의 일에 동참하시는 분들이 되기를 바랍니다.
-                            </p>
+                            <p>빛의교회는 선교하는 교회로서 세상을 밝히는 것이</p>
+                            <p>우리의 사명입니다. 빛의교회를 통해서 하나님을 만나시고</p>
+                            <p>평생의 동역자를 만나시고 하나님의 일에 동참하시는 분들이</p>
+                            <p>되기를 바랍니다.</p>
+                            <p><br /></p>
+                            <p>환영인사 》</p>
                         </div>
 
                         {/* Video Thumbnail */}
@@ -86,7 +89,7 @@ const MissionSection = () => {
                         {/* Card 3 (Campaign) */}
                         <div
                             className="mission-card"
-                            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_campaign.png)` }}
+                            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/mission_campaign.jpg)` }}
                             onClick={() => handleMissionClick('캠페인')}
                         >
                             <div className="mission-card-content">
