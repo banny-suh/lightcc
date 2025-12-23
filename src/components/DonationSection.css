@@ -21,7 +21,7 @@
 .donation-divider {
     width: 60px;
     height: 3px;
-    background: #004d99;
+    background: var(--color-dark-red);
     margin: 20px auto 50px;
 }
 
@@ -52,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #004d99;
+    color: var(--color-gray);
     font-size: 1.8rem;
 }
 
@@ -77,7 +77,7 @@
     padding: 30px;
     text-align: left;
     transition: all 0.3s ease;
-    border-left: 4px solid #004d99;
+    border-left: 4px solid var(--color-dark-red);
 }
 
 .account-box:hover {
@@ -172,7 +172,7 @@
     position: absolute;
     top: -12px;
     left: 20px;
-    background: #004d99;
+    background: var(--color-dark-blue);
     color: white;
     padding: 2px 12px;
     font-size: 0.75rem;
@@ -183,7 +183,7 @@
 .info-link {
     display: block;
     margin-top: 15px;
-    color: #004d99;
+    color: var(--color-dark-blue);
     text-decoration: none;
     font-weight: 700;
     font-size: 1rem;

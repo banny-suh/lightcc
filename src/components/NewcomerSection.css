@@ -25,9 +25,9 @@
     transition: transform 0.5s ease;
 }
 
-.newcomer-welcome-image:hover img {
+/* .newcomer-welcome-image:hover img {
     transform: scale(1.05);
-}
+} */
 
 .welcome-overlay {
     position: absolute;
@@ -97,7 +97,7 @@
 
 .step-number {
     font-size: 0.9rem;
-    color: #ff8c73;
+    color: var(--color-dark-red);
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 15px;
@@ -107,7 +107,8 @@
 .step-title {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #004d99;
+    /* color: var(--color-dark-blue); */
+    color: var(--color-primary);
     margin-bottom: 15px;
 }
 
@@ -135,7 +136,7 @@
     text-align: center;
     font-size: 2.2rem;
     font-weight: 800;
-    color: #004d99;
+    color: var(--color-primary);
     margin-bottom: 20px;
     letter-spacing: -0.5px;
 }
@@ -163,7 +164,8 @@
 .faq-button {
     display: inline-block;
     padding: 12px 40px;
-    background-color: #004d99;
+    /* background-color: var(--color-dark-red); */
+    background-color: var(--color-gray);
     /* Deep Blue brand color */
     color: white;
     /* border-radius: 50px; */
@@ -187,7 +189,8 @@
 
 /* FAQ Items */
 .faq-list {
-    border-top: 3px solid #004d99;
+    border-top: 3px solid var(--color-dark-red);
+    /* border-top: 3px solid var(--color-dark-blue); */
     border-radius: 8px 8px 0 0;
 }
 
@@ -224,7 +227,7 @@
 .faq-category {
     font-size: 0.75rem;
     font-weight: 800;
-    color: #ff8c73;
+    color: var(--color-dark-red);
     background-color: transparent;
     padding: 0;
     border-radius: 0;
@@ -262,8 +265,8 @@
 }
 
 .faq-item.active .faq-toggle {
-    background-color: #004d99;
-    border-color: #004d99;
+    background-color: var(--color-gray);
+    border-color: var(--color-gray);
     color: white;
     transform: rotate(45deg);
 }

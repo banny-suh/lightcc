@@ -13,14 +13,15 @@
 .location-title {
     font-size: 2rem;
     font-weight: bold;
-    color: #004d99;
     margin-bottom: 10px;
+    color: var(--color-primary);
 }
 
 .location-divider {
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, transparent, #004d99 20%, #004d99 80%, transparent);
+    background: var(--color-primary);
+    /* background: linear-gradient(to right, transparent, #004d99 20%, #004d99 80%, transparent); */
     margin-bottom: 40px;
     position: relative;
 }
@@ -32,7 +33,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    color: #004d99;
+    /* color: var(--color-dark-blue); */
+    color: var(--color-primary);
     font-size: 1.5rem;
     padding: 0 10px;
 }
@@ -40,13 +42,13 @@
 .location-church-name {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--color-primary);
     margin: 15px;
 }
 
 .location-address {
     font-size: 1rem;
-    color: #666;
+    color: var(--color-text-light);
     margin-bottom: 20px;
 }
 
@@ -61,7 +63,7 @@
 .transport-icon {
     width: 30px;
     height: 30px;
-    background-color: #ff6b4a;
+    background-color: var(--color-dark-red);
     color: white;
     display: flex;
     align-items: center;

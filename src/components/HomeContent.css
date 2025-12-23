@@ -53,20 +53,21 @@
 }
 
 .home-content__banner-right .light {
-    color: #e60000;
+    /* color: #e60000; */
+    color: var(--color-dark-red);
     /* Red */
     display: block;
 }
 
 .home-content__banner-right .community {
-    color: #e60000;
+    color: var(--color-dark-red);
     /* Red */
     font-size: 2rem;
     display: block;
 }
 
 .home-content__banner-right .church {
-    color: #e60000;
+    color: var(--color-dark-red);
     /* Red */
     display: block;
 }
@@ -82,7 +83,7 @@
 }
 
 .home-content__text-section h3 {
-    /* color: #004d99; */
+    /* color: var(--color-dark-blue); */
     /* Deep Blue */
     font-size: 1.5rem;
     margin-bottom: 20px;

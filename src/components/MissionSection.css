@@ -107,7 +107,7 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: #ff6b4a;
+    color: var(--color-dark-red);
     z-index: 2;
     transition: transform 0.3s;
 }

@@ -103,7 +103,7 @@
 .jesus-section-title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #004d99;
+    color: var(--color-dark-blue);
     margin-bottom: 25px;
 }
 
@@ -117,7 +117,7 @@
 .jesus-section-highlight {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #004d99;
+    color: var(--color-dark-blue);
     margin-bottom: 15px;
     padding-left: 15px;
     border-left: 3px solid #ff6b4a;

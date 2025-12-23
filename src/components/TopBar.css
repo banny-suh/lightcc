@@ -19,7 +19,7 @@
 
 .top-bar__menu-icon {
     font-size: 1.2rem;
-    color: #ff6b6b;
+    color: var(--color-dark-red);
     /* Reddish orange from image */
     cursor: pointer;
     display: flex;

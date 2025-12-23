@@ -131,7 +131,7 @@
 
 .rbc-event-holiday {
     background-color: transparent !important;
-    color: #ff6b6b !important;
+    color: var(--color-dark-red) !important;
     text-align: right;
     font-weight: bold;
     box-shadow: none;

@@ -120,7 +120,7 @@
 .section-badge {
     display: inline-block;
     padding: 8px 24px;
-    background-color: #004d99;
+    background-color: var(--color-dark-blue);
     color: white;
     font-size: 0.9rem;
     font-weight: 600;
@@ -150,7 +150,7 @@
 .worship-card-title {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #004d99;
+    color: var(--color-dark-blue);
     margin-bottom: 15px;
 }
 

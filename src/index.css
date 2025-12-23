@@ -1,7 +1,7 @@
 :root {
   /* Colors */
   --color-primary: black;
-  /* --color-primary: #004d99; */
+  /* --color-primary: var(--color-dark-blue); */
   /* Deep Blue from the site */
   --color-secondary: #333333;
   /* Dark Grey for text */
@@ -9,8 +9,9 @@
   /* Light Grey for backgrounds */
   --color-white: #ffffff;
   --color-text-light: #666666;
-  --color-red: #ff0000;
-  --color-blue: #004d99;
+  --color-dark-blue: #004d99;
+  --color-dark-red: #D32D22;
+  --color-gray: #727172;
 
   /* Fonts */
   --font-main: 'Nanum Gothic', sans-serif;
