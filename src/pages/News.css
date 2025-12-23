@@ -47,48 +47,40 @@
 /* Sub Tabs */
 .news-subtabs {
     display: flex;
-    gap: 5px;
-    padding: 20px 0 30px;
-    border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 30px;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 2px solid #004d99;
+    margin-bottom: 40px;
     overflow-x: auto;
     white-space: nowrap;
 }
 
 .news-subtabs::-webkit-scrollbar {
-    height: 4px;
-}
-
-.news-subtabs::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.news-subtabs::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 2px;
+    display: none;
+    /* Hide scrollbar for a cleaner look */
 }
 
 .news-subtab {
-    padding: 8px 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 20px;
+    padding: 12px 24px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #666;
-    transition: all 0.3s;
-    flex-shrink: 0;
+    transition: all 0.2s ease;
+    letter-spacing: -0.5px;
 }
 
 .news-subtab:hover {
-    background-color: #f5f5f5;
+    color: #004d99;
+    background-color: rgba(0, 77, 153, 0.05);
 }
 
 .news-subtab.active {
-    background-color: #e60000;
+    background-color: #004d99;
     color: white;
-    border-color: #e60000;
+    font-weight: 600;
 }
 
 /* News List */

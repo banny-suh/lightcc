@@ -24,7 +24,6 @@
     padding: 12px 0;
     background-color: transparent;
     border: none;
-    border-radius: 0;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
@@ -177,6 +176,8 @@
     margin: 0;
     padding: 0;
     background-color: #85c4bb;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .value-section {
@@ -270,6 +271,8 @@
 /* Staff Section */
 .staff-section {
     width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 /* Senior Pastor Section */
@@ -449,25 +452,28 @@
 }
 
 .history-year-btn {
-    padding: 8px 20px;
-    background-color: white;
+    padding: 10px 24px;
+    background-color: transparent;
     border: 1px solid #ddd;
-    border-radius: 20px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 500;
     color: #666;
-    transition: all 0.3s;
+    transition: all 0.2s ease;
+    letter-spacing: 0.5px;
 }
 
 .history-year-btn:hover {
-    background-color: #f5f5f5;
+    border-color: #004d99;
+    color: #004d99;
+    background-color: rgba(0, 77, 153, 0.05);
 }
 
 .history-year-btn.active {
-    background-color: #ff6b6b;
+    background-color: #004d99;
     color: white;
-    border-color: #ff6b6b;
+    border-color: #004d99;
+    font-weight: 600;
 }
 
 .history-timeline {

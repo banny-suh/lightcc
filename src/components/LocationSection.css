@@ -63,7 +63,6 @@
     height: 30px;
     background-color: #ff6b4a;
     color: white;
-    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +80,6 @@
     width: 100%;
     height: 400px;
     margin-bottom: 40px;
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     background-color: #f0f0f0;
@@ -116,7 +114,6 @@
     text-align: center;
     padding: 25px 20px;
     background: #fafafa;
-    border-radius: 8px;
     transition: transform 0.2s;
 }
 

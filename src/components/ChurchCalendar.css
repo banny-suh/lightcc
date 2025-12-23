@@ -1,7 +1,6 @@
 /* Custom styles for React Big Calendar */
 .church-calendar-wrapper {
     background-color: #fff;
-    border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     font-family: 'Inter', sans-serif;
@@ -73,7 +72,6 @@
 /* Month View Cells */
 .rbc-month-view {
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -109,7 +107,6 @@
     background-color: #3174ad;
     /* Default */
     border: none;
-    border-radius: 4px;
     padding: 2px 6px;
     font-size: 0.85rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
