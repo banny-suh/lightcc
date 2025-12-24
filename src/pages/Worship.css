@@ -6,9 +6,8 @@
 .worship-hero {
     position: relative;
     width: 100%;
-    height: 600px;
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 16 / 9;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,6 +15,7 @@
     text-align: center;
     max-width: var(--max-width);
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .worship-hero::before {
@@ -25,40 +25,32 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
+    /* Slightly lighter to see the full video clearly */
+    z-index: 2;
+}
+
+.worship-hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.worship-hero-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
 }
 
 .worship-hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 800px;
     padding: 0 var(--container-padding);
-}
-
-.worship-play-icon {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 30px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    backdrop-filter: blur(8px);
-    padding-left: 6px;
-    /* Visual centering of the play triangle */
-}
-
-.worship-play-icon:hover {
-    background: white;
-    color: #333;
-    transform: scale(1.15);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
 }
 
 .worship-hero-title {
@@ -106,63 +98,113 @@
 .worship-content {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 80px var(--container-padding);
+    padding: 100px var(--container-padding);
 }
 
 .worship-section {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
 }
 
 .worship-section:last-child {
     margin-bottom: 0;
 }
 
+.worship-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
 .section-badge {
     display: inline-block;
-    padding: 8px 24px;
-    background-color: var(--color-dark-blue);
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    letter-spacing: 0.5px;
+    padding: 6px 16px;
+    background-color: #f1f5f9;
+    color: var(--color-dark-red);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.worship-section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.worship-section-divider {
+    width: 40px;
+    height: 4px;
+    background-color: var(--color-dark-red);
+    margin: 0 auto;
 }
 
 .worship-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 30px;
 }
 
 .worship-card {
     background: #fff;
-    border: 1px solid #e0e0e0;
-    padding: 30px 25px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s;
+    border: 1px solid #f1f5f9;
+    padding: 40px 30px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .worship-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    border-color: rgba(211, 45, 34, 0.1);
+}
+
+.worship-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--color-dark-red);
+    transition: width 0.4s ease;
+}
+
+.worship-card:hover .worship-card-accent {
+    width: 100%;
 }
 
 .worship-card-title {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
-    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
 }
 
-.worship-card-time {
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 8px;
+.worship-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
+.worship-card-time,
 .worship-card-location {
-    font-size: 0.9rem;
-    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1;
+}
+
+.worship-card-icon {
+    font-size: 1rem;
+    color: var(--color-dark-red);
+    opacity: 0.8;
 }
 
 @media (max-width: 900px) {
@@ -181,7 +223,7 @@
     }
 
     .worship-hero {
-        height: 400px;
+        height: auto;
     }
 
     .worship-hero-title {
