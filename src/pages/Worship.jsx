@@ -18,21 +18,36 @@ const churchSchool = [
 ];
 
 const Worship = () => {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className="worship-page">
             {/* Hero Section */}
             <div
                 className="worship-hero"
-                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/worship_hero.png)` }}
+                style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/sermon_bg.jpg)` }}
             >
                 <div className="worship-hero-content">
-                    <div className="worship-play-icon">▶</div>
+                    <div className="worship-play-icon" onClick={openModal}>▶</div>
                     <h1 className="worship-hero-title">주일예배설교</h1>
                     <div className="worship-hero-divider"></div>
                     <p className="worship-hero-subtitle">천정훈 목사</p>
-                    <Link to="/worship" className="worship-hero-button">
+                    <a
+                        href="https://www.youtube.com/playlist?list=PLb5IL80VvnmxMVgz1wzTuttlCCSqVxnJw"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="worship-hero-button"
+                    >
                         주일설교 더보기
-                    </Link>
+                    </a>
                 </div>
             </div>
 
@@ -65,6 +80,24 @@ const Worship = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Video Modal */}
+            {isModalOpen && (
+                <div className="worship-modal" onClick={closeModal}>
+                    <div className="worship-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="worship-modal-close" onClick={closeModal}>&times;</button>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/LpWmmk8GCOI?autoplay=1"
+                            title="Sunday Sermon"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
