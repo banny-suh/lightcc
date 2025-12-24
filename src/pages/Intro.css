@@ -4,58 +4,53 @@
 
 /* Tab Navigation */
 /* Tab Navigation */
+/* Tab Navigation */
 .intro-tabs {
     display: flex;
-    justify-content: flex-end;
-    gap: 32px;
-    background-color: #ffffff;
+    justify-content: right;
+    gap: 40px;
     flex-wrap: wrap;
     position: sticky;
     top: 100px;
-    /* Matches Header height */
     z-index: 100;
-    margin-bottom: 0;
-    border-bottom: 1px solid #f0f0f0;
+    /* border-bottom: 1px solid #f1f5f9; */
     max-width: var(--max-width);
     margin: 0 auto;
 }
 
 .intro-tab {
-    padding: 12px 0;
+    padding: 20px 0;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #999;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.3s ease;
     position: relative;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
 }
 
 .intro-tab:hover {
-    color: #333;
-    background-color: transparent;
+    color: var(--color-dark-red);
 }
 
 .intro-tab.active {
-    background-color: transparent;
-    color: #000;
+    color: var(--color-primary);
     font-weight: 700;
-    box-shadow: none;
-    transform: none;
-    border: none;
 }
 
 .intro-tab::after {
     content: '';
     position: absolute;
     bottom: -1px;
-    left: 0;
+    left: 50%;
     width: 0;
-    height: 2px;
-    background-color: #000;
-    transition: width 0.3s ease;
+    height: 3px;
+    background-color: var(--color-dark-red);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateX(-50%);
 }
 
 .intro-tab.active::after {
@@ -344,6 +339,26 @@
     margin: 8px 0;
 }
 
+/* Info Section */
+.nurture-info {
+    padding: 100px var(--container-padding);
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.nurture-info-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: #f1f5f9;
+    color: var(--color-dark-red);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
 /* Staff Category */
 .staff-category {
     background-color: #f5f5f5;
@@ -414,33 +429,35 @@
 
 /* History Section */
 .history-section {
-    max-width: 900px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 40px var(--container-padding);
+    padding: 100px var(--container-padding);
 }
 
 .history-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .history-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
-    margin-bottom: 15px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
 }
 
 .history-divider {
-    width: 60px;
-    height: 3px;
-    background-color: var(--color-dark-blue);
+    width: 40px;
+    height: 4px;
+    background-color: var(--color-dark-red);
     margin: 0 auto 20px;
 }
 
 .history-subtitle {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1.1rem;
+    color: #64748b;
+    font-weight: 400;
 }
 
 .history-years {

@@ -4,59 +4,53 @@
 
 /* Tab Navigation */
 /* Tab Navigation */
+/* Tab Navigation */
 .mission-tabs {
     display: flex;
-    justify-content: flex-end;
-    gap: 32px;
-    background-color: #ffffff;
+    justify-content: right;
+    gap: 40px;
     flex-wrap: wrap;
     position: sticky;
     top: 100px;
-    /* Matches Header height */
     z-index: 100;
-    margin-bottom: 0;
-    border-bottom: 1px solid #f0f0f0;
+    /* border-bottom: 1px solid #f1f5f9; */
     max-width: var(--max-width);
     margin: 0 auto;
 }
 
 .mission-tab {
-    padding: 12px 0;
+    padding: 20px 0;
     background-color: transparent;
     border: none;
-    border-radius: 0;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #999;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.3s ease;
     position: relative;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
 }
 
 .mission-tab:hover {
-    color: #333;
-    background-color: transparent;
+    color: var(--color-dark-red);
 }
 
 .mission-tab.active {
-    background-color: transparent;
-    color: #000;
+    color: var(--color-primary);
     font-weight: 700;
-    box-shadow: none;
-    transform: none;
-    border: none;
 }
 
 .mission-tab::after {
     content: '';
     position: absolute;
     bottom: -1px;
-    left: 0;
+    left: 50%;
     width: 0;
-    height: 2px;
-    background-color: #000;
-    transition: width 0.3s ease;
+    height: 3px;
+    background-color: var(--color-dark-red);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateX(-50%);
 }
 
 .mission-tab.active::after {
@@ -67,7 +61,7 @@
 .project-hero {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -85,18 +79,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-}
-
-.project-logo {
-    position: relative;
-    z-index: 2;
-    display: inline-block;
-    background: rgba(162, 216, 208, 0.95);
-    padding: 15px 25px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
 }
 
 /* Content Section */
@@ -144,16 +126,18 @@
 .slider-page {
     min-width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 10px 0;
 }
 
 .project-gallery-item {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     background-size: cover;
     background-position: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
 }
 
 /* Slider Navigation Buttons */
@@ -227,7 +211,8 @@
     }
 
     .slider-page {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
     }
 
     .project-title {
@@ -288,11 +273,6 @@
         padding: 20px;
     }
 
-    .project-logo {
-        padding: 12px 20px;
-        font-size: 0.95rem;
-    }
-
     .project-content-section {
         padding: 30px 15px;
     }
@@ -306,8 +286,8 @@
     }
 
     .slider-page {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
 
     .slider-btn {

@@ -61,7 +61,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 30px;
     margin-bottom: -180px;
     position: relative;
     z-index: 10;
@@ -69,14 +69,30 @@
 
 .welcome-value-card {
     background: white;
-    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
 }
 
 .welcome-value-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-value-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--color-dark-red);
+    transition: width 0.4s ease;
+}
+
+.welcome-value-card:hover::after {
+    width: 100%;
 }
 
 .welcome-value-image {
@@ -88,20 +104,24 @@
 }
 
 .welcome-value-info {
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
 }
 
 .welcome-value-title {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
 }
 
 .welcome-value-subtitle {
-    font-size: 0.95rem;
-    color: #666;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Newcomer Steps Section */
@@ -124,26 +144,297 @@
 
 .welcome-step-badge {
     display: inline-block;
-    background-color: #85c4bb;
-    color: white;
+    background-color: #f1f5f9;
+    color: var(--color-dark-red);
     padding: 6px 20px;
-    border-radius: 20px;
+    border-radius: 4px;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .welcome-step-title {
     font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
+    font-weight: 800;
+    color: var(--color-primary);
     margin-bottom: 15px;
 }
 
 .welcome-step-description {
     font-size: 1rem;
-    color: #666;
+    color: #64748b;
     line-height: 1.6;
+}
+
+/* Interior Image Section */
+.welcome-interior-section {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 80px;
+}
+
+.welcome-interior-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Location Section */
+.welcome-location-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding) 100px;
+    text-align: center;
+}
+
+.welcome-location-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 50px;
+}
+
+.welcome-contacts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.welcome-contact-item {
+    text-align: center;
+    padding: 0 30px;
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+.welcome-contact-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.welcome-contact-value {
+    font-size: 1rem;
+    color: #555;
+}
+
+.welcome-contact-divider {
+    flex-grow: 1;
+    height: 0;
+    border-top: 2px dotted #b0e0e6;
+    max-width: 150px;
+}
+
+.welcome-address-container {
+    margin-bottom: 40px;
+}
+
+.welcome-church-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    margin-bottom: 15px;
+}
+
+.welcome-address {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.welcome-map-container {
+    width: 100%;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* Registration Section */
+.welcome-registration-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding) 100px;
+}
+
+.welcome-registration-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-registration-divider {
+    width: 100%;
+    height: 1px;
+    border-top: 2px dotted #a0d8d0;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.welcome-registration-divider::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #a0d8d0;
+    border-radius: 50%;
+}
+
+.welcome-registration-desc {
+    text-align: center;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.welcome-registration-divider-dotted {
+    width: 100%;
+    height: 1px;
+    border-top: 2px dotted #a0d8d0;
+    margin-bottom: 50px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.form-label.required::after {
+    content: '•';
+    color: var(--color-dark-red);
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #f1f5f9;
+    background-color: #f8fafc;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-dark-red);
+    background-color: white;
+}
+
+.date-input-wrapper {
+    position: relative;
+    width: 200px;
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.phone-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.phone-part {
+    width: 80px;
+    text-align: center;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.form-textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.privacy-box {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    padding: 20px;
+    height: 150px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.submit-btn {
+    align-self: center;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 15px 60px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background-color: #000;
 }
 
 /* Responsive Design */
@@ -155,7 +446,6 @@
     .welcome-values-grid {
         grid-template-columns: repeat(2, 1fr);
         margin-bottom: 0;
-        /* Reset overlap on smaller screens */
     }
 
     .welcome-hero-section {
@@ -200,157 +490,7 @@
     .welcome-step-title {
         font-size: 1.2rem;
     }
-}
 
-/* Interior Image Section */
-.welcome-interior-section {
-    width: 100%;
-    height: 400px;
-    margin-bottom: 80px;
-}
-
-.welcome-interior-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    max-width: var(--max-width);
-    margin: 0 auto;
-}
-
-/* Location Section */
-.welcome-location-section {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding) 100px;
-    text-align: center;
-}
-
-.welcome-location-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
-    margin-bottom: 50px;
-}
-
-.welcome-contacts-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0;
-    margin-bottom: 60px;
-    width: 100%;
-}
-
-.welcome-contact-item {
-    flex: 1;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.welcome-contact-label {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.welcome-contact-value {
-    font-size: 1rem;
-    color: #555;
-}
-
-.welcome-contact-divider {
-    width: 100%;
-    height: 1px;
-    border-top: 2px dotted #a0d8d0;
-    /* Minty dotted line */
-    margin-top: 15px;
-    /* Align with the text baseline roughly */
-    flex: 2;
-}
-
-/* Adjust flex basis to make items take appropriate space and lines fill the rest */
-.welcome-contact-item {
-    flex: 0 0 auto;
-    min-width: 150px;
-}
-
-/* Re-structure for the specific layout: Item - Line - Item - Line - Item */
-/* Actually the image shows: Line ... Item ... Line ... Item ... Line ... Item ... Line */
-/* But simpler implementation: Item (Tel) ... Line ... Item (Fax) ... Line ... Item (Email) */
-/* Let's try a grid or flex approach that matches the image better */
-
-.welcome-contacts-container {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: center;
-    gap: 20px;
-    max-width: var(--max-width);
-    margin: 0 auto 60px;
-}
-
-.welcome-contact-divider {
-    width: 100%;
-    height: 0;
-    border-top: 2px dotted #b0e0e6;
-    margin: 0;
-    flex: none;
-}
-
-/* Wait, the image shows lines BETWEEN the items, but also extending to the sides? */
-/* The image shows:  Line ----- Tel ----- Line ----- Fax ----- Line ----- Email ----- Line */
-/* Let's try to replicate that look */
-
-.welcome-contacts-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 60px;
-    width: 100%;
-}
-
-.welcome-contact-item {
-    text-align: center;
-    padding: 0 30px;
-    position: relative;
-}
-
-.welcome-contact-divider {
-    flex-grow: 1;
-    height: 0;
-    border-top: 2px dotted #b0e0e6;
-    max-width: 150px;
-}
-
-.welcome-address-container {
-    margin-bottom: 40px;
-}
-
-.welcome-church-name {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    margin-bottom: 15px;
-}
-
-.welcome-address {
-    font-size: 1.1rem;
-    color: #555;
-}
-
-.welcome-map-container {
-    width: 100%;
-    border-radius: 0;
-    /* Map in image looks full width or sharp corners, but let's keep it clean */
-    overflow: hidden;
-}
-
-/* Responsive for Location */
-@media (max-width: 768px) {
     .welcome-contacts-container {
         flex-direction: column;
         gap: 30px;
@@ -367,185 +507,7 @@
     .welcome-interior-section {
         height: 250px;
     }
-}
 
-/* Registration Section */
-.welcome-registration-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 var(--container-padding) 100px;
-}
-
-.welcome-registration-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--color-dark-blue);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.welcome-registration-divider {
-    width: 100%;
-    height: 1px;
-    border-top: 2px dotted #a0d8d0;
-    margin: 0 auto 30px;
-    position: relative;
-}
-
-.welcome-registration-divider::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: #a0d8d0;
-    border-radius: 50%;
-}
-
-.welcome-registration-desc {
-    text-align: center;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    font-size: 0.95rem;
-}
-
-.welcome-registration-divider-dotted {
-    width: 100%;
-    height: 1px;
-    border-top: 2px dotted #a0d8d0;
-    margin-bottom: 50px;
-}
-
-.registration-form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.form-label {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #555;
-    display: flex;
-    align-items: center;
-}
-
-.form-label.required::after {
-    content: '•';
-    color: var(--color-dark-red);
-    margin-left: 5px;
-    font-size: 1.2rem;
-}
-
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: #fbdcd9;
-    /* Light pinkish background */
-    font-size: 1rem;
-    color: #333;
-    border-radius: 0;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-    outline: 2px solid #a0d8d0;
-}
-
-.date-input-wrapper {
-    position: relative;
-    width: 200px;
-}
-
-.calendar-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    pointer-events: none;
-    font-size: 0.8rem;
-}
-
-.phone-input-group {
-    display: flex;
-    gap: 10px;
-}
-
-.phone-part {
-    width: 80px;
-    text-align: center;
-}
-
-.radio-group {
-    display: flex;
-    gap: 20px;
-}
-
-.radio-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    color: #555;
-    cursor: pointer;
-}
-
-.form-textarea {
-    height: 120px;
-    resize: vertical;
-}
-
-.privacy-box {
-    background-color: #fbdcd9;
-    padding: 20px;
-    height: 150px;
-    overflow-y: auto;
-    font-size: 0.85rem;
-    color: #333;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    color: #555;
-    cursor: pointer;
-}
-
-.submit-btn {
-    align-self: center;
-    background-color: #17a2b8;
-    /* Teal color */
-    color: white;
-    border: none;
-    padding: 12px 40px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #138496;
-}
-
-@media (max-width: 600px) {
     .phone-input-group {
         width: 100%;
     }

@@ -8,27 +8,25 @@ const missionData = {
             {
                 logo: 'Lightcc',
                 title: '생명을 주는 나무',
-                description: '매일 이웃을 찾아 건너며 돕는 등독적이며 따뜻한 나눔을 실천합니다.',
-                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
+                description: '매달 마음을 모아 간식과 반찬 등을 지원하며 미혼모 자녀들을 섬기는 사역입니다.',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.jpg`,
                 images: [
                     `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
-                    '/images/mission_thumb4.png'
                 ]
             },
             {
                 logo: 'Lightcc Outreach',
                 title: 'Good Morning Project',
-                description: '매일 아침을 무료로 봉사 있으며 지역과 가정에서 복지 어르신들을 섬깁니다.',
-                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.png`,
+                description: '매달 유제품 지원을 통해 삼성동 지역에 거주하시는 독거 어르신들을 섬기는 사역입니다.',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.jpg`,
                 images: [
+                    `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
-                    `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
-                    '/images/mission_thumb3.png'
                 ],
                 reverse: true
             }
@@ -38,20 +36,19 @@ const missionData = {
         projects: [
             {
                 logo: 'Lightcc Global',
-                title: '캄보디아 선교',
-                description: '캄보디아 지역 주민들을 위한 의료 봉사와 복음 전파 사역을 진행합니다.',
-                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
+                title: '드림박스 선교회',
+                description: '하나님의 사랑으로 세상을 이롭게 하는 꿈을 가진 선교 공동체입니다.',
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.jpg`,
                 images: [
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
-                    '/images/mission_thumb2.png'
                 ]
             },
             {
                 logo: 'Lightcc Mission',
-                title: '드림하우스 건축',
-                description: '열악한 환경의 가정에 집을 지어주는 사랑의 집짓기 프로젝트입니다.',
+                title: '해외 선교 사역(케냐, 레바논, 필리핀)',
+                description: '드림박스 선교회를 통해 해외에서 진행되고 있는 사역입니다',
                 bgImage: `${import.meta.env.BASE_URL}images/mission_bg2.png`,
                 images: [
                     `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
@@ -59,7 +56,6 @@ const missionData = {
                     `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb4.png`,
-                    '/images/mission_thumb1.png'
                 ],
                 reverse: true
             }
@@ -71,12 +67,11 @@ const missionData = {
                 logo: 'Lightcc Campaign',
                 title: 'Walking for Miracle',
                 description: '매년 진행되는 걷기 대회를 통해 이웃 사랑을 실천합니다.',
-                bgImage: `${import.meta.env.BASE_URL}images/mission_bg1.png`,
+                bgImage: `${import.meta.env.BASE_URL}images/mission_bg3.jpg`,
                 images: [
                     `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
-                    '/images/mission_thumb4.png'
                 ]
             },
             {
@@ -90,7 +85,6 @@ const missionData = {
                     `${import.meta.env.BASE_URL}images/mission_thumb1.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb3.png`,
                     `${import.meta.env.BASE_URL}images/mission_thumb2.png`,
-                    '/images/mission_thumb4.png'
                 ],
                 reverse: true
             }
@@ -118,7 +112,7 @@ const Mission = () => {
     // Image slider component
     const ImageSlider = ({ images, projectIndex }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
-        const imagesPerView = 4;
+        const imagesPerView = 6;
         const maxIndex = Math.max(0, Math.ceil(images.length / imagesPerView) - 1);
 
         useEffect(() => {
@@ -198,9 +192,7 @@ const Mission = () => {
                     <div
                         className="project-hero"
                         style={{ backgroundImage: `url(${project.bgImage})` }}
-                    >
-                        <div className="project-logo">{project.logo}</div>
-                    </div>
+                    />
 
                     {/* Content Section */}
                     <div className="project-content-section">
