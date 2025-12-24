@@ -93,17 +93,36 @@
 }
 
 .project-title {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #2d7a5f;
-    margin-bottom: 15px;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+}
+
+.project-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background-color: var(--color-dark-red);
+    transition: width 0.4s ease;
+}
+
+.project-content:hover .project-title::after {
+    width: 60px;
 }
 
 .project-description {
-    font-size: 1.05rem;
-    color: #555;
-    margin-bottom: 40px;
-    line-height: 1.6;
+    font-size: 1.15rem;
+    color: #64748b;
+    margin-bottom: 50px;
+    line-height: 1.7;
+    max-width: 800px;
 }
 
 /* Slider Container */
