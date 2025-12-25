@@ -5,11 +5,13 @@ const nurtureData = {
     '새가족교육': {
         title: '새가족교육',
         description: '빛의교회 새가족교육은 5주 과정으로 빛의교회에 등록하기 원하시는 분은 누구나 이수하셔야 합니다.',
+        bgColor: 'linear-gradient(135deg, #7bd39a 0%, #5fc98c 100%)',
         images: [
-            '/images/nurture1.png',
-            '/images/nurture2.png',
-            '/images/nurture3.png',
-            '/images/nurture4.png'
+            import.meta.env.BASE_URL + 'images/nurture-new1.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-new2.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-new3.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-new4.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-new5.jpg'
         ],
         target: '빛의교회에 등록을 원하시는 분',
         time: '주일2차 예배 후',
@@ -24,11 +26,13 @@ const nurtureData = {
     '성경공부': {
         title: '성경공부',
         description: '성경을 체계적으로 공부하며 말씀 안에서 성장하는 시간입니다.\n하나님의 말씀을 깊이 있게 배우고 삶에 적용합니다.',
+        bgColor: 'linear-gradient(135deg, #7dbcd3 0%, #5fb1c9 100%)',
         images: [
-            '/images/nurture2.png',
-            '/images/nurture3.png',
-            '/images/nurture4.png',
-            '/images/nurture1.png'
+            import.meta.env.BASE_URL + 'images/nurture-bible1.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-bible2.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-bible3.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-bible4.jpg',
+            import.meta.env.BASE_URL + 'images/nurture-bible5.jpg'
         ],
         target: '성경공부를 원하시는 모든 분',
         time: '수요일 저녁 7:30',
@@ -44,8 +48,19 @@ const nurtureData = {
 
 const Nurture = () => {
     const [activeTab, setActiveTab] = useState('새가족교육');
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const tabs = Object.keys(nurtureData);
     const currentData = nurtureData[activeTab];
+
+    const handlePrevImage = (e) => {
+        e.stopPropagation();
+        setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : currentData.images.length - 1));
+    };
+
+    const handleNextImage = (e) => {
+        e.stopPropagation();
+        setSelectedImageIndex((prev) => (prev < currentData.images.length - 1 ? prev + 1 : 0));
+    };
 
     return (
         <div className="nurture-page">
@@ -64,21 +79,53 @@ const Nurture = () => {
 
             {/* Hero Section */}
             <div className="nurture-hero">
-                <h1 className="nurture-hero-title">{currentData.title}</h1>
-                <div className="nurture-hero-divider"></div>
-                <p className="nurture-hero-description">{currentData.description}</p>
+                <div className="nurture-hero-inner">
+                    <div className="nurture-hero-text">
+                        <div className="nurture-category-badge" style={{ backgroundColor: currentData.bgColor.split(',')[1].trim().split(' ')[0] }}>
+                            NURTURE
+                        </div>
+                        <h1 className="nurture-hero-title">{currentData.title}</h1>
+                        <p className="nurture-hero-description">{currentData.description}</p>
+                    </div>
+                </div>
 
-                {/* Image Gallery */}
+                {/* Editorial Staggered Gallery */}
                 <div className="nurture-gallery">
                     {currentData.images.map((image, index) => (
                         <div
                             key={index}
-                            className="nurture-gallery-item"
+                            className={`nurture-gallery-item item-${index + 1}`}
                             style={{ backgroundImage: `url(${image})` }}
-                        ></div>
+                            onClick={() => setSelectedImageIndex(index)}
+                        >
+                            <div className="image-overlay"></div>
+                        </div>
                     ))}
                 </div>
             </div>
+
+            {/* Image Detail Modal */}
+            {selectedImageIndex !== null && (
+                <div className="image-modal-overlay" onClick={() => setSelectedImageIndex(null)}>
+                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="image-modal-close" onClick={() => setSelectedImageIndex(null)}>×</button>
+
+                        <button className="image-modal-nav prev" onClick={handlePrevImage}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <img src={currentData.images[selectedImageIndex]} alt="Full view" className="image-modal-full" />
+
+                        <button className="image-modal-nav next" onClick={handleNextImage}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Info Section */}
             <div className="nurture-info">
