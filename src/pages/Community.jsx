@@ -134,19 +134,27 @@ const Community = () => {
             </div>
 
             {/* Hero Section */}
-            <div className="community-hero" style={{ background: currentData.bgColor }}>
-                <h1 className="community-hero-title">{currentData.title}</h1>
-                <div className="community-hero-divider"></div>
-                <p className="community-hero-description">{currentData.description}</p>
+            <div className="community-hero">
+                <div className="community-hero-inner">
+                    <div className="community-hero-text">
+                        <div className="community-category-badge" style={{ backgroundColor: currentData.bgColor.split(',')[1].trim().split(' ')[0] }}>
+                            COMMUNITY
+                        </div>
+                        <h1 className="community-hero-title">{currentData.title}</h1>
+                        <p className="community-hero-description">{currentData.description}</p>
+                    </div>
+                </div>
 
-                {/* Image Gallery */}
+                {/* Adjusted Image Gallery - Editorial Style */}
                 <div className="community-gallery">
                     {currentData.images.map((image, index) => (
                         <div
                             key={index}
-                            className="community-gallery-item"
+                            className={`community-gallery-item item-${index + 1}`}
                             style={{ backgroundImage: `url(${image})` }}
-                        ></div>
+                        >
+                            <div className="image-overlay"></div>
+                        </div>
                     ))}
                 </div>
             </div>
