@@ -23,15 +23,15 @@ const LocationSection = () => {
                     </div>
                 </div>
 
-                {/* Map Container */}
                 <div className="map-container">
                     <iframe
-                        src="https://map.naver.com/p/search/%EB%B9%9B%EC%9D%98%EA%B5%90%ED%9A%8C/place/21382320?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202512051512&locale=ko&svcName=map_pcv5&searchText=%EB%B9%9B%EC%9D%98%EA%B5%90%ED%9A%8C"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.8755329229275!2d126.99281620950927!3d37.4872634611186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca1a7ae0bdbd1%3A0x549f69045eae91d1!2z67mb7J2Y6rWQ7ZqM!5e0!3m2!1sko!2skr!4v1766662321554!5m2!1sko!2skr"
                         width="100%"
                         height="400"
                         style={{ border: 0 }}
                         allowFullScreen=""
                         loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
                         title="빛의교회 위치"
                     ></iframe>
                 </div>
