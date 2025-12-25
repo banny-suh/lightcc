@@ -259,19 +259,16 @@ const Intro = () => {
 
                         <div className="location-contacts">
                             <div className="location-contact-item">
-                                <div className="location-contact-dot"></div>
-                                <div className="location-contact-label">Tel.</div>
-                                <div className="location-contact-value">02-532-9826</div>
+                                <span className="contact-label">TEL</span>
+                                <a href="tel:02-532-9826" className="contact-value">02-532-9826</a>
                             </div>
                             <div className="location-contact-item">
-                                <div className="location-contact-dot"></div>
-                                <div className="location-contact-label">Fax.</div>
-                                <div className="location-contact-value">02-533-9826</div>
+                                <span className="contact-label">FAX</span>
+                                <span className="contact-value">02-533-9826</span>
                             </div>
                             <div className="location-contact-item">
-                                <div className="location-contact-dot"></div>
-                                <div className="location-contact-label">Email.</div>
-                                <div className="location-contact-value">lightcc-@naver.com</div>
+                                <span className="contact-label">EMAIL</span>
+                                <a href="mailto:lightcc-@naver.com" className="contact-value">lightcc-@naver.com</a>
                             </div>
                         </div>
 
