@@ -4,16 +4,16 @@ import './Community.css';
 const communityData = {
     '유아유치부': {
         title: 'L-Kids 유아유치부',
-        description: '2~9개월부터 7세 이하 어린이들이 함께 모여 행복하게 예배를 드리는 공동체입니다.',
+        description: '29개월부터 7세 이하 어린이들이 함께 모여 행복하게 예배를 드리는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community3.png',
-            import.meta.env.BASE_URL + 'images/community4.png',
-            import.meta.env.BASE_URL + 'images/community5.png'
+            import.meta.env.BASE_URL + 'images/community-lkids1.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids2.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids3.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids4.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids5.jpg'
         ],
-        target: '2~9개월~7세',
+        target: '29개월~7세',
         time: '주일 오전 11:00',
         location: '3층 유아유치부실'
     },
@@ -22,97 +22,108 @@ const communityData = {
         description: '초등학교 1학년부터 6학년까지의 어린이들이 함께 모여 예배하는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community3.png',
-            import.meta.env.BASE_URL + 'images/community4.png',
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community1.png'
+            import.meta.env.BASE_URL + 'images/community-lkids-el1.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids-el2.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids-el3.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids-el4.jpg',
+            import.meta.env.BASE_URL + 'images/community-lkids-el5.jpg'
         ],
-        target: '초등학교 1~6학년',
+        target: '8~12세',
         time: '주일 오전 11:00',
-        location: '5층 초등부실'
+        location: '5층 소예배실'
     },
     '틴즈': {
         title: 'L-Teens 청소년부',
         description: '중고등학생들이 함께 모여 말씀과 찬양으로 예배하는 청소년 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #ffb700 0%, #ffa500 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community3.png',
-            import.meta.env.BASE_URL + 'images/community4.png',
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community2.png'
+            import.meta.env.BASE_URL + 'images/community-lteens1.jpg',
+            import.meta.env.BASE_URL + 'images/community-lteens2.jpg',
+            import.meta.env.BASE_URL + 'images/community-lteens3.jpg',
+            import.meta.env.BASE_URL + 'images/community-lteens4.jpg',
+            import.meta.env.BASE_URL + 'images/community-lteens5.jpg'
         ],
-        target: '중·고등학생',
+        target: '13~19세',
         time: '주일 오전 9:00',
-        location: '5층 청소년부실'
+        location: '5층 소예배실'
     },
     'A.시니어': {
         title: 'A.시니어',
         description: '은퇴하신 어르신들이 함께 모여 교제하며 신앙을 나누는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community4.png',
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community3.png'
+            import.meta.env.BASE_URL + 'images/community-senior1.jpg',
+            import.meta.env.BASE_URL + 'images/community-senior2.jpg',
+            import.meta.env.BASE_URL + 'images/community-senior3.jpg',
+            import.meta.env.BASE_URL + 'images/community-senior4.jpg',
+            import.meta.env.BASE_URL + 'images/community-senior5.jpg'
         ],
-        target: '65세 이상',
-        time: '주일 오전 11:00',
-        location: '4층 시니어실'
+        target: '',
+        time: '매월 셋째 주일 2부 예배 후',
+        location: '5층 소예배실'
     },
     'B.임팩트': {
         title: 'B.임팩트',
         description: '청년들이 함께 모여 신앙과 삶을 나누며 성장하는 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community3.png',
-            import.meta.env.BASE_URL + 'images/community4.png'
+            import.meta.env.BASE_URL + 'images/community-bridgeimpact1.jpg',
+            import.meta.env.BASE_URL + 'images/community-bridgeimpact2.jpg',
+            import.meta.env.BASE_URL + 'images/community-bridgeimpact3.jpg',
+            import.meta.env.BASE_URL + 'images/community-bridgeimpact4.jpg',
+            import.meta.env.BASE_URL + 'images/community-bridgeimpact5.jpg'
         ],
-        target: '20~30대 청년',
-        time: '주일 오후 2:00',
-        location: '6층 청년부실'
+        target: '30~50대 부부',
+        time: '예배 후',
+        location: '3층 생명나무'
     },
     'C.에너지': {
         title: 'C.에너지',
         description: '열정과 에너지가 넘치는 장년 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community3.png',
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community4.png'
+            import.meta.env.BASE_URL + 'images/community-energy1.jpg',
+            import.meta.env.BASE_URL + 'images/community-energy2.jpg',
+            import.meta.env.BASE_URL + 'images/community-energy3.jpg',
+            import.meta.env.BASE_URL + 'images/community-energy4.jpg',
+            import.meta.env.BASE_URL + 'images/community-energy5.jpg'
         ],
-        target: '40~50대',
-        time: '주일 오전 11:00',
-        location: '본당'
+        target: '30~40대 싱글',
+        time: '예배 후',
+        location: '2층 그루터기'
     },
     'D.무브먼트': {
         title: 'D.무브먼트',
         description: '함께 움직이며 신앙을 실천하는 활동적인 공동체입니다.',
         bgColor: 'linear-gradient(135deg, #7bd3c8 0%, #5fc9bc 100%)',
         images: [
-            import.meta.env.BASE_URL + 'images/community2.png',
-            import.meta.env.BASE_URL + 'images/community4.png',
-            import.meta.env.BASE_URL + 'images/community1.png',
-            import.meta.env.BASE_URL + 'images/community5.png',
-            import.meta.env.BASE_URL + 'images/community3.png'
+            import.meta.env.BASE_URL + 'images/community-movement1.jpg',
+            import.meta.env.BASE_URL + 'images/community-movement2.jpg',
+            import.meta.env.BASE_URL + 'images/community-movement3.jpg',
+            import.meta.env.BASE_URL + 'images/community-movement4.jpg',
+            import.meta.env.BASE_URL + 'images/community-movement5.jpg'
         ],
-        target: '전 연령',
-        time: '주일 오후 3:00',
-        location: '체육관'
+        target: '20~30대 초반',
+        time: '예배 후',
+        location: '2층 꿈터'
     }
 };
 
 const Community = () => {
     const [activeTab, setActiveTab] = useState('유아유치부');
+    const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const tabs = Object.keys(communityData);
     const currentData = communityData[activeTab];
+
+    const handlePrevImage = (e) => {
+        e.stopPropagation();
+        setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : currentData.images.length - 1));
+    };
+
+    const handleNextImage = (e) => {
+        e.stopPropagation();
+        setSelectedImageIndex((prev) => (prev < currentData.images.length - 1 ? prev + 1 : 0));
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -152,12 +163,36 @@ const Community = () => {
                             key={index}
                             className={`community-gallery-item item-${index + 1}`}
                             style={{ backgroundImage: `url(${image})` }}
+                            onClick={() => setSelectedImageIndex(index)}
                         >
                             <div className="image-overlay"></div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {/* Image Detail Modal */}
+            {selectedImageIndex !== null && (
+                <div className="image-modal-overlay" onClick={() => setSelectedImageIndex(null)}>
+                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="image-modal-close" onClick={() => setSelectedImageIndex(null)}>×</button>
+
+                        <button className="image-modal-nav prev" onClick={handlePrevImage}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <img src={currentData.images[selectedImageIndex]} alt="Full view" className="image-modal-full" />
+
+                        <button className="image-modal-nav next" onClick={handleNextImage}>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Info Section */}
             <div key={`${activeTab}-info`} className="community-info">
