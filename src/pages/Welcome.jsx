@@ -92,7 +92,7 @@ const Welcome = () => {
 
             {/* Interior Image Section */}
             <section className="welcome-interior-section">
-                <div className="welcome-interior-image" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/worship_hero.png)` }}></div>
+                <div className="welcome-interior-image" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/worship_hero.jpg)` }}></div>
             </section>
 
             {/* Location Section */}
@@ -101,17 +101,15 @@ const Welcome = () => {
 
                 <div className="welcome-contacts-container">
                     <div className="welcome-contact-item">
-                        <div className="welcome-contact-label">Tel.</div>
+                        <div className="welcome-contact-label">Tel</div>
                         <div className="welcome-contact-value">02-532-9826</div>
                     </div>
-                    <div className="welcome-contact-divider"></div>
                     <div className="welcome-contact-item">
-                        <div className="welcome-contact-label">Fax.</div>
+                        <div className="welcome-contact-label">Fax</div>
                         <div className="welcome-contact-value">02-533-9826</div>
                     </div>
-                    <div className="welcome-contact-divider"></div>
                     <div className="welcome-contact-item">
-                        <div className="welcome-contact-label">Email.</div>
+                        <div className="welcome-contact-label">Email</div>
                         <div className="welcome-contact-value">lightcc-@naver.com</div>
                     </div>
                 </div>

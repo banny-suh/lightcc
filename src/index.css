@@ -51,6 +51,13 @@ a {
   color: inherit;
 }
 
+.skeleton {
+  background: #f1f5f9;
+  display: inline-block;
+  position: relative;
+  border-radius: 4px;
+}
+
 ul {
   list-style: none;
 }

@@ -1,55 +1,59 @@
 import React, { useState, useEffect } from 'react';
+import { fetchHeroSlides } from '../apis/homeApi';
 import './HeroSlider.css';
 
-const slides = [
-    {
-        id: 1,
-        image: `${import.meta.env.BASE_URL}images/slide1.jpg`,
-        title: '',
-        subtitle: ''
-    },
-    {
-        id: 2,
-        image: `${import.meta.env.BASE_URL}images/slide2.jpg`,
-        title: '',
-        subtitle: ''
-    },
-    {
-        id: 3,
-        image: `${import.meta.env.BASE_URL}images/slide3.jpg`,
-        title: '',
-        subtitle: ''
-    },
-    {
-        id: 4,
-        image: `${import.meta.env.BASE_URL}images/slide3.jpg`,
-        title: '',
-        subtitle: ''
-    }
-];
-
 const HeroSlider = () => {
+    const [slides, setSlides] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const loadSlides = async () => {
+            try {
+                const data = await fetchHeroSlides();
+                setSlides(data);
+            } catch (error) {
+                console.error('Failed to fetch hero slides:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        loadSlides();
+    }, []);
+
+    useEffect(() => {
+        if (slides.length === 0) return;
+
         const slideInterval = setInterval(() => {
             nextSlide();
         }, 5000);
 
         return () => clearInterval(slideInterval);
-    }, [currentSlide]);
+    }, [currentSlide, slides.length]);
 
     const nextSlide = () => {
+        if (slides.length === 0) return;
         setCurrentSlide((prev) => (prev + 1) % slides.length);
     };
 
     const prevSlide = () => {
+        if (slides.length === 0) return;
         setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
     };
 
     const goToSlide = (index) => {
         setCurrentSlide(index);
     };
+
+    if (loading) {
+        return (
+            <div className="hero-slider skeleton" style={{ height: '70vh', width: '100%' }}></div>
+        );
+    }
+
+    if (slides.length === 0) {
+        return null;
+    }
 
     return (
         <div className="hero-slider">
@@ -59,12 +63,7 @@ const HeroSlider = () => {
                         key={slide.id}
                         className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
                         style={{ backgroundImage: `url(${slide.image})` }}
-                    >
-                        <div className="hero-content">
-                            <h1>{slide.title}</h1>
-                            <p>{slide.subtitle}</p>
-                        </div>
-                    </div>
+                    />
                 ))}
 
                 <button className="slider-arrow prev" onClick={prevSlide}>

@@ -52,9 +52,13 @@ const Jesus = () => {
             {/* Content Sections */}
             <div className="jesus-content">
                 {sections.map((section, index) => (
+                    // <div
+                    //     key={index}
+                    //     className={`jesus-section ${index % 2 === 1 ? 'reverse' : ''}`}
+                    // >
                     <div
                         key={index}
-                        className={`jesus-section ${index % 2 === 1 ? 'reverse' : ''}`}
+                        className='jesus-section'
                     >
                         <div
                             className="jesus-section-image"
