@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './News.css';
 import ChurchCalendar from '../components/ChurchCalendar';
+import { fetchEventGallery } from '../apis/eventApi';
 
 const News = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [activeSubTab, setActiveSubTab] = useState('교회소식');
+
+    // Initialize activeSubTab from URL query parameter or default to '교회소식'
+    const getInitialTab = () => {
+        const params = new URLSearchParams(window.location.search);
+        const tabFromUrl = params.get('tab');
+        return tabFromUrl || '교회소식';
+    };
+
+    const [activeSubTab, setActiveSubTab] = useState(getInitialTab());
+    const [eventGalleryData, setEventGalleryData] = useState([]);
+    const [isLoadingEvents, setIsLoadingEvents] = useState(false);
 
     const subTabs = [
         '교회소식',
@@ -71,10 +82,36 @@ const News = () => {
         { id: 4, title: '송구영신예배', date: '2025-12-31', type: 'special' }
     ];
 
+    // Fetch event gallery data when component mounts or when switching to 교회행사 tab
+    useEffect(() => {
+        if (activeSubTab === '교회행사' && eventGalleryData.length === 0) {
+            setIsLoadingEvents(true);
+            fetchEventGallery()
+                .then(data => {
+                    setEventGalleryData(data);
+                    setIsLoadingEvents(false);
+                })
+                .catch(error => {
+                    console.error('Failed to fetch event gallery:', error);
+                    setIsLoadingEvents(false);
+                });
+        }
+    }, [activeSubTab]);
+
+    // Update URL when activeSubTab changes
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        params.set('tab', activeSubTab);
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.replaceState({}, '', newUrl);
+    }, [activeSubTab]);
+
     // 활성 탭에 따른 데이터 선택
     let currentTabData = [];
     if (activeSubTab === '교회소식') {
         currentTabData = newsData;
+    } else if (activeSubTab === '교회행사') {
+        currentTabData = eventGalleryData;
     } else {
         // 다른 탭을 위한 데이터는 추후 추가 예정
         currentTabData = [];
@@ -128,6 +165,28 @@ const News = () => {
             {activeSubTab === '교회스케줄' ? (
                 <div className="schedule-container">
                     <ChurchCalendar events={scheduleData} />
+                </div>
+            ) : activeSubTab === '교회행사' ? (
+                <div className="event-gallery-container">
+                    <div className="event-gallery-grid">
+                        {currentItems.length > 0 ? (
+                            currentItems.map((item) => (
+                                <div key={item.id} className="event-gallery-item">
+                                    <div className="event-image">
+                                        <img src={item.image} alt={item.title} />
+                                        {/* <div className="event-overlay">
+                                            <h3 className="event-title">{item.title}</h3>
+                                            <p className="event-date">{item.date}</p>
+                                        </div> */}
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="news-empty">
+                                <p>등록된 행사가 없습니다.</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             ) : (
                 <div className="news-list-container">
