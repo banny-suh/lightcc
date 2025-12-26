@@ -15,7 +15,7 @@
     z-index: 100;
     max-width: var(--max-width);
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.7);
+    /* background-color: rgba(255, 255, 255, 0.7); */
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
@@ -62,7 +62,7 @@
 /* Hero Section */
 .nurture-hero {
     padding: 80px 0 10px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     max-width: var(--max-width);
     margin: 0 auto;
     overflow: hidden;

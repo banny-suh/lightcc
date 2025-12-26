@@ -99,26 +99,30 @@ const News = () => {
 
     return (
         <div className="news-page">
-            <div className="news-header">
-                <h1 className="news-title">{activeSubTab}</h1>
-                <div className="news-divider"></div>
-                <p className="news-subtitle">하나님의 사랑으로 세상을 밝히는 빛의교회</p>
+
+
+            {/* Sub Tabs Navigation */}
+            <div className="news-subtabs-container">
+                <div className="news-subtabs">
+                    {subTabs.map((tab) => (
+                        <button
+                            key={tab}
+                            className={`news-subtab ${activeSubTab === tab ? 'active' : ''}`}
+                            onClick={() => {
+                                setActiveSubTab(tab);
+                                setCurrentPage(1);
+                            }}
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div>
             </div>
 
-            {/* Sub Tabs */}
-            <div className="news-subtabs">
-                {subTabs.map((tab) => (
-                    <button
-                        key={tab}
-                        className={`news-subtab ${activeSubTab === tab ? 'active' : ''}`}
-                        onClick={() => {
-                            setActiveSubTab(tab);
-                            setCurrentPage(1);
-                        }}
-                    >
-                        {tab}
-                    </button>
-                ))}
+            <div className="news-header">
+                <span className="news-label">CHURCH NEWS</span>
+                <h1 className="news-title">{activeSubTab}</h1>
+                <p className="news-subtitle">하나님의 사랑으로 세상을 밝히는 빛의교회의 다양한 소식을 전해드립니다.</p>
             </div>
 
             {activeSubTab === '교회스케줄' ? (
@@ -126,34 +130,53 @@ const News = () => {
                     <ChurchCalendar events={scheduleData} />
                 </div>
             ) : (
-                <div className="news-list">
-                    {currentItems.length > 0 ? (
-                        currentItems.map((item) => (
-                            <div key={item.id} className="news-item">
-                                {item.thumbnail && (
+                <div className="news-list-container">
+                    <div className="news-list">
+                        {currentItems.length > 0 ? (
+                            currentItems.map((item) => (
+                                <div key={item.id} className="news-item">
                                     <div className="news-thumbnail">
-                                        <img src={item.thumbnail} alt={item.title} />
+                                        {item.thumbnail ? (
+                                            <img src={item.thumbnail} alt={item.title} />
+                                        ) : (
+                                            <div className="news-thumbnail-placeholder">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                            </div>
+                                        )}
                                     </div>
-                                )}
-                                <div className="news-content">
-                                    <h3 className="news-item-title">{item.title}</h3>
-                                    <div className="news-meta">
-                                        <span className="news-date">{item.date}</span>
-                                        <span className="news-views">조회수 {item.views}</span>
-                                        <span className="news-likes">♡ {item.likes}</span>
+                                    <div className="news-content">
+                                        <h3 className="news-item-title">{item.title}</h3>
+                                        <div className="news-meta">
+                                            <span className="news-date">{item.date}</span>
+                                            <span className="news-views">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                    <circle cx="12" cy="12" r="3" />
+                                                </svg>
+                                                {item.views}
+                                            </span>
+                                            <span className="news-likes">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                                                </svg>
+                                                {item.likes}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="news-comments">
+                                        <span className="comment-icon">💬</span>
+                                        <span className="comment-count">{item.comments}</span>
                                     </div>
                                 </div>
-                                <div className="news-comments">
-                                    <span className="comment-icon">💬</span>
-                                    <span className="comment-count">{item.comments}</span>
-                                </div>
+                            ))
+                        ) : (
+                            <div className="news-empty">
+                                <p>등록된 게시물이 없습니다.</p>
                             </div>
-                        ))
-                    ) : (
-                        <div className="news-empty">
-                            <p>등록된 게시물이 없습니다.</p>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             )}
 
@@ -163,13 +186,16 @@ const News = () => {
                     <form className="news-search" onSubmit={handleSearch}>
                         <input
                             type="text"
-                            placeholder="Search"
+                            placeholder="검색어를 입력하세요"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="news-search-input"
                         />
                         <button type="submit" className="news-search-btn">
-                            🔍
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="M21 21l-4.35-4.35" />
+                            </svg>
                         </button>
                     </form>
 
