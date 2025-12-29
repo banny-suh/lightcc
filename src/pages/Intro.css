@@ -12,6 +12,8 @@
     /* border-bottom: 1px solid #f1f5f9; */
     max-width: var(--max-width);
     margin: 0 auto;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .intro-tab {
@@ -689,9 +691,9 @@
 /* Stable Timeline Grid */
 .history-timeline-new {
     position: relative;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    --date-width: 170px;
+    --date-width: 190px;
     --dot-area-width: 40px;
 }
 

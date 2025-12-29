@@ -19,7 +19,7 @@ const LocationSection = () => {
                         <div className="transport-icon">
                             <FaSubway />
                         </div>
-                        <span className="transport-text">지하철 7호선 내방역 4번 출구</span>
+                        <span className="transport-text">지하철 7호선 내방역 8번 출구</span>
                     </div>
                 </div>
 

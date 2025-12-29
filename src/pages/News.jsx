@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './News.css';
-import ChurchCalendar from '../components/ChurchCalendar';
-import { fetchEventGallery } from '../apis/eventApi';
+import ChurchNews from './news/ChurchNews';
+import ChurchEvents from './news/ChurchEvents';
+import ChurchSchedule from './news/ChurchSchedule';
+import ChurchBulletin from './news/ChurchBulletin';
+import PlaceholderTab from './news/PlaceholderTab';
 
 const News = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -15,8 +18,6 @@ const News = () => {
     };
 
     const [activeSubTab, setActiveSubTab] = useState(getInitialTab());
-    const [eventGalleryData, setEventGalleryData] = useState([]);
-    const [isLoadingEvents, setIsLoadingEvents] = useState(false);
 
     const subTabs = [
         '교회소식',
@@ -34,69 +35,10 @@ const News = () => {
 
     // 교회소식 데이터 (newsData)
     const newsData = [
-        {
-            id: 1,
-            title: '故 박완서 집사 소천',
-            date: '2025-09-21',
-            views: 137,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 2,
-            title: '5월 26일 故 유해종 집사 (강금숙 권사의 부군, 자녀 유도형) 소천',
-            date: '2025-05-27',
-            views: 223,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 3,
-            title: '4월 28일 이미도 집사 모친(故 백연옥 성도) 소천',
-            date: '2025-04-29',
-            views: 207,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        },
-        {
-            id: 4,
-            title: '1월 9일 박상원 집사 부친(故 박재도 성도) 소천',
-            date: '2025-01-11',
-            views: 280,
-            likes: 0,
-            comments: 0,
-            thumbnail: null
-        }
+
     ];
 
     const itemsPerPage = 10;
-
-    // 교회스케줄 데이터
-    const scheduleData = [
-        { id: 1, title: '온가족 새날 기도회', date: '2025-12-06', type: 'prayer' },
-        { id: 2, title: '창립 14주년 감사예배', date: '2025-12-07', type: 'special' },
-        { id: 3, title: '성탄절', date: '2025-12-25', type: 'holiday' },
-        { id: 4, title: '송구영신예배', date: '2025-12-31', type: 'special' }
-    ];
-
-    // Fetch event gallery data when component mounts or when switching to 교회행사 tab
-    useEffect(() => {
-        if (activeSubTab === '교회행사' && eventGalleryData.length === 0) {
-            setIsLoadingEvents(true);
-            fetchEventGallery()
-                .then(data => {
-                    setEventGalleryData(data);
-                    setIsLoadingEvents(false);
-                })
-                .catch(error => {
-                    console.error('Failed to fetch event gallery:', error);
-                    setIsLoadingEvents(false);
-                });
-        }
-    }, [activeSubTab]);
 
     // Update URL when activeSubTab changes
     useEffect(() => {
@@ -106,23 +48,13 @@ const News = () => {
         window.history.replaceState({}, '', newUrl);
     }, [activeSubTab]);
 
-    // 활성 탭에 따른 데이터 선택
+    // 활성 탭에 따른 데이터 선택 (페이지네이션을 위해)
     let currentTabData = [];
     if (activeSubTab === '교회소식') {
         currentTabData = newsData;
-    } else if (activeSubTab === '교회행사') {
-        currentTabData = eventGalleryData;
-    } else {
-        // 다른 탭을 위한 데이터는 추후 추가 예정
-        currentTabData = [];
     }
 
     const totalPages = Math.ceil(currentTabData.length / itemsPerPage);
-
-    // 현재 페이지에 표시할 아이템 계산
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = currentTabData.slice(indexOfFirstItem, indexOfLastItem);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -134,9 +66,38 @@ const News = () => {
         window.scrollTo(0, 0);
     };
 
+    // Render appropriate tab component
+    const renderTabContent = () => {
+        switch (activeSubTab) {
+            case '교회소식':
+                return <ChurchNews newsData={newsData} currentPage={currentPage} itemsPerPage={itemsPerPage} />;
+            case '교회행사':
+                return <ChurchEvents currentPage={currentPage} itemsPerPage={itemsPerPage} />;
+            case '교회스케줄':
+                return <ChurchSchedule />;
+            case '교회주보':
+                return <ChurchBulletin currentPage={currentPage} itemsPerPage={itemsPerPage} />;
+            case '헌금안내':
+                return <PlaceholderTab tabName="헌금안내" />;
+            case '기도요청':
+                return <PlaceholderTab tabName="기도요청" />;
+            case '심방요청':
+                return <PlaceholderTab tabName="심방요청" />;
+            case '차량등록':
+                return <PlaceholderTab tabName="차량등록" />;
+            case '하.동.삶 신청':
+                return <PlaceholderTab tabName="하.동.삶 신청" />;
+            case '영성훈련 피정 신청':
+                return <PlaceholderTab tabName="영성훈련 피정 신청" />;
+            case '오늘의기도':
+                return <PlaceholderTab tabName="오늘의기도" />;
+            default:
+                return <ChurchNews newsData={newsData} currentPage={currentPage} itemsPerPage={itemsPerPage} />;
+        }
+    };
+
     return (
         <div className="news-page">
-
 
             {/* Sub Tabs Navigation */}
             <div className="news-subtabs-container">
@@ -162,86 +123,11 @@ const News = () => {
                 <p className="news-subtitle">하나님의 사랑으로 세상을 밝히는 빛의교회의 다양한 소식을 전해드립니다.</p>
             </div>
 
-            {activeSubTab === '교회스케줄' ? (
-                <div className="schedule-container">
-                    <ChurchCalendar events={scheduleData} />
-                </div>
-            ) : activeSubTab === '교회행사' ? (
-                <div className="event-gallery-container">
-                    <div className="event-gallery-grid">
-                        {currentItems.length > 0 ? (
-                            currentItems.map((item) => (
-                                <div key={item.id} className="event-gallery-item">
-                                    <div className="event-image">
-                                        <img src={item.image} alt={item.title} />
-                                        {/* <div className="event-overlay">
-                                            <h3 className="event-title">{item.title}</h3>
-                                            <p className="event-date">{item.date}</p>
-                                        </div> */}
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <div className="news-empty">
-                                <p>등록된 행사가 없습니다.</p>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ) : (
-                <div className="news-list-container">
-                    <div className="news-list">
-                        {currentItems.length > 0 ? (
-                            currentItems.map((item) => (
-                                <div key={item.id} className="news-item">
-                                    <div className="news-thumbnail">
-                                        {item.thumbnail ? (
-                                            <img src={item.thumbnail} alt={item.title} />
-                                        ) : (
-                                            <div className="news-thumbnail-placeholder">
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                                </svg>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div className="news-content">
-                                        <h3 className="news-item-title">{item.title}</h3>
-                                        <div className="news-meta">
-                                            <span className="news-date">{item.date}</span>
-                                            <span className="news-views">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                    <circle cx="12" cy="12" r="3" />
-                                                </svg>
-                                                {item.views}
-                                            </span>
-                                            <span className="news-likes">
-                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                                                </svg>
-                                                {item.likes}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="news-comments">
-                                        <span className="comment-icon">💬</span>
-                                        <span className="comment-count">{item.comments}</span>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <div className="news-empty">
-                                <p>등록된 게시물이 없습니다.</p>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
+            {/* Render appropriate tab component */}
+            {renderTabContent()}
 
             {activeSubTab !== '교회스케줄' && (
                 <div className="news-footer">
-                    {/* ... existing footer ... */}
                     <form className="news-search" onSubmit={handleSearch}>
                         <input
                             type="text"

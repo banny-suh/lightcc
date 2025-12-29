@@ -4,11 +4,11 @@
 
 const galleryData = {
     posters: [
-        `${import.meta.env.BASE_URL}images/poster1.png`,
-        `${import.meta.env.BASE_URL}images/poster2.png`,
-        `${import.meta.env.BASE_URL}images/poster3.png`,
-        `${import.meta.env.BASE_URL}images/poster4.png`,
-        `${import.meta.env.BASE_URL}images/poster5.png`,
+        `${import.meta.env.BASE_URL}images/church_event5.jpg`,
+        `${import.meta.env.BASE_URL}images/church_event4.jpg`,
+        `${import.meta.env.BASE_URL}images/church_event3.jpg`,
+        `${import.meta.env.BASE_URL}images/church_event2.jpg`,
+        `${import.meta.env.BASE_URL}images/church_event1.jpg`,
     ],
     bulletins: [
         { title: '2025. 11. 30. 빛의주보', date: '2025-11-29' },

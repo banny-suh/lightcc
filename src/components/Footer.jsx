@@ -37,7 +37,7 @@ const Footer = () => {
 
                 {/* Credit */}
                 <div className="footer-credit">
-                    Designed by Gemini 3 Pro
+                    Designed by Light Community Church
                 </div>
 
                 {/* Legal Links */}

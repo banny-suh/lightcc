@@ -46,7 +46,13 @@
 .news-subtabs-container {
     padding: 0 var(--container-padding);
     margin-bottom: 60px;
-    border-bottom: 1px solid #f1f5f9;
+    /* border-bottom: 1px solid #f1f5f9; */
+    position: sticky;
+    top: 100px;
+    z-index: 100;
+    /* background-color: rgba(255, 255, 255, 0.95); */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .news-subtabs {
@@ -57,6 +63,8 @@
     padding: 0;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .news-subtabs::-webkit-scrollbar {

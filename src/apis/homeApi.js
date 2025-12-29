@@ -14,10 +14,6 @@ const heroSlides = [
     {
         id: 3,
         image: `${import.meta.env.BASE_URL}images/slide3.jpg`,
-    },
-    {
-        id: 4,
-        image: `${import.meta.env.BASE_URL}images/slide3.jpg`,
     }
 ];
 
