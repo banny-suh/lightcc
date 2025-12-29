@@ -27,13 +27,10 @@ const HomeContent = () => {
                 <div className="home-content__banner">
                     <div className="home-content__banner-left">
                         <h2>
-                            {/* <span>하나님의</span>
-                            <span>사랑으로</span> */}
                             <span>하나님의 사랑으로</span>
                         </h2>
-                        <h2 style={{ color: '#3b5c6b' }}>
+                        <h2 className="highlight-text">
                             <span>세상을 밝히는</span>
-                            {/* <span style={{ fontWeight: 'bold' }}>빛의교회</span> */}
                         </h2>
                     </div>
 
