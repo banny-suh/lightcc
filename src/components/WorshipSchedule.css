@@ -1,64 +1,176 @@
 .worship-schedule {
-    /* background-color: #f0f0f0; */
-    /* Light grey background */
-    padding: 40px 0;
-    /* border-top: 1px solid #e0e0e0; */
+    background-color: #fff;
+    padding: 100px 0;
 }
 
-.worship-schedule__container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-
-.schedule-box {
-    flex: 1;
-    border: 1px solid #e6d8d8;
-    padding: 25px 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.worship-header {
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 50px;
 }
 
-.schedule-content {
-    font-size: 0.95rem;
-    color: var(--color-primary);
-    /* color: var(--color-gray); */
+.worship-label {
+    display: block;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.25em;
+    margin-bottom: 20px;
+}
+
+.worship-title {
+    /* font-family: 'Nanum Myeongjo', serif; */
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Compact Container */
+.schedule-compact-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 2px solid #2c3e50;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.schedule-row {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+/* Row Label */
+.row-label {
+    width: 180px;
+    flex-shrink: 0;
+    padding-right: 30px;
+    border-right: 1px solid #f1f5f9;
+    margin-right: 30px;
+    text-align: right;
+}
+
+.day-en {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-dark-red);
+    margin-bottom: 4px;
+}
+
+.day-kr {
+    display: block;
+    /* font-family: 'Nanum Myeongjo', serif; */
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Row Items */
+.row-items {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.service-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    text-align: center;
+    /* Slight roundness for cards */
+    transition: all 0.3s ease;
+}
+
+/* .service-card:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+} */
+
+/* .service-card.highlight {
+    background-color: #fff;
+    border-color: #3b5c6b;
+    box-shadow: 0 4px 12px rgba(59, 92, 107, 0.1);
+} */
+
+.service-time {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.service-card.highlight .service-time {
+    color: #3b5c6b;
+}
+
+.service-name {
+    font-size: 0.9rem;
+    color: #64748b;
     font-weight: 500;
-    line-height: 1.6;
 }
 
-.schedule-item {
-    display: inline-block;
+.schedule-divider-horizontal {
+    height: 1px;
+    background-color: #f1f5f9;
+    margin: 0 20px;
 }
 
-.schedule-item strong {
-    font-weight: 800;
-    margin-right: 5px;
-}
-
-.divider {
-    margin: 0 10px;
-    color: #ccc;
-}
-
-@media (max-width: 900px) {
-    .worship-schedule__container {
+/* Responsive */
+@media (max-width: 768px) {
+    .schedule-row {
         flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 0;
+        gap: 20px;
     }
 
-    .schedule-content {
+    .row-label {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #f1f5f9;
+        padding-right: 0;
+        padding-bottom: 15px;
+        margin-right: 0;
+        text-align: left;
         display: flex;
-        flex-direction: column;
-        gap: 5px;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .divider {
-        display: none;
+    .day-kr {
+        font-size: 1.2rem;
+    }
+
+    .row-items {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-time {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .row-items {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+    }
+
+    .service-time {
+        margin-bottom: 0;
+        order: 2;
     }
 }

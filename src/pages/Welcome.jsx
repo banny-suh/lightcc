@@ -134,81 +134,103 @@ const Welcome = () => {
             </section>
 
             {/* Online Registration Section */}
+            {/* Online Registration Section */}
             <section className="welcome-registration-section">
-                <h2 className="welcome-registration-title">새가족 온라인 등록</h2>
-                <div className="welcome-registration-divider"></div>
+                <div className="registration-header">
+                    <span className="reg-subtitle">NEW FAMILY REGISTRATION</span>
+                    <h2 className="reg-title">새가족 온라인 등록</h2>
+                    <div className="reg-divider"></div>
+                    <p className="reg-description">
+                        빛의교회에 오신 것을 환영합니다.<br />
+                        등록신청이 완료되면 담당 교역자가 연락을 드립니다.
+                    </p>
+                </div>
 
-                <p className="welcome-registration-desc">
-                    빛의교회에 교인으로 등록을 원하시면 교회에 비치된 새가족등록카드를 작성하여 제출<br />
-                    하시거나, 온라인 등록 폼을 작성해 주시길 바랍니다. 등록신청이 완료된 후 작성해주신<br />
-                    연락처로 담당 교역자가 연락을 드리게 됩니다.
-                </p>
+                <div className="registration-card">
+                    <form className="registration-form">
+                        <div className="form-section">
+                            <h3 className="section-label">기본 정보</h3>
+                            <div className="form-grid">
+                                <div className="form-group">
+                                    <label className="form-label required">이름</label>
+                                    <input type="text" className="form-input" placeholder="성함을 입력해주세요" />
+                                </div>
 
-                <div className="welcome-registration-divider-dotted"></div>
+                                <div className="form-group">
+                                    <label className="form-label required">생년월일</label>
+                                    <input type="date" className="form-input" data-placeholder="생년월일 선택" />
+                                </div>
 
-                <form className="registration-form">
-                    <div className="form-group">
-                        <label className="form-label required">이름</label>
-                        <input type="text" className="form-input" />
-                    </div>
+                                <div className="form-group">
+                                    <label className="form-label required">휴대폰번호</label>
+                                    <div className="phone-inputs">
+                                        <input type="text" className="form-input phone-part" maxLength="3" />
+                                        <span className="phone-dash">-</span>
+                                        <input type="text" className="form-input phone-part" maxLength="4" />
+                                        <span className="phone-dash">-</span>
+                                        <input type="text" className="form-input phone-part" maxLength="4" />
+                                    </div>
+                                </div>
 
-                    <div className="form-group">
-                        <label className="form-label required">생년월일</label>
-                        <div className="date-input-wrapper">
-                            <input type="text" className="form-input date-input" placeholder="년/월/일" />
-                            <span className="calendar-icon">▼</span>
+                                <div className="form-group">
+                                    <label className="form-label">이메일</label>
+                                    <input type="email" className="form-input" placeholder="example@email.com" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label className="form-label required">휴대폰번호</label>
-                        <div className="phone-input-group">
-                            <input type="text" className="form-input phone-part" />
-                            <input type="text" className="form-input phone-part" />
-                            <input type="text" className="form-input phone-part" />
+                        <div className="form-divider"></div>
+
+                        <div className="form-section">
+                            <h3 className="section-label">신앙 정보</h3>
+                            <div className="form-group">
+                                <label className="form-label required">신앙경력</label>
+                                <div className="radio-group-modern">
+                                    <label className="radio-btn">
+                                        <input type="radio" name="faith" />
+                                        <span className="radio-text">신앙생활 처음 (원입)</span>
+                                    </label>
+                                    <label className="radio-btn">
+                                        <input type="radio" name="faith" />
+                                        <span className="radio-text">세례 받음</span>
+                                    </label>
+                                    <label className="radio-btn">
+                                        <input type="radio" name="faith" />
+                                        <span className="radio-text">유아세례 / 입교</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="form-group" style={{ marginTop: '30px' }}>
+                                <label className="form-label required">방문/등록 동기</label>
+                                <textarea className="form-textarea" placeholder="교회를 알게 된 경로와 등록하게 된 동기를 편하게 적어주세요."></textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label className="form-label">이메일</label>
-                        <input type="email" className="form-input" />
-                    </div>
+                        <div className="form-divider"></div>
 
-                    <div className="form-group">
-                        <label className="form-label required">신앙경력</label>
-                        <div className="radio-group">
-                            <label className="radio-label">
-                                <input type="radio" name="faith" /> 원입(첫 신앙생활)
-                            </label>
-                            <label className="radio-label">
-                                <input type="radio" name="faith" /> 세례
-                            </label>
-                            <label className="radio-label">
-                                <input type="radio" name="faith" /> 입교
-                            </label>
+                        <div className="form-section privacy-section">
+                            <div className="privacy-header">
+                                <label className="form-label required">개인정보 수집 및 이용 동의</label>
+                                <label className="checkbox-custom">
+                                    <input type="checkbox" />
+                                    <span className="checkmark"></span>
+                                    <span className="check-text">동의합니다</span>
+                                </label>
+                            </div>
+                            <div className="privacy-content">
+                                <p><strong>1. 수집목적</strong>: 교회 교적 관리 및 목양 서비스 제공</p>
+                                <p><strong>2. 수집항목</strong>: 이름, 생년월일, 연락처, 주소, 신앙경력 등</p>
+                                <p><strong>3. 보유기간</strong>: 교적에서 제적될 때까지 (탈퇴 시 즉시 파기)</p>
+                                <p>※ 귀하는 개인정보 수집에 거부할 권리가 있으며, 동의 거부 시 교적 등록이 제한될 수 있습니다.</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="form-group">
-                        <label className="form-label required">교회를 방문하게 된 동기 (어떻게 알게 되었나요? 등록을 결정한 동기는 무엇인가요?)</label>
-                        <textarea className="form-textarea"></textarea>
-                    </div>
-
-                    <div className="form-group privacy-group">
-                        <label className="form-label required">개인정보 수집 및 이용 동의</label>
-                        <div className="privacy-box">
-                            <p><strong>빛의교회(이하 '교회'라 한다)는 개인정보 보호법 제30조에 따라 정보 주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리지침을 수립, 공개합니다.</strong></p>
-                            <br />
-                            <p><strong>제1조 (개인정보의 처리목적)</strong></p>
-                            <p>교회는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
-                        </div>
-                        <label className="checkbox-label">
-                            <input type="checkbox" /> 개인정보 수집 및 이용에 동의합니다.
-                        </label>
-                    </div>
-
-                    <button type="submit" className="submit-btn">작성</button>
-                </form>
+                        <button type="submit" className="submit-btn-modern">
+                            <span>등록 신청하기</span>
+                        </button>
+                    </form>
+                </div>
             </section>
         </div>
     );

@@ -4,24 +4,58 @@ import './WorshipSchedule.css';
 const WorshipSchedule = () => {
     return (
         <section className="worship-schedule">
-            <div className="worship-schedule__container">
-                <div className="schedule-box">
-                    <div className="schedule-content">
-                        <span className="schedule-item"><strong>주일1부예배</strong> 오전 9:00</span>
-                        <span className="divider">|</span>
-                        <span className="schedule-item"><strong>주일2부예배</strong> 오전 11:00</span>
-                        <span className="divider">|</span>
-                        <span className="schedule-item"><strong>주일3부예배</strong> 오후 2:00</span>
-                    </div>
+            <div className="container">
+                <div className="worship-header">
+                    <span className="worship-label">WORSHIP SERVICE</span>
+                    <h2 className="worship-title">예배 안내</h2>
                 </div>
 
-                <div className="schedule-box">
-                    <div className="schedule-content">
-                        <span className="schedule-item"><strong>새벽예배</strong> 오전 6:00</span>
-                        <span className="divider">|</span>
-                        <span className="schedule-item"><strong>수요오전예배</strong> 오전 10:30</span>
-                        <span className="divider">|</span>
-                        <span className="schedule-item"><strong>금밤기도회</strong> 오후 8:00</span>
+                <div className="schedule-compact-container">
+                    {/* Sunday Row */}
+                    <div className="schedule-row">
+                        <div className="row-label">
+                            <span className="day-en">SUNDAY</span>
+                            <span className="day-kr">주일예배</span>
+                        </div>
+                        <div className="row-items">
+                            <div className="service-card">
+                                <span className="service-time">09:00</span>
+                                <span className="service-name">1부 예배</span>
+                            </div>
+                            <div className="service-card highlight">
+                                <span className="service-time">11:00</span>
+                                <span className="service-name">2부 예배</span>
+                            </div>
+                            <div className="service-card">
+                                <span className="service-time">14:00</span>
+                                <span className="service-name">3부 예배</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="schedule-divider-horizontal"></div>
+
+                    {/* Weekday Row */}
+                    <div className="schedule-row">
+                        <div className="row-label">
+                            <span className="day-en">WEEKDAY</span>
+                            <span className="day-kr">주중예배</span>
+                        </div>
+                        <div className="row-items">
+                            <div className="service-card">
+                                <span className="service-time">06:00</span>
+                                <span className="service-name">새벽예배</span>
+                            </div>
+                            <div className="service-card">
+                                <span className="service-time">10:30</span>
+                                <span className="service-name">수요오전예배</span>
+                            </div>
+                            <div className="service-card">
+                                <span className="service-time">20:00</span>
+                                <span className="service-name">금밤기도회</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

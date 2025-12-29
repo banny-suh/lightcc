@@ -1,236 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
 
 .home-content {
-    padding: 100px 0;
-    text-align: center;
+    padding: 100px 0 60px;
     background-color: #fff;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
+    text-align: center;
+    position: relative;
+    /* Clean, no animations or overflow hiding needed */
 }
 
-.home-content__banner {
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    padding: 0 20px;
+}
+
+/* Header Section */
+.content-header {
     margin-bottom: 70px;
-    gap: 60px;
 }
 
-.home-content__banner-left {
-    text-align: right;
-    font-family: "Nanum Myeongjo", serif;
+.sub-title {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
 }
 
-.home-content__banner-left h2 {
-    font-size: 1.8rem;
+.main-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.text-row {
+    /* font-family: 'Nanum Myeongjo', serif; */
+    font-size: 2.4rem;
     font-weight: 400;
-    color: #888;
-    margin-bottom: 8px;
+    color: #2c3e50;
     line-height: 1.3;
     letter-spacing: -0.02em;
 }
 
-.home-content__banner-left h2.highlight-text {
-    color: #3b5c6b;
-    font-weight: 700;
-}
-
-.home-content__banner-left h2 span {
-    display: block;
-}
-
-.home-content__banner-divider {
-    width: 1px;
-    height: 110px;
-    background-color: #e0e0e0;
-}
-
-.home-content__banner-right {
-    text-align: left;
-}
-
-.home-content__banner-right h1 {
+.text-row.highlight {
+    font-family: var(--font-main);
+    /* Gothic fallback for strength */
     font-size: 3.2rem;
-    line-height: 0.95;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    /* Assuming Montserrat or similar is available, otherwise falls back */
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -1.5px;
 }
 
-.home-content__banner-right .light {
-    color: var(--color-dark-red);
-    font-weight: 900;
-    font-size: 3.8rem;
-    letter-spacing: -1px;
-}
-
-.home-content__banner-right .community {
-    color: #333;
-    font-weight: 300;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    margin-left: 4px;
-}
-
-.home-content__banner-right .church {
-    color: #333;
-    font-weight: 600;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    margin-left: 4px;
-}
-
-.home-content__text-section {
-    padding: 0 20px;
-}
-
-.home-content__text-section h3 {
-    color: #2c3e50;
-    font-size: 1.6rem;
-    margin-bottom: 24px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    word-break: keep-all;
-}
-
-.home-content__text-section p {
-    color: #666;
-    line-height: 2;
-    font-size: 1.05rem;
-    max-width: 800px;
+.title-divider {
+    width: 40px;
+    height: 4px;
+    background-color: var(--color-dark-red);
     margin: 0 auto;
+}
+
+/* Body Section */
+.content-body {
+    max-width: 620px;
+}
+
+.main-description {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3b5c6b;
+    /* Muted blue accent */
+    line-height: 1.6;
+    margin-bottom: 30px;
     word-break: keep-all;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.sub-description {
+    font-size: 1.05rem;
+    color: #64748b;
+    line-height: 2;
     font-weight: 400;
+    word-break: keep-all;
 }
 
-.home-content__carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 0 var(--container-padding);
-    margin-top: 60px;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 10px;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.carousel-item {
-    min-width: calc(20% - 8px);
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    /* Softer edges */
-}
-
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #eee;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #333;
-    z-index: 10;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.carousel-arrow:hover {
-    background: #fff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-50%) scale(1.05);
-}
-
-.carousel-arrow.prev {
-    left: 20px;
-}
-
-.carousel-arrow.next {
-    right: 20px;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 1024px) {
-    .carousel-item {
-        min-width: calc(33.333% - 7px);
-    }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
     .home-content {
-        padding: 60px 0;
+        padding: 100px 0;
     }
 
-    .home-content__banner {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 50px;
+    .sub-title {
+        font-size: 0.75rem;
+        margin-bottom: 20px;
     }
 
-    .home-content__banner-divider {
-        width: 60px;
-        height: 1px;
+    .main-title {
+        gap: 6px;
+        margin-bottom: 30px;
     }
 
-    .home-content__banner-left,
-    .home-content__banner-right {
-        text-align: center;
+    .text-row {
+        font-size: 1.8rem;
     }
 
-    .home-content__banner-right {
-        align-items: center;
-        /* Center flex children */
+    .text-row.highlight {
+        font-size: 2.2rem;
     }
 
-    .home-content__banner-right h1 {
-        align-items: center;
-    }
-
-    .carousel-item {
-        min-width: calc(50% - 5px);
-    }
-
-    .home-content__text-section h3 {
-        font-size: 1.4rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-item {
-        min-width: 100%;
-    }
-
-    .home-content__banner-right .light {
-        font-size: 3rem;
-    }
-
-    .home-content__banner-right .community,
-    .home-content__banner-right .church {
-        font-size: 1.4rem;
+    .main-description {
+        font-size: 1.3rem;
+        line-height: 1.5;
     }
 }
