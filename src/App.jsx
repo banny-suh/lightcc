@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,8 +11,25 @@ import Mission from './pages/Mission';
 import Intro from './pages/Intro';
 import News from './pages/News';
 import Welcome from './pages/Welcome';
+import Admin from './pages/Admin';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
+
+// Component to handle conditional rendering of Header/Footer
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+
+  return (
+    <>
+      {!isAdmin && <Header />}
+      <main>
+        {children}
+      </main>
+      {!isAdmin && <Footer />}
+    </>
+  );
+};
 
 function App() {
   return (
@@ -20,8 +37,7 @@ function App() {
       <ScrollToTop />
       <div className="App">
         {/* <TopBar /> */}
-        <Header />
-        <main>
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/jesus" element={<Jesus />} />
@@ -32,9 +48,9 @@ function App() {
             <Route path="/intro" element={<Intro />} />
             <Route path="/news" element={<News />} />
             <Route path="/welcome" element={<Welcome />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
-        </main>
-        <Footer />
+        </Layout>
       </div>
     </Router>
   );
