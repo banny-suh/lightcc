@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchGalleryData } from '../apis/galleryApi';
+import BulletinModal from './BulletinModal';
+import PrayerDetailModal from './PrayerDetailModal';
 import './GallerySection.css';
 
 const GallerySection = () => {
@@ -10,6 +12,8 @@ const GallerySection = () => {
         prayers: []
     });
     const [loading, setLoading] = useState(true);
+    const [activeBulletin, setActiveBulletin] = useState(null);
+    const [activePrayer, setActivePrayer] = useState(null);
 
     useEffect(() => {
         const loadData = async () => {
@@ -72,8 +76,16 @@ const GallerySection = () => {
                         </div>
                         <ul className="list-items">
                             {data.bulletins.map((item, index) => (
-                                <li key={index} className="list-item">
-                                    <span className="list-item-title">{item.title}</span>
+                                <li
+                                    key={index}
+                                    className="list-item"
+                                    onClick={() => setActiveBulletin(item)}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    <span className="list-item-title">
+                                        {item.title}
+                                        {item.isNew && <span className="new-badge">N</span>}
+                                    </span>
                                     <span className="list-item-date">{item.date}</span>
                                 </li>
                             ))}
@@ -87,7 +99,12 @@ const GallerySection = () => {
                         </div>
                         <ul className="list-items">
                             {data.prayers.map((item, index) => (
-                                <li key={index} className="list-item">
+                                <li
+                                    key={index}
+                                    className="list-item"
+                                    onClick={() => setActivePrayer(item)}
+                                    style={{ cursor: 'pointer' }}
+                                >
                                     <span className="list-item-title">
                                         {item.title}
                                         {item.isNew && <span className="new-badge">N</span>}
@@ -99,6 +116,21 @@ const GallerySection = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Modals */}
+            {activeBulletin && (
+                <BulletinModal
+                    bulletin={activeBulletin}
+                    onClose={() => setActiveBulletin(null)}
+                />
+            )}
+
+            {activePrayer && (
+                <PrayerDetailModal
+                    prayer={activePrayer}
+                    onClose={() => setActivePrayer(null)}
+                />
+            )}
         </section>
     );
 };

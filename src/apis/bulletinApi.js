@@ -1,99 +1,54 @@
-/**
- * Mock API for Church Bulletin data
- * Each bulletin has 6 pages
- */
-
-const bulletinData = [
-    {
-        id: 1,
-        title: '2025. 01. 26 빛의주보',
-        date: '2025-01-26',
-        pages: [
-            `${import.meta.env.BASE_URL}/bulletin/20251221-1.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-2.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-3.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-4.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-5.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-6.jpg`
-        ]
-    },
-    {
-        id: 2,
-        title: '2025. 01. 19 빛의주보',
-        date: '2025-01-19',
-        pages: [
-            `${import.meta.env.BASE_URL}/bulletin/20251221-1.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-2.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-3.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-4.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-5.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-6.jpg`
-        ]
-    },
-    {
-        id: 3,
-        title: '2025. 01. 12 빛의주보',
-        date: '2025-01-12',
-        pages: [
-            `${import.meta.env.BASE_URL}/bulletin/20251221-1.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-2.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-3.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-4.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-5.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-6.jpg`
-        ]
-    },
-    {
-        id: 4,
-        title: '2025. 01. 05 빛의주보',
-        date: '2025-01-05',
-        pages: [
-            `${import.meta.env.BASE_URL}/bulletin/20251221-1.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-2.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-3.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-4.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-5.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-6.jpg`
-        ]
-    },
-    {
-        id: 5,
-        title: '2024. 12. 29 빛의주보',
-        date: '2024-12-29',
-        pages: [
-            `${import.meta.env.BASE_URL}/bulletin/20251221-1.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-2.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-3.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-4.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-5.jpg`,
-            `${import.meta.env.BASE_URL}/bulletin/20251221-6.jpg`
-        ]
-    }
-];
+import { collection, getDocs, query, orderBy, doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 /**
- * Fetch church bulletin data
+ * Fetch church bulletin data from Firebase
  * @returns {Promise<Array>} Array of bulletin objects
  */
 export const fetchBulletins = async () => {
-    // Simulate API call delay
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(bulletinData);
-        }, 0);
-    });
+    try {
+        const q = query(collection(db, 'bulletins'), orderBy('date', 'desc'));
+        const querySnapshot = await getDocs(q);
+
+        return querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                title: data.title,
+                date: data.date,
+                // Map Firebase 'files' array to local 'pages' array of URLs
+                pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
+            };
+        });
+    } catch (error) {
+        console.error('Error fetching bulletins from Firestore:', error);
+        return [];
+    }
 };
 
 /**
- * Fetch bulletin by ID
- * @param {number} id - Bulletin ID
+ * Fetch bulletin by ID from Firebase
+ * @param {string} id - Bulletin ID
  * @returns {Promise<Object|null>} Bulletin object or null if not found
  */
 export const fetchBulletinById = async (id) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const bulletin = bulletinData.find(b => b.id === id);
-            resolve(bulletin || null);
-        }, 0);
-    });
+    try {
+        const docRef = doc(db, 'bulletins', id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            return {
+                id: docSnap.id,
+                title: data.title,
+                date: data.date,
+                pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
+            };
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error fetching bulletin by ID:', error);
+        return null;
+    }
 };

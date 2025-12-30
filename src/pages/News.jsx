@@ -6,6 +6,8 @@ import ChurchSchedule from './news/ChurchSchedule';
 import ChurchBulletin from './news/ChurchBulletin';
 import PlaceholderTab from './news/PlaceholderTab';
 
+import ChurchPrayer from './news/ChurchPrayer';
+
 const News = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,10 +35,7 @@ const News = () => {
         '오늘의기도'
     ];
 
-    // 교회소식 데이터 (newsData)
-    const newsData = [
-
-    ];
+    const newsData = [];
 
     const itemsPerPage = 10;
 
@@ -77,6 +76,8 @@ const News = () => {
                 return <ChurchSchedule />;
             case '교회주보':
                 return <ChurchBulletin currentPage={currentPage} itemsPerPage={itemsPerPage} />;
+            case '오늘의기도':
+                return <ChurchPrayer currentPage={currentPage} itemsPerPage={itemsPerPage} />;
             case '헌금안내':
                 return <PlaceholderTab tabName="헌금안내" />;
             case '기도요청':
@@ -89,8 +90,6 @@ const News = () => {
                 return <PlaceholderTab tabName="하.동.삶 신청" />;
             case '영성훈련 피정 신청':
                 return <PlaceholderTab tabName="영성훈련 피정 신청" />;
-            case '오늘의기도':
-                return <PlaceholderTab tabName="오늘의기도" />;
             default:
                 return <ChurchNews newsData={newsData} currentPage={currentPage} itemsPerPage={itemsPerPage} />;
         }

@@ -7,7 +7,7 @@
 }
 
 .admin-sidebar {
-    width: 260px;
+    width: 200px;
     background-color: #fff;
     border-right: 1px solid #e2e8f0;
     padding: 40px 0;
@@ -58,7 +58,7 @@
 
 .admin-menu-item {
     padding: 15px 30px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #475569;
     cursor: pointer;
@@ -171,14 +171,14 @@
     font-weight: 700;
     color: #64748b;
     border-bottom: 2px solid #e2e8f0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .admin-table td {
     padding: 15px 20px;
     border-bottom: 1px solid #f1f5f9;
     color: #333;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 .admin-table tr:last-child td {
