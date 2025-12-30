@@ -3,6 +3,7 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, order
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
 import { getTodayDateString, formatDate } from '../../utils/dateUtils';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import '../Admin.css';
 
 // Pagination Helper (can be extracted if reused)
@@ -74,6 +75,15 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
         }
     };
 
+    const [previewUrls, setPreviewUrls] = useState([]);
+
+    useEffect(() => {
+        const urls = selectedFiles.map(file => URL.createObjectURL(file));
+        setPreviewUrls(urls);
+        // Cleanup old object URLs
+        return () => urls.forEach(url => URL.revokeObjectURL(url));
+    }, [selectedFiles]);
+
     const handleSubmit = () => {
         if (!formData.title) {
             alert('제목을 입력해주세요.');
@@ -85,8 +95,15 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
     // Preview Logic
     const previewItems = [
         ...existingFiles,
-        ...selectedFiles.map(file => ({ name: file.name, isNew: true }))
+        ...selectedFiles.map((file, idx) => ({
+            name: file.name,
+            url: previewUrls[idx],
+            isNew: true
+        }))
     ];
+
+    const currentPreview = previewItems[previewPage];
+    const isPdf = currentPreview?.name?.toLowerCase().endsWith('.pdf');
 
     return (
         <div className="modal-overlay">
@@ -105,33 +122,75 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
                             value={formData.title || ''}
                             onChange={handleChange}
                             disabled={isSaving}
+                            placeholder="예: 2025년 3월 첫째주 주보"
                         />
                     </div>
                     <div className="form-group">
                         <label className="form-label">파일첨부 (여러 장 가능)</label>
                         {previewItems.length > 0 ? (
-                            <div className="file-preview-container" style={{ marginTop: '10px' }}>
+                            <div className="file-preview-container">
                                 {previewItems.length > 1 && (
-                                    <div className="preview-navigation" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                                        <button type="button" onClick={() => setPreviewPage(prev => Math.max(0, prev - 1))} disabled={previewPage === 0}>&lt;</button>
-                                        <span>{previewPage + 1} / {previewItems.length}</span>
-                                        <button type="button" onClick={() => setPreviewPage(prev => Math.min(previewItems.length - 1, prev + 1))} disabled={previewPage === previewItems.length - 1}>&gt;</button>
+                                    <div className="preview-navigation">
+                                        <button
+                                            type="button"
+                                            className="nav-btn"
+                                            onClick={() => setPreviewPage(prev => Math.max(0, prev - 1))}
+                                            disabled={previewPage === 0}
+                                        >
+                                            <FiChevronLeft />
+                                        </button>
+                                        <span className="preview-pagination-text">
+                                            {previewPage + 1} / {previewItems.length}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            className="nav-btn"
+                                            onClick={() => setPreviewPage(prev => Math.min(previewItems.length - 1, prev + 1))}
+                                            disabled={previewPage === previewItems.length - 1}
+                                        >
+                                            <FiChevronRight />
+                                        </button>
                                     </div>
                                 )}
-                                <div style={{ border: '1px solid #e2e8f0', padding: '10px', textAlign: 'center', background: '#f8fafc' }}>
-                                    <div style={{ marginBottom: '8px', color: '#64748b', fontSize: '0.9rem' }}>
-                                        {previewItems[previewPage]?.name}
-                                        {previewItems[previewPage]?.isNew && <span style={{ color: 'red', marginLeft: '5px' }}>(새 파일)</span>}
+                                <div className="preview-display-window">
+                                    <div className="preview-file-info">
+                                        <span className="preview-filename">{currentPreview?.name}</span>
+                                        {currentPreview?.isNew && <span className="badge-new">NEW</span>}
                                     </div>
-                                    <div style={{ height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e2e8f0', color: '#94a3b8' }}>
-                                        📄 주보 미리보기
+                                    <div className="preview-media-box">
+                                        {isPdf ? (
+                                            <div className="preview-pdf-placeholder">
+                                                <div className="pdf-icon">📄</div>
+                                                <div className="preview-filename">PDF 문서</div>
+                                                <a
+                                                    href={currentPreview.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="pdf-link"
+                                                >
+                                                    원본 파일 열기
+                                                </a>
+                                            </div>
+                                        ) : currentPreview?.url ? (
+                                            <img src={currentPreview.url} alt="Preview" />
+                                        ) : (
+                                            <div className="preview-filename">미리보기 없음</div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         ) : (
-                            <div style={{ padding: '10px', background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '4px' }}>파일 없음</div>
+                            <div className="file-preview-container" style={{ padding: '20px', textAlign: 'center', background: '#f8fafc', borderStyle: 'dashed', color: '#94a3b8' }}>
+                                첨부된 파일이 없습니다.
+                            </div>
                         )}
-                        <input type="file" multiple onChange={handleFileSelect} disabled={isSaving} style={{ marginTop: '10px' }} />
+                        <input
+                            type="file"
+                            multiple
+                            onChange={handleFileSelect}
+                            disabled={isSaving}
+                            style={{ marginTop: '15px', fontSize: '0.85rem', color: '#64748b' }}
+                        />
                     </div>
                 </div>
                 <div className="modal-actions">
@@ -142,6 +201,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
         </div>
     );
 };
+
 
 const BulletinManager = () => {
     const [bulletins, setBulletins] = useState([]);

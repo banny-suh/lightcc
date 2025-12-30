@@ -14,7 +14,7 @@ const Admin = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     // Get active tab from URL search params, default to 'bulletin'
-    const activeTab = searchParams.get('tab') || 'bulletin';
+    const activeTab = searchParams.get('tab') || 'news';
 
     const handleTabChange = (tabId) => {
         setSearchParams({ tab: tabId });
