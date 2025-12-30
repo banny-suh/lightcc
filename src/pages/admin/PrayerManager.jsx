@@ -50,8 +50,8 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.createdAt) {
-            alert('제목과 날짜를 입력해주세요.');
+        if (!formData.title) {
+            alert('제목을 입력해주세요.');
             return;
         }
         onSave(formData);
@@ -65,17 +65,6 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">
-                    <div className="form-group">
-                        <label className="form-label">날짜</label>
-                        <input
-                            type="date"
-                            name="date"
-                            className="form-input"
-                            value={formData.createdAt || ''}
-                            onChange={handleChange}
-                            disabled={isSaving}
-                        />
-                    </div>
                     <div className="form-group">
                         <label className="form-label">제목</label>
                         <input

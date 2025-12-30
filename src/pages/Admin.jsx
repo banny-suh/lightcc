@@ -21,8 +21,8 @@ const Admin = () => {
     };
 
     const menuItems = [
-        { id: 'bulletin', label: '주보 관리', icon: <FiFileText /> },
         { id: 'news', label: '소식 관리', icon: <FiFileText /> },
+        { id: 'bulletin', label: '주보 관리', icon: <FiFileText /> },
         { id: 'prayer', label: '오늘의 기도 관리', icon: <FiBook /> },
         { id: 'poster', label: '행사 포스터 관리', icon: <FiImage /> },
     ];

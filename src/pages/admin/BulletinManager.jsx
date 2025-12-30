@@ -74,8 +74,8 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.createdAt) {
-            alert('제목과 날짜를 입력해주세요.');
+        if (!formData.title) {
+            alert('제목을 입력해주세요.');
             return;
         }
         onSave(formData, selectedFiles);
@@ -95,28 +95,6 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">
-                    <div className="form-group">
-                        <label className="form-label">날짜</label>
-                        <input
-                            type="date"
-                            name="date"
-                            className="form-input"
-                            value={formData.createdAt || ''}
-                            onChange={handleChange}
-                            disabled={isSaving}
-                        />
-                        {formData.createdAt && (
-                            <div style={{ marginTop: '8px', fontSize: '0.9rem', color: '#166534', fontWeight: '600' }}>
-                                {(() => {
-                                    try {
-                                        const [y, m, d] = formData.createdAt.split('-');
-                                        const dateObj = new Date(y, m - 1, d);
-                                        return dateObj.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
-                                    } catch (e) { return ''; }
-                                })()}
-                            </div>
-                        )}
-                    </div>
                     <div className="form-group">
                         <label className="form-label">제목</label>
                         <input
