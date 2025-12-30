@@ -186,7 +186,13 @@ const PosterManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            // Soft delete: update deletedAt field instead of physical deletion
+            // 1. Storage Physical Delete (if exists)
+            const fileToDelete = item.storagePath || item.url;
+            if (fileToDelete && (fileToDelete.includes('firebasestorage') || !fileToDelete.startsWith('http'))) {
+                await deleteFile(fileToDelete);
+            }
+
+            // 2. Firestore Soft Delete: update deletedAt field
             await updateDoc(doc(db, 'posters', id), {
                 deletedAt: serverTimestamp()
             });

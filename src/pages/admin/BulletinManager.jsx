@@ -210,7 +210,23 @@ const BulletinManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            // Soft delete: update deletedAt field instead of physical deletion
+            // 1. Storage Physical Delete (if exists)
+            // Delete multiple files if array exists
+            if (item.files && item.files.length > 0) {
+                const deletePromises = item.files
+                    .filter(f => f.path) // Path is required for deletion
+                    .map(f => deleteFile(f.path));
+                await Promise.all(deletePromises);
+            }
+            // Handle legacy single file storagePath or fileUrl
+            else {
+                const fileToDelete = item.storagePath || item.fileUrl || item.url;
+                if (fileToDelete && (fileToDelete.includes('firebasestorage') || !fileToDelete.startsWith('http'))) {
+                    await deleteFile(fileToDelete);
+                }
+            }
+
+            // 2. Firestore Soft Delete: update deletedAt field
             await updateDoc(doc(db, 'bulletins', id), {
                 deletedAt: serverTimestamp()
             });
