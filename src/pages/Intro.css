@@ -595,13 +595,15 @@
     .staff-grid-new {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
+        padding: 0 30px;
     }
 }
 
 @media (max-width: 600px) {
     .staff-grid-new {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 40px;
+        padding: 0 20px;
     }
 }
 
@@ -610,9 +612,18 @@
     aspect-ratio: 1.5 / 1;
 }
 
-.missionary-section .staff-grid-new {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+@media (max-width: 900px) {
+    .missionary-section .staff-grid-new {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .missionary-section .staff-grid-new {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
 
 
