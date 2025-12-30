@@ -1,4 +1,4 @@
-import { collection, getDocs, query, orderBy, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, doc, getDoc, where } from 'firebase/firestore';
 import { db } from '../firebase';
 
 /**
@@ -7,7 +7,11 @@ import { db } from '../firebase';
  */
 export const fetchBulletins = async () => {
     try {
-        const q = query(collection(db, 'bulletins'), orderBy('date', 'desc'));
+        const q = query(
+            collection(db, 'bulletins'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc')
+        );
         const querySnapshot = await getDocs(q);
 
         return querySnapshot.docs.map(doc => {
@@ -15,7 +19,7 @@ export const fetchBulletins = async () => {
             return {
                 id: doc.id,
                 title: data.title,
-                date: data.date,
+                date: data.createdAt,
                 // Map Firebase 'files' array to local 'pages' array of URLs
                 pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
             };
@@ -41,7 +45,7 @@ export const fetchBulletinById = async (id) => {
             return {
                 id: docSnap.id,
                 title: data.title,
-                date: data.date,
+                date: data.createdAt,
                 pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
             };
         } else {

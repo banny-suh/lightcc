@@ -35,7 +35,7 @@ const PrayerDetailModal = ({ prayer, onClose }) => {
 
                 <div className="prayer-modal-header">
                     <h2 className="prayer-modal-title">{prayer.title}</h2>
-                    <span className="prayer-modal-date">{prayer.date}</span>
+                    <span className="prayer-modal-date">{prayer.createdAt}</span>
                 </div>
 
                 <div className="prayer-modal-body markdown-content">

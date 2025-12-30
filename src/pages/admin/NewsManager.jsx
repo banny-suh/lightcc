@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import '../Admin.css';
 
@@ -46,7 +46,7 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.date) {
+        if (!formData.title || !formData.createdAt) {
             alert('제목과 날짜를 입력해주세요.');
             return;
         }
@@ -67,15 +67,15 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             type="date"
                             name="date"
                             className="form-input"
-                            value={formData.date || ''}
+                            value={formData.createdAt || ''}
                             onChange={handleChange}
                             disabled={isSaving}
                         />
-                        {formData.date && (
+                        {formData.createdAt && (
                             <div style={{ marginTop: '8px', fontSize: '0.9rem', color: '#166534', fontWeight: '600' }}>
                                 {(() => {
                                     try {
-                                        const [y, m, d] = formData.date.split('-');
+                                        const [y, m, d] = formData.createdAt.split('-');
                                         const dateObj = new Date(y, m - 1, d);
                                         return dateObj.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
                                     } catch (e) { return ''; }
@@ -125,7 +125,11 @@ const NewsManager = () => {
     const itemsPerPage = 10;
 
     useEffect(() => {
-        const q = query(collection(db, 'news'), orderBy('date', 'desc'));
+        const q = query(
+            collection(db, 'news'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc')
+        );
         const unsubscribe = onSnapshot(q, (snapshot) => {
             setNews(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }, (error) => console.error(error));
@@ -141,7 +145,10 @@ const NewsManager = () => {
             let updatedData = { ...formData };
             if (updatedData.id) delete updatedData.id;
 
-            if (!selectedItem) updatedData.createdAt = serverTimestamp();
+            if (!selectedItem) {
+                updatedData.createdAt = serverTimestamp();
+                updatedData.deletedAt = null; // Initialize soft-delete field as null
+            }
             updatedData.updatedAt = serverTimestamp();
 
             if (selectedItem) {
@@ -163,7 +170,10 @@ const NewsManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            await deleteDoc(doc(db, 'news', id));
+            // Soft delete: update deletedAt field instead of physical deletion
+            await updateDoc(doc(db, 'news', id), {
+                deletedAt: serverTimestamp()
+            });
             setIsModalOpen(false);
             alert('삭제되었습니다.');
         } catch (error) {
@@ -203,7 +213,7 @@ const NewsManager = () => {
                         {paginatedData.length > 0 ? paginatedData.map(item => (
                             <tr key={item.id} onClick={() => handleEdit(item)}>
                                 <td>{item.title}</td>
-                                <td>{formatDate(item.date)}</td>
+                                <td>{formatDate(item.createdAt)}</td>
                                 <td style={{ textAlign: 'center' }}><span className="status-badge status-active">게시중</span></td>
                             </tr>
                         )) : <tr><td colSpan="3" style={{ textAlign: 'center', padding: '40px' }}>데이터가 없습니다.</td></tr>}

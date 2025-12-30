@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadFile, deleteFile } from '../../utils/uploadUtils';
 import '../Admin.css';
@@ -133,7 +133,11 @@ const PosterManager = () => {
     const itemsPerPage = 10;
 
     useEffect(() => {
-        const q = query(collection(db, 'posters'), orderBy('createdAt', 'desc'));
+        const q = query(
+            collection(db, 'posters'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc')
+        );
         const unsubscribe = onSnapshot(q, (snapshot) => {
             setPosters(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }, (error) => console.error(error));
@@ -150,18 +154,17 @@ const PosterManager = () => {
             if (updatedData.id) delete updatedData.id;
 
             if (newFile) {
-                // If there's an existing file, delete it first
-                if (selectedItem && selectedItem.storagePath) {
-                    await deleteFile(selectedItem.storagePath);
-                }
-
+                // Soft delete rule: We don't physically delete even old versions when updating
                 const uploaded = await uploadFile(newFile, 'posters');
                 updatedData.url = uploaded.url;
                 updatedData.fileName = uploaded.name;
                 updatedData.storagePath = uploaded.path;
             }
 
-            if (!selectedItem) updatedData.createdAt = serverTimestamp();
+            if (!selectedItem) {
+                updatedData.createdAt = serverTimestamp();
+                updatedData.deletedAt = null; // Initialize soft-delete field as null
+            }
             updatedData.updatedAt = serverTimestamp();
 
             if (selectedItem) {
@@ -183,10 +186,10 @@ const PosterManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            if (item.storagePath) {
-                await deleteFile(item.storagePath);
-            }
-            await deleteDoc(doc(db, 'posters', id));
+            // Soft delete: update deletedAt field instead of physical deletion
+            await updateDoc(doc(db, 'posters', id), {
+                deletedAt: serverTimestamp()
+            });
             setIsModalOpen(false);
             alert('삭제되었습니다.');
         } catch (error) {

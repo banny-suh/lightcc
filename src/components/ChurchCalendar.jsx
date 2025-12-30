@@ -22,7 +22,7 @@ const ChurchCalendar = ({ events }) => {
     // Assuming events have { date: 'YYYY-MM-DD', title: '...', type: '...' }
     const calendarEvents = useMemo(() => {
         return events.map(event => {
-            const dateParts = event.date.split('-');
+            const dateParts = event.createdAt.split('-');
             const year = parseInt(dateParts[0], 10);
             const month = parseInt(dateParts[1], 10) - 1;
             const day = parseInt(dateParts[2], 10);

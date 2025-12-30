@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
 import '../Admin.css';
@@ -74,7 +74,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.date) {
+        if (!formData.title || !formData.createdAt) {
             alert('제목과 날짜를 입력해주세요.');
             return;
         }
@@ -101,15 +101,15 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
                             type="date"
                             name="date"
                             className="form-input"
-                            value={formData.date || ''}
+                            value={formData.createdAt || ''}
                             onChange={handleChange}
                             disabled={isSaving}
                         />
-                        {formData.date && (
+                        {formData.createdAt && (
                             <div style={{ marginTop: '8px', fontSize: '0.9rem', color: '#166534', fontWeight: '600' }}>
                                 {(() => {
                                     try {
-                                        const [y, m, d] = formData.date.split('-');
+                                        const [y, m, d] = formData.createdAt.split('-');
                                         const dateObj = new Date(y, m - 1, d);
                                         return dateObj.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
                                     } catch (e) { return ''; }
@@ -174,7 +174,11 @@ const BulletinManager = () => {
     const itemsPerPage = 10;
 
     useEffect(() => {
-        const q = query(collection(db, 'bulletins'), orderBy('date', 'desc'));
+        const q = query(
+            collection(db, 'bulletins'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc')
+        );
         const unsubscribe = onSnapshot(q, (snapshot) => {
             setBulletins(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }, (error) => console.error("Error fetching bulletins:", error));
@@ -201,7 +205,10 @@ const BulletinManager = () => {
                 updatedData.fileName = '0 pages';
             }
 
-            if (!selectedItem) updatedData.createdAt = serverTimestamp();
+            if (!selectedItem) {
+                updatedData.createdAt = serverTimestamp();
+                updatedData.deletedAt = null; // Initialize soft-delete field as null
+            }
             updatedData.updatedAt = serverTimestamp();
 
             if (selectedItem) {
@@ -223,12 +230,10 @@ const BulletinManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            if (item.files) {
-                await Promise.all(item.files.map(f => deleteFile(f.path)));
-            } else if (item.storagePath) {
-                await deleteFile(item.storagePath);
-            }
-            await deleteDoc(doc(db, 'bulletins', id));
+            // Soft delete: update deletedAt field instead of physical deletion
+            await updateDoc(doc(db, 'bulletins', id), {
+                deletedAt: serverTimestamp()
+            });
             setIsModalOpen(false);
             alert('삭제되었습니다.');
         } catch (error) {
@@ -268,7 +273,7 @@ const BulletinManager = () => {
                         {paginatedData.length > 0 ? paginatedData.map(item => (
                             <tr key={item.id} onClick={() => handleEdit(item)}>
                                 <td>{item.title}</td>
-                                <td>{formatDate(item.date)}</td>
+                                <td>{formatDate(item.createdAt)}</td>
                                 <td>{item.fileName || (item.files ? `${item.files.length} pages` : '-')}</td>
                                 <td style={{ textAlign: 'center' }}><span className="status-badge status-active">게시중</span></td>
                             </tr>

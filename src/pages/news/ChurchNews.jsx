@@ -25,7 +25,7 @@ const ChurchNews = ({ newsData, currentPage, itemsPerPage }) => {
                             <div className="news-content">
                                 <h3 className="news-item-title">{item.title}</h3>
                                 <div className="news-meta">
-                                    <span className="news-date">{item.date}</span>
+                                    <span className="news-date">{item.createdAt}</span>
                                     <span className="news-views">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />

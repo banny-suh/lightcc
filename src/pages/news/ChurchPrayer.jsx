@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+import { collection, query, orderBy, getDocs, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -13,15 +13,22 @@ const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
     useEffect(() => {
         const fetchPrayers = async () => {
             try {
-                const q = query(collection(db, 'prayers'), orderBy('date', 'desc'));
+                const q = query(
+                    collection(db, 'prayers'),
+                    where('deletedAt', '==', null),
+                    orderBy('createdAt', 'desc')
+                );
                 const querySnapshot = await getDocs(q);
                 const data = querySnapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
+
                 setPrayers(data);
                 if (data.length > 0) {
                     setSelectedPrayer(data[0]);
+                } else {
+                    setSelectedPrayer(null);
                 }
             } catch (error) {
                 console.error("Error fetching prayers:", error);
@@ -53,7 +60,7 @@ const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
                             onClick={() => setSelectedPrayer(prayer)}
                         >
                             <span className="prayer-item-title">{prayer.title}</span>
-                            <span className="prayer-item-date">{prayer.date}</span>
+                            <span className="prayer-item-date">{prayer.createdAt}</span>
                         </li>
                     ))}
                 </ul>
@@ -64,7 +71,7 @@ const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
                     <div className="prayer-detail">
                         <div className="prayer-detail-header">
                             <h2 className="prayer-detail-title">{selectedPrayer.title}</h2>
-                            <span className="prayer-detail-date">{selectedPrayer.date}</span>
+                            <span className="prayer-detail-date">{selectedPrayer.createdAt}</span>
                         </div>
                         <div className="prayer-detail-body markdown-content">
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>

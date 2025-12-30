@@ -86,7 +86,7 @@ const GallerySection = () => {
                                         {item.title}
                                         {item.isNew && <span className="new-badge">N</span>}
                                     </span>
-                                    <span className="list-item-date">{item.date}</span>
+                                    <span className="list-item-date">{item.createdAt}</span>
                                 </li>
                             ))}
                         </ul>
@@ -109,7 +109,7 @@ const GallerySection = () => {
                                         {item.title}
                                         {item.isNew && <span className="new-badge">N</span>}
                                     </span>
-                                    <span className="list-item-date">{item.date}</span>
+                                    <span className="list-item-date">{item.createdAt}</span>
                                 </li>
                             ))}
                         </ul>

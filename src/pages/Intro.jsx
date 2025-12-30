@@ -337,7 +337,7 @@ const Intro = () => {
                             <div className="timeline-line"></div>
                             {historyData[selectedYear].map((item, index) => (
                                 <div key={index} className="timeline-item">
-                                    <span className="timeline-date">{item.date}</span>
+                                    <span className="timeline-date">{item.createdAt}</span>
                                     <div className="timeline-dot"></div>
                                     <p className="timeline-text">{item.content}</p>
                                 </div>

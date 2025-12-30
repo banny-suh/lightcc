@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import '../Admin.css';
 import ReactMarkdown from 'react-markdown';
@@ -50,7 +50,7 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.date) {
+        if (!formData.title || !formData.createdAt) {
             alert('제목과 날짜를 입력해주세요.');
             return;
         }
@@ -71,7 +71,7 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             type="date"
                             name="date"
                             className="form-input"
-                            value={formData.date || ''}
+                            value={formData.createdAt || ''}
                             onChange={handleChange}
                             disabled={isSaving}
                         />
@@ -156,7 +156,11 @@ const PrayerManager = () => {
     const itemsPerPage = 10;
 
     useEffect(() => {
-        const q = query(collection(db, 'prayers'), orderBy('date', 'desc'));
+        const q = query(
+            collection(db, 'prayers'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc')
+        );
         const unsubscribe = onSnapshot(q, (snapshot) => {
             setPrayers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }, (error) => console.error(error));
@@ -172,7 +176,10 @@ const PrayerManager = () => {
             let updatedData = { ...formData };
             if (updatedData.id) delete updatedData.id;
 
-            if (!selectedItem) updatedData.createdAt = serverTimestamp();
+            if (!selectedItem) {
+                updatedData.createdAt = serverTimestamp();
+                updatedData.deletedAt = null; // Initialize soft-delete field as null
+            }
             updatedData.updatedAt = serverTimestamp();
 
             if (selectedItem) {
@@ -194,7 +201,10 @@ const PrayerManager = () => {
         if (!window.confirm('삭제하시겠습니까?')) return;
         setIsSaving(true);
         try {
-            await deleteDoc(doc(db, 'prayers', id));
+            // Soft delete: update deletedAt field instead of physical deletion
+            await updateDoc(doc(db, 'prayers', id), {
+                deletedAt: serverTimestamp()
+            });
             setIsModalOpen(false);
             alert('삭제되었습니다.');
         } catch (error) {

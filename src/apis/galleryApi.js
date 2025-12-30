@@ -1,4 +1,4 @@
-import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, limit, where } from 'firebase/firestore';
 import { db } from '../firebase';
 
 /**
@@ -7,19 +7,32 @@ import { db } from '../firebase';
 export const fetchGalleryData = async () => {
     try {
         // Fetch Posters
-        const postersQuery = query(collection(db, 'posters'), orderBy('createdAt', 'desc'), limit(5));
+        const postersQuery = query(
+            collection(db, 'posters'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc'),
+            limit(5)
+        );
         const postersSnap = await getDocs(postersQuery);
-        const posters = postersSnap.docs.map(doc => doc.data().fileUrl || doc.data().url);
+        const posters = postersSnap.docs.map(doc => {
+            const data = doc.data();
+            return data.fileUrl || data.url;
+        });
 
         const now = new Date();
         const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
 
         // Fetch Bulletins
-        const bulletinsQuery = query(collection(db, 'bulletins'), orderBy('date', 'desc'), limit(4));
+        const bulletinsQuery = query(
+            collection(db, 'bulletins'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc'),
+            limit(4)
+        );
         const bulletinsSnap = await getDocs(bulletinsQuery);
         const bulletins = bulletinsSnap.docs.map(doc => {
             const data = doc.data();
-            const itemDate = data.date ? new Date(data.date) : null;
+            const itemDate = data.createdAt ? new Date(data.createdAt) : null;
             const isNew = itemDate && itemDate > sevenDaysAgo;
 
             // Handle legacy structure: files array vs fileUrl
@@ -35,28 +48,33 @@ export const fetchGalleryData = async () => {
             return {
                 id: doc.id,
                 title: data.title,
-                date: data.date,
+                date: data.createdAt,
                 isNew: !!isNew,
                 pages: pages
             };
         });
 
         // Fetch Prayers
-        const prayersQuery = query(collection(db, 'prayers'), orderBy('date', 'desc'), limit(4));
+        const prayersQuery = query(
+            collection(db, 'prayers'),
+            where('deletedAt', '==', null),
+            orderBy('createdAt', 'desc'),
+            limit(4)
+        );
         const prayersSnap = await getDocs(prayersQuery);
         const prayers = prayersSnap.docs.map(doc => {
             const data = doc.data();
-            let dateStr = data.date;
+            let dateStr = data.createdAt;
             let itemDate = null;
 
-            if (data.date && data.date.toDate) {
-                itemDate = data.date.toDate();
+            if (data.createdAt && data.createdAt.toDate) {
+                itemDate = data.createdAt.toDate();
                 dateStr = itemDate.toLocaleDateString('ko-KR');
-            } else if (data.date && data.date.seconds) {
-                itemDate = new Date(data.date.seconds * 1000);
+            } else if (data.createdAt && data.createdAt.seconds) {
+                itemDate = new Date(data.createdAt.seconds * 1000);
                 dateStr = itemDate.toLocaleDateString('ko-KR');
-            } else if (data.date) {
-                itemDate = new Date(data.date);
+            } else if (data.createdAt) {
+                itemDate = new Date(data.createdAt);
             }
 
             const isNew = itemDate && itemDate > sevenDaysAgo;
