@@ -1,5 +1,6 @@
 import { collection, getDocs, query, orderBy, limit, where } from 'firebase/firestore';
 import { db } from '../firebase';
+import { parseDate } from '../utils/dateUtils';
 
 /**
  * Fetch Gallery data (Posters, Bulletins, Prayers) from Firebase
@@ -32,7 +33,7 @@ export const fetchGalleryData = async () => {
         const bulletinsSnap = await getDocs(bulletinsQuery);
         const bulletins = bulletinsSnap.docs.map(doc => {
             const data = doc.data();
-            const itemDate = data.createdAt ? new Date(data.createdAt) : null;
+            const itemDate = parseDate(data.createdAt);
             const isNew = itemDate && itemDate > sevenDaysAgo;
 
             // Handle legacy structure: files array vs fileUrl
@@ -48,7 +49,7 @@ export const fetchGalleryData = async () => {
             return {
                 id: doc.id,
                 title: data.title,
-                date: data.createdAt,
+                createdAt: data.createdAt,
                 isNew: !!isNew,
                 pages: pages
             };
@@ -64,25 +65,13 @@ export const fetchGalleryData = async () => {
         const prayersSnap = await getDocs(prayersQuery);
         const prayers = prayersSnap.docs.map(doc => {
             const data = doc.data();
-            let dateStr = data.createdAt;
-            let itemDate = null;
-
-            if (data.createdAt && data.createdAt.toDate) {
-                itemDate = data.createdAt.toDate();
-                dateStr = itemDate.toLocaleDateString('ko-KR');
-            } else if (data.createdAt && data.createdAt.seconds) {
-                itemDate = new Date(data.createdAt.seconds * 1000);
-                dateStr = itemDate.toLocaleDateString('ko-KR');
-            } else if (data.createdAt) {
-                itemDate = new Date(data.createdAt);
-            }
-
+            const itemDate = parseDate(data.createdAt);
             const isNew = itemDate && itemDate > sevenDaysAgo;
 
             return {
                 id: doc.id,
                 title: data.title,
-                date: dateStr,
+                createdAt: data.createdAt,
                 isNew: !!isNew,
                 content: data.content || ''
             };

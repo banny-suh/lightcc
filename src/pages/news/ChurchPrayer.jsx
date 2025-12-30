@@ -3,6 +3,7 @@ import { collection, query, orderBy, getDocs, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { formatDate } from '../../utils/dateUtils';
 import './ChurchPrayer.css';
 
 const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
@@ -60,7 +61,7 @@ const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
                             onClick={() => setSelectedPrayer(prayer)}
                         >
                             <span className="prayer-item-title">{prayer.title}</span>
-                            <span className="prayer-item-date">{prayer.createdAt}</span>
+                            <span className="prayer-item-date">{formatDate(prayer.createdAt)}</span>
                         </li>
                     ))}
                 </ul>
@@ -71,7 +72,7 @@ const ChurchPrayer = ({ currentPage, itemsPerPage }) => {
                     <div className="prayer-detail">
                         <div className="prayer-detail-header">
                             <h2 className="prayer-detail-title">{selectedPrayer.title}</h2>
-                            <span className="prayer-detail-date">{selectedPrayer.createdAt}</span>
+                            <span className="prayer-detail-date">{formatDate(selectedPrayer.createdAt)}</span>
                         </div>
                         <div className="prayer-detail-body markdown-content">
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>

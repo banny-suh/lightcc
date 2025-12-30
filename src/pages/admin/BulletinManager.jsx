@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
+import { getTodayDateString, formatDate } from '../../utils/dateUtils';
 import '../Admin.css';
 
 // Pagination Helper (can be extracted if reused)
@@ -172,7 +173,8 @@ const BulletinManager = () => {
             let updatedData = { ...formData };
             if (updatedData.id) delete updatedData.id;
             if (newFiles && newFiles.length > 0) {
-                const uploaded = await uploadMultipleFiles(newFiles, 'bulletins');
+                const today = getTodayDateString();
+                const uploaded = await uploadMultipleFiles(newFiles, `bulletins/${today}`);
                 const newFileMeta = uploaded.map(f => ({ url: f.url, name: f.name, path: f.path }));
                 const existing = selectedItem?.files || [];
                 updatedData.files = [...existing, ...newFileMeta];
@@ -224,14 +226,6 @@ const BulletinManager = () => {
 
     const filteredData = bulletins.filter(b => b.title?.toLowerCase().includes(searchQuery.toLowerCase()));
     const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    // Helper to safely format date (handles String or Firestore Timestamp)
-    const formatDate = (dateValue) => {
-        if (!dateValue) return '-';
-        if (dateValue.toDate) return dateValue.toDate().toLocaleDateString('ko-KR'); // Firestore Timestamp
-        if (dateValue.seconds) return new Date(dateValue.seconds * 1000).toLocaleDateString('ko-KR'); // Raw object
-        return dateValue; // Assume string
-    };
 
     return (
         <div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchGalleryData } from '../apis/galleryApi';
 import BulletinModal from './BulletinModal';
 import PrayerDetailModal from './PrayerDetailModal';
+import { formatDate } from '../utils/dateUtils';
 import './GallerySection.css';
 
 const GallerySection = () => {
@@ -86,7 +87,7 @@ const GallerySection = () => {
                                         {item.title}
                                         {item.isNew && <span className="new-badge">N</span>}
                                     </span>
-                                    <span className="list-item-date">{item.createdAt}</span>
+                                    <span className="list-item-date">{formatDate(item.createdAt)}</span>
                                 </li>
                             ))}
                         </ul>
@@ -109,7 +110,7 @@ const GallerySection = () => {
                                         {item.title}
                                         {item.isNew && <span className="new-badge">N</span>}
                                     </span>
-                                    <span className="list-item-date">{item.createdAt}</span>
+                                    <span className="list-item-date">{formatDate(item.createdAt)}</span>
                                 </li>
                             ))}
                         </ul>

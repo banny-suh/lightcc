@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { formatDate } from '../../utils/dateUtils';
 import '../Admin.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -206,14 +207,6 @@ const PrayerManager = () => {
 
     const filteredData = prayers.filter(p => p.title?.toLowerCase().includes(searchQuery.toLowerCase()));
     const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    // Helper to safely format date
-    const formatDate = (dateValue) => {
-        if (!dateValue) return '-';
-        if (dateValue.toDate) return dateValue.toDate().toLocaleDateString('ko-KR');
-        if (dateValue.seconds) return new Date(dateValue.seconds * 1000).toLocaleDateString('ko-KR');
-        return dateValue;
-    };
 
     return (
         <div>

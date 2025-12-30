@@ -19,8 +19,7 @@ export const fetchBulletins = async () => {
             return {
                 id: doc.id,
                 title: data.title,
-                date: data.createdAt,
-                // Map Firebase 'files' array to local 'pages' array of URLs
+                createdAt: data.createdAt,
                 pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
             };
         });
@@ -45,7 +44,7 @@ export const fetchBulletinById = async (id) => {
             return {
                 id: docSnap.id,
                 title: data.title,
-                date: data.createdAt,
+                createdAt: data.createdAt,
                 pages: data.files ? data.files.map(file => file.url) : (data.fileUrl ? [data.fileUrl] : [])
             };
         } else {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { formatDate } from '../utils/dateUtils';
 import './PrayerDetailModal.css';
 
 const PrayerDetailModal = ({ prayer, onClose }) => {
@@ -35,7 +36,7 @@ const PrayerDetailModal = ({ prayer, onClose }) => {
 
                 <div className="prayer-modal-header">
                     <h2 className="prayer-modal-title">{prayer.title}</h2>
-                    <span className="prayer-modal-date">{prayer.createdAt}</span>
+                    <span className="prayer-modal-date">{formatDate(prayer.createdAt)}</span>
                 </div>
 
                 <div className="prayer-modal-body markdown-content">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { formatDate } from '../../utils/dateUtils';
 import '../Admin.css';
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
@@ -46,8 +47,8 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     };
 
     const handleSubmit = () => {
-        if (!formData.title || !formData.createdAt) {
-            alert('제목과 날짜를 입력해주세요.');
+        if (!formData.title) {
+            alert('제목을 입력해주세요.');
             return;
         }
         onSave(formData);
@@ -61,28 +62,6 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">
-                    <div className="form-group">
-                        <label className="form-label">날짜</label>
-                        <input
-                            type="date"
-                            name="date"
-                            className="form-input"
-                            value={formData.createdAt || ''}
-                            onChange={handleChange}
-                            disabled={isSaving}
-                        />
-                        {formData.createdAt && (
-                            <div style={{ marginTop: '8px', fontSize: '0.9rem', color: '#166534', fontWeight: '600' }}>
-                                {(() => {
-                                    try {
-                                        const [y, m, d] = formData.createdAt.split('-');
-                                        const dateObj = new Date(y, m - 1, d);
-                                        return dateObj.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
-                                    } catch (e) { return ''; }
-                                })()}
-                            </div>
-                        )}
-                    </div>
                     <div className="form-group">
                         <label className="form-label">제목</label>
                         <input
@@ -186,14 +165,6 @@ const NewsManager = () => {
 
     const filteredData = news.filter(p => p.title?.toLowerCase().includes(searchQuery.toLowerCase()));
     const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    // Helper to safely format date
-    const formatDate = (dateValue) => {
-        if (!dateValue) return '-';
-        if (dateValue.toDate) return dateValue.toDate().toLocaleDateString('ko-KR');
-        if (dateValue.seconds) return new Date(dateValue.seconds * 1000).toLocaleDateString('ko-KR');
-        return dateValue;
-    };
 
     return (
         <div>
