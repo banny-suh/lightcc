@@ -109,11 +109,18 @@
     letter-spacing: -0.5px;
 }
 
+/* Header (Page info) */
+.bulletin-modal-header {
+    padding: 10px 0 20px;
+    text-align: center;
+}
+
 .bulletin-modal-page-info {
     font-size: 0.9rem;
     color: var(--color-dark-red);
     font-weight: 700;
     letter-spacing: 2px;
+    text-align: center;
 }
 
 /* Image Container */
