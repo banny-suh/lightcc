@@ -3,7 +3,7 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, order
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
 import { getTodayDateString, formatDate, formatDateForInput, parseDate } from '../../utils/dateUtils';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiUploadCloud } from 'react-icons/fi';
 import '../Admin.css';
 
 // Pagination Helper (can be extracted if reused)
@@ -107,7 +107,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
 
     return (
         <div className="modal-overlay">
-            <div className="modal-content" style={{ maxWidth: '800px' }}>
+            <div className="modal-content">
                 <div className="modal-header">
                     <div className="modal-header-left">
                         <h2 className="modal-title">{item ? '주보 수정' : '새 주보 등록'}</h2>
@@ -219,13 +219,26 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                                 첨부된 파일이 없습니다.
                             </div>
                         )}
-                        <input
-                            type="file"
-                            multiple
-                            onChange={handleFileSelect}
-                            disabled={isSaving}
-                            style={{ marginTop: '15px', fontSize: '0.85rem', color: '#64748b' }}
-                        />
+                        <div className="upload-zone-wrapper">
+                            <label className="upload-zone">
+                                <input
+                                    type="file"
+                                    multiple
+                                    onChange={handleFileSelect}
+                                    disabled={isSaving}
+                                    className="hidden-file-input"
+                                    accept="image/*,application/pdf"
+                                />
+                                <div className="upload-zone-content">
+                                    <FiUploadCloud className="upload-icon" />
+                                    <div className="upload-text">
+                                        <span className="upload-highlight">여기를 클릭하거나 파일을 드래그하여 업로드하세요</span>
+                                        <span className="upload-subtext">주보 이미지 파일을 한 번에 여러 장 선택할 수 있습니다</span>
+                                    </div>
+                                    <p className="upload-hint">JPG, PNG, PDF 파일 지원 (최대 10MB)</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div className="modal-actions">

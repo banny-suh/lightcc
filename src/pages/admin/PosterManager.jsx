@@ -3,6 +3,7 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, order
 import { db } from '../../firebase';
 import { uploadFile, deleteFile } from '../../utils/uploadUtils';
 import { formatDate, formatDateForInput, parseDate } from '../../utils/dateUtils';
+import { FiUploadCloud } from 'react-icons/fi';
 import '../Admin.css';
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
@@ -122,10 +123,28 @@ const PosterModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             </div>
                         ) : (
                             <div style={{ padding: '20px', background: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: '4px', textAlign: 'center', color: '#64748b' }}>
-                                이미지를 선택해주세요
+                                첨부된 파일이 없습니다.
                             </div>
                         )}
-                        <input type="file" onChange={handleFileSelect} disabled={isSaving} style={{ marginTop: '10px' }} accept="image/*" />
+                        <div className="upload-zone-wrapper" style={{ marginTop: '15px' }}>
+                            <label className="upload-zone">
+                                <input
+                                    type="file"
+                                    onChange={handleFileSelect}
+                                    disabled={isSaving}
+                                    className="hidden-file-input"
+                                    accept="image/*"
+                                />
+                                <div className="upload-zone-content">
+                                    <FiUploadCloud className="upload-icon" />
+                                    <div className="upload-text">
+                                        <span className="upload-highlight">새 포스터 이미지를 선택하거나 드래그하세요</span>
+                                        <span className="upload-subtext">행사 홍보에 사용될 선명한 이미지 파일을 권장합니다</span>
+                                    </div>
+                                    <p className="upload-hint">JPG, PNG 파일 지원 (최대 10MB)</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div className="modal-actions">

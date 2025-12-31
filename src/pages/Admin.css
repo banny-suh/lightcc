@@ -700,3 +700,80 @@
     background: #e0f2fe;
     color: #233a45;
 }
+
+/* Upload Zone Styles */
+.upload-zone-wrapper {
+    width: 100%;
+}
+
+.upload-zone {
+    display: block;
+    cursor: pointer;
+    background: #f8fafc;
+    border: 2px dashed #e2e8f0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-zone:hover {
+    background: #f1f5f9;
+    border-color: #3b5c6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.upload-icon {
+    font-size: 2.5rem;
+    color: #3b5c6b;
+    margin-bottom: 5px;
+}
+
+.hidden-file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.upload-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.upload-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.upload-highlight {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.upload-subtext {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.upload-hint {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+/* For when dragging over (can be implemented in JS if needed) */
+.upload-zone.dragging {
+    background: #f0f9ff;
+    border-color: #3b5c6b;
+    border-style: solid;
+}
