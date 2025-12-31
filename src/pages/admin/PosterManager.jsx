@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadFile, deleteFile } from '../../utils/uploadUtils';
+import { formatDate, formatDateForInput } from '../../utils/dateUtils';
 import '../Admin.css';
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
@@ -37,7 +38,7 @@ const PosterModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
             setExistingFile(item.url ? { url: item.url, name: item.fileName } : null);
             setPreviewUrl(item.url || null);
         } else {
-            setFormData({});
+            setFormData({ createdAt: new Date() });
             setExistingFile(null);
             setPreviewUrl(null);
         }
@@ -88,6 +89,17 @@ const PosterModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             name="title"
                             className="form-input"
                             value={formData.title || ''}
+                            onChange={handleChange}
+                            disabled={isSaving}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">작성일</label>
+                        <input
+                            type="datetime-local"
+                            name="createdAt"
+                            className="form-input"
+                            value={formatDateForInput(formData.createdAt)}
                             onChange={handleChange}
                             disabled={isSaving}
                         />
@@ -161,8 +173,14 @@ const PosterManager = () => {
                 updatedData.storagePath = uploaded.path;
             }
 
-            if (!selectedItem) {
+            if (updatedData.createdAt) {
+                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                updatedData.createdAt = Timestamp.fromDate(dateObj);
+            } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();
+            }
+
+            if (!selectedItem) {
                 updatedData.deletedAt = null; // Initialize soft-delete field as null
             }
             updatedData.updatedAt = serverTimestamp();
@@ -222,15 +240,16 @@ const PosterManager = () => {
             </div>
             <div className="data-table-container">
                 <table className="admin-table">
-                    <thead><tr><th>제목</th><th>파일명</th><th style={{ width: '80px', textAlign: 'center' }}>상태</th></tr></thead>
+                    <thead><tr><th>제목</th><th>날짜</th><th>파일명</th><th style={{ width: '80px', textAlign: 'center' }}>상태</th></tr></thead>
                     <tbody>
                         {paginatedData.length > 0 ? paginatedData.map(item => (
                             <tr key={item.id} onClick={() => handleEdit(item)}>
                                 <td>{item.title}</td>
+                                <td>{formatDate(item.createdAt)}</td>
                                 <td>{item.fileName}</td>
                                 <td style={{ textAlign: 'center' }}><span className="status-badge status-active">게시중</span></td>
                             </tr>
-                        )) : <tr><td colSpan="3" style={{ textAlign: 'center', padding: '40px' }}>데이터가 없습니다.</td></tr>}
+                        )) : <tr><td colSpan="4" style={{ textAlign: 'center', padding: '40px' }}>데이터가 없습니다.</td></tr>}
                     </tbody>
                 </table>
             </div>

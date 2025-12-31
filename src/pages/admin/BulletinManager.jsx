@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
-import { getTodayDateString, formatDate } from '../../utils/dateUtils';
+import { getTodayDateString, formatDate, formatDateForInput } from '../../utils/dateUtils';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import '../Admin.css';
 
@@ -47,7 +47,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                 setExistingFiles([]);
             }
         } else {
-            setFormData({});
+            setFormData({ createdAt: new Date() });
             setExistingFiles([]);
         }
         setSelectedFiles([]);
@@ -131,6 +131,17 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                             onChange={handleChange}
                             disabled={isSaving}
                             placeholder="예: 2025년 3월 첫째주 주보"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">작성일</label>
+                        <input
+                            type="datetime-local"
+                            name="createdAt"
+                            className="form-input"
+                            value={formatDateForInput(formData.createdAt)}
+                            onChange={handleChange}
+                            disabled={isSaving}
                         />
                     </div>
                     <div className="form-group">
@@ -253,8 +264,15 @@ const BulletinManager = () => {
                 updatedData.fileName = '0 pages';
             }
 
-            if (!selectedItem) {
+            if (updatedData.createdAt) {
+                // If it's a string from input, convert to Date. If it's already a Timestamp/Date, leave it.
+                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                updatedData.createdAt = Timestamp.fromDate(dateObj);
+            } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();
+            }
+
+            if (!selectedItem) {
                 updatedData.deletedAt = null; // Initialize soft-delete field as null
             }
             updatedData.updatedAt = serverTimestamp();

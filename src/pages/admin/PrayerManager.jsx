@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { formatDate } from '../../utils/dateUtils';
+import { formatDate, formatDateForInput } from '../../utils/dateUtils';
 import '../Admin.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -32,7 +32,11 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     const [activeTab, setActiveTab] = useState('edit'); // 'edit' or 'preview'
 
     useEffect(() => {
-        setFormData(item || { date: new Date().toISOString().split('T')[0] });
+        if (item) {
+            setFormData(item);
+        } else {
+            setFormData({ createdAt: new Date() });
+        }
         setActiveTab('edit');
     }, [item, isOpen]);
 
@@ -76,6 +80,18 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             onChange={handleChange}
                             disabled={isSaving}
                             placeholder="예: 2024년 3월 첫째주 소망의 기도"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">작성일</label>
+                        <input
+                            type="datetime-local"
+                            name="createdAt"
+                            className="form-input"
+                            value={formatDateForInput(formData.createdAt)}
+                            onChange={handleChange}
+                            disabled={isSaving}
                         />
                     </div>
 
@@ -166,8 +182,14 @@ const PrayerManager = () => {
             let updatedData = { ...formData };
             if (updatedData.id) delete updatedData.id;
 
-            if (!selectedItem) {
+            if (updatedData.createdAt) {
+                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                updatedData.createdAt = Timestamp.fromDate(dateObj);
+            } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();
+            }
+
+            if (!selectedItem) {
                 updatedData.deletedAt = null; // Initialize soft-delete field as null
             }
             updatedData.updatedAt = serverTimestamp();
@@ -221,11 +243,12 @@ const PrayerManager = () => {
             </div>
             <div className="data-table-container">
                 <table className="admin-table">
-                    <thead><tr><th>제목</th><th style={{ width: '80px', textAlign: 'center' }}>상태</th></tr></thead>
+                    <thead><tr><th>제목</th><th>날짜</th><th style={{ width: '80px', textAlign: 'center' }}>상태</th></tr></thead>
                     <tbody>
                         {paginatedData.length > 0 ? paginatedData.map(item => (
                             <tr key={item.id} onClick={() => handleEdit(item)}>
                                 <td>{item.title}</td>
+                                <td>{formatDate(item.createdAt)}</td>
                                 <td style={{ textAlign: 'center' }}><span className="status-badge status-active">게시중</span></td>
                             </tr>
                         )) : <tr><td colSpan="3" style={{ textAlign: 'center', padding: '40px' }}>데이터가 없습니다.</td></tr>}

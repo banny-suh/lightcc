@@ -63,7 +63,7 @@ export const fetchGalleryData = async () => {
             collection(db, 'prayers'),
             where('deletedAt', '==', null),
             orderBy('createdAt', 'desc'),
-            limit(4)
+            limit(5)
         );
         const prayersSnap = await getDocs(prayersQuery);
         const prayers = prayersSnap.docs.map(doc => {

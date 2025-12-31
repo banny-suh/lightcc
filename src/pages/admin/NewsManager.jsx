@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { formatDate } from '../../utils/dateUtils';
+import { formatDate, formatDateForInput } from '../../utils/dateUtils';
 import '../Admin.css';
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
@@ -29,7 +29,11 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
     const [formData, setFormData] = useState({});
 
     useEffect(() => {
-        setFormData(item || {});
+        if (item) {
+            setFormData(item);
+        } else {
+            setFormData({ createdAt: new Date() });
+        }
     }, [item, isOpen]);
 
     // Close on ESC key
@@ -74,14 +78,25 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="form-label">기도 내용</label>
+                        <label className="form-label">작성일</label>
+                        <input
+                            type="datetime-local"
+                            name="createdAt"
+                            className="form-input"
+                            value={formatDateForInput(formData.createdAt)}
+                            onChange={handleChange}
+                            disabled={isSaving}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">내용</label>
                         <textarea
                             name="content"
                             className="form-textarea"
                             value={formData.content || ''}
                             onChange={handleChange}
                             disabled={isSaving}
-                            placeholder="기도문 내용을 입력하세요..."
+                            placeholder="소식 내용을 입력하세요..."
                         ></textarea>
                     </div>
                 </div>
@@ -124,8 +139,14 @@ const NewsManager = () => {
             let updatedData = { ...formData };
             if (updatedData.id) delete updatedData.id;
 
-            if (!selectedItem) {
+            if (updatedData.createdAt) {
+                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                updatedData.createdAt = Timestamp.fromDate(dateObj);
+            } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();
+            }
+
+            if (!selectedItem) {
                 updatedData.deletedAt = null; // Initialize soft-delete field as null
             }
             updatedData.updatedAt = serverTimestamp();
