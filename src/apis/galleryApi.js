@@ -17,7 +17,11 @@ export const fetchGalleryData = async () => {
         const postersSnap = await getDocs(postersQuery);
         const posters = postersSnap.docs.map(doc => {
             const data = doc.data();
-            return data.fileUrl || data.url;
+            return {
+                id: doc.id,
+                title: data.title || '광고',
+                url: data.fileUrl || data.url
+            };
         });
 
         const now = new Date();

@@ -71,7 +71,6 @@
 
 .bulletin-modal-close:hover {
     background: var(--color-dark-red);
-    transform: rotate(90deg);
 }
 
 /* Bulletin Navigation (Top) */

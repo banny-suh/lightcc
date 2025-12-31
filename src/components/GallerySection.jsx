@@ -63,8 +63,12 @@ const GallerySection = () => {
                         <div
                             key={index}
                             className="poster-item"
-                            style={{ backgroundImage: `url(${poster})` }}
-                        ></div>
+                            style={{ backgroundImage: `url(${poster.url})` }}
+                        >
+                            <div className="poster-overlay">
+                                <span className="poster-title">{poster.title}</span>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
