@@ -62,7 +62,9 @@ const NewsModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h2 className="modal-title">{item ? '소식 수정' : '새 소식 등록'}</h2>
+                    <div className="modal-header-left">
+                        <h2 className="modal-title">{item ? '소식 수정' : '새 소식 등록'}</h2>
+                    </div>
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">

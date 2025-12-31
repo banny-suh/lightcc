@@ -78,7 +78,9 @@ const PosterModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h2 className="modal-title">{item ? '포스터 수정' : '새 포스터 등록'}</h2>
+                    <div className="modal-header-left">
+                        <h2 className="modal-title">{item ? '포스터 수정' : '새 포스터 등록'}</h2>
+                    </div>
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">

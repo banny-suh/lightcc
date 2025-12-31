@@ -109,17 +109,17 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
         <div className="modal-overlay">
             <div className="modal-content" style={{ maxWidth: '800px' }}>
                 <div className="modal-header">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div className="modal-header-left">
                         <h2 className="modal-title">{item ? '주보 수정' : '새 주보 등록'}</h2>
-                        {item && (
-                            <div className="modal-nav-group" style={{ display: 'flex', gap: '5px' }}>
-                                <button className="nav-btn" onClick={onPrev} disabled={!hasPrev || isSaving} title="이전 주보"><FiChevronLeft /></button>
-                                <button className="nav-btn" onClick={onNext} disabled={!hasNext || isSaving} title="다음 주보"><FiChevronRight /></button>
-                            </div>
-                        )}
                     </div>
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
+                {item && (
+                    <>
+                        <button className="modal-item-nav prev" onClick={onPrev} disabled={!hasPrev || isSaving} title="이전 주보"><FiChevronLeft /></button>
+                        <button className="modal-item-nav next" onClick={onNext} disabled={!hasNext || isSaving} title="다음 주보"><FiChevronRight /></button>
+                    </>
+                )}
                 <div className="modal-body">
                     <div className="form-group">
                         <label className="form-label">제목</label>
@@ -148,35 +148,33 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                         <label className="form-label">파일첨부 (여러 장 가능)</label>
                         {previewItems.length > 0 ? (
                             <div className="file-preview-container">
-                                {previewItems.length > 1 && (
-                                    <div className="preview-navigation">
-                                        <button
-                                            type="button"
-                                            className="nav-btn"
-                                            onClick={() => setPreviewPage(prev => Math.max(0, prev - 1))}
-                                            disabled={previewPage === 0}
-                                        >
-                                            <FiChevronLeft />
-                                        </button>
-                                        <span className="preview-pagination-text">
-                                            {previewPage + 1} / {previewItems.length}
-                                        </span>
-                                        <button
-                                            type="button"
-                                            className="nav-btn"
-                                            onClick={() => setPreviewPage(prev => Math.min(previewItems.length - 1, prev + 1))}
-                                            disabled={previewPage === previewItems.length - 1}
-                                        >
-                                            <FiChevronRight />
-                                        </button>
-                                    </div>
-                                )}
                                 <div className="preview-display-window">
                                     <div className="preview-file-info">
-                                        <span className="preview-filename">{currentPreview?.name}</span>
+                                        <span className="preview-filename">
+                                            {previewItems.length > 1 && <span style={{ fontWeight: 800, color: '#3b5c6b', marginRight: '8px' }}>[{previewPage + 1}/{previewItems.length}]</span>}
+                                            {currentPreview?.name}
+                                        </span>
                                         {currentPreview?.isNew && <span className="badge-new">NEW</span>}
                                     </div>
-                                    <div className="preview-media-box" style={{ height: '400px', position: 'relative' }}>
+                                    <div className="preview-media-box" style={{ height: '500px', position: 'relative' }}>
+                                        {previewItems.length > 1 && (
+                                            <>
+                                                <button
+                                                    className="preview-page-arrow prev"
+                                                    onClick={(e) => { e.stopPropagation(); setPreviewPage(p => Math.max(0, p - 1)); }}
+                                                    disabled={previewPage === 0}
+                                                >
+                                                    <FiChevronLeft />
+                                                </button>
+                                                <button
+                                                    className="preview-page-arrow next"
+                                                    onClick={(e) => { e.stopPropagation(); setPreviewPage(p => Math.min(previewItems.length - 1, p + 1)); }}
+                                                    disabled={previewPage === previewItems.length - 1}
+                                                >
+                                                    <FiChevronRight />
+                                                </button>
+                                            </>
+                                        )}
                                         {previewItems.map((item, idx) => {
                                             const isItemPdf = item.name?.toLowerCase().endsWith('.pdf');
                                             if (isItemPdf) {
