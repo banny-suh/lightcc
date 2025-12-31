@@ -87,7 +87,7 @@
 }
 
 .prayer-modal-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: #0f172a;
     margin-bottom: 8px;
@@ -96,7 +96,7 @@
 }
 
 .prayer-modal-date {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: var(--color-dark-red);
     font-weight: 700;
     text-transform: uppercase;
