@@ -96,11 +96,15 @@ const BulletinModal = ({ bulletins, initialIndex, onClose }) => {
 
                 {/* Image container */}
                 <div className="bulletin-modal-image-container">
-                    <img
-                        src={bulletin.pages[currentPage]}
-                        alt={`${bulletin.title} - Page ${currentPage + 1}`}
-                        className="bulletin-modal-image"
-                    />
+                    {bulletin.pages.map((url, idx) => (
+                        <img
+                            key={`${currentIndex}-${idx}`}
+                            src={url}
+                            alt={`${bulletin.title} - Page ${idx + 1}`}
+                            className="bulletin-modal-image"
+                            style={{ display: idx === currentPage ? 'block' : 'none' }}
+                        />
+                    ))}
                 </div>
 
                 {/* Page Navigation arrows */}

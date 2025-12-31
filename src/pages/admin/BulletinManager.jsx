@@ -176,23 +176,41 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                                         <span className="preview-filename">{currentPreview?.name}</span>
                                         {currentPreview?.isNew && <span className="badge-new">NEW</span>}
                                     </div>
-                                    <div className="preview-media-box" style={{ height: '400px' }}>
-                                        {isPdf ? (
-                                            <div className="preview-pdf-placeholder">
-                                                <div className="pdf-icon">📄</div>
-                                                <div className="preview-filename">PDF 문서</div>
-                                                <a
-                                                    href={currentPreview.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="pdf-link"
-                                                >
-                                                    원본 파일 열기
-                                                </a>
-                                            </div>
-                                        ) : currentPreview?.url ? (
-                                            <img src={currentPreview.url} alt="Preview" />
-                                        ) : (
+                                    <div className="preview-media-box" style={{ height: '400px', position: 'relative' }}>
+                                        {previewItems.map((item, idx) => {
+                                            const isItemPdf = item.name?.toLowerCase().endsWith('.pdf');
+                                            if (isItemPdf) {
+                                                return idx === previewPage ? (
+                                                    <div key={idx} className="preview-pdf-placeholder">
+                                                        <div className="pdf-icon">📄</div>
+                                                        <div className="preview-filename">PDF 문서</div>
+                                                        <a
+                                                            href={item.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="pdf-link"
+                                                        >
+                                                            원본 파일 열기
+                                                        </a>
+                                                    </div>
+                                                ) : null;
+                                            }
+                                            return (
+                                                <img
+                                                    key={idx}
+                                                    src={item.url}
+                                                    alt={`Preview ${idx}`}
+                                                    style={{
+                                                        display: idx === previewPage ? 'block' : 'none',
+                                                        maxWidth: '100%',
+                                                        maxHeight: '100%',
+                                                        objectFit: 'contain',
+                                                        margin: '0 auto'
+                                                    }}
+                                                />
+                                            );
+                                        })}
+                                        {previewItems.length === 0 && (
                                             <div className="preview-filename">미리보기 없음</div>
                                         )}
                                     </div>
