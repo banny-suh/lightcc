@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadMultipleFiles, deleteFile } from '../../utils/uploadUtils';
-import { getTodayDateString, formatDate, formatDateForInput } from '../../utils/dateUtils';
+import { getTodayDateString, formatDate, formatDateForInput, parseDate } from '../../utils/dateUtils';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import '../Admin.css';
 
@@ -283,8 +283,8 @@ const BulletinManager = () => {
             }
 
             if (updatedData.createdAt) {
-                // If it's a string from input, convert to Date. If it's already a Timestamp/Date, leave it.
-                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                // Use parseDate to safely get a Date object, then convert to Firestore Timestamp
+                const dateObj = parseDate(updatedData.createdAt) || new Date();
                 updatedData.createdAt = Timestamp.fromDate(dateObj);
             } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();

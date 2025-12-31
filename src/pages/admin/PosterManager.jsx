@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp, where, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { uploadFile, deleteFile } from '../../utils/uploadUtils';
-import { formatDate, formatDateForInput } from '../../utils/dateUtils';
+import { formatDate, formatDateForInput, parseDate } from '../../utils/dateUtils';
 import '../Admin.css';
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
@@ -174,7 +174,7 @@ const PosterManager = () => {
             }
 
             if (updatedData.createdAt) {
-                const dateObj = typeof updatedData.createdAt === 'string' ? new Date(updatedData.createdAt) : updatedData.createdAt;
+                const dateObj = parseDate(updatedData.createdAt) || new Date();
                 updatedData.createdAt = Timestamp.fromDate(dateObj);
             } else if (!selectedItem) {
                 updatedData.createdAt = serverTimestamp();
