@@ -27,7 +27,7 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => 
 };
 
 // Bulletin Modal
-const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
+const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPrev, onNext, hasPrev, hasNext }) => {
     if (!isOpen) return null;
 
     const [formData, setFormData] = useState({});
@@ -107,9 +107,17 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
 
     return (
         <div className="modal-overlay">
-            <div className="modal-content">
+            <div className="modal-content" style={{ maxWidth: '800px' }}>
                 <div className="modal-header">
-                    <h2 className="modal-title">{item ? '주보 수정' : '새 주보 등록'}</h2>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <h2 className="modal-title">{item ? '주보 수정' : '새 주보 등록'}</h2>
+                        {item && (
+                            <div className="modal-nav-group" style={{ display: 'flex', gap: '5px' }}>
+                                <button className="nav-btn" onClick={onPrev} disabled={!hasPrev || isSaving} title="이전 주보"><FiChevronLeft /></button>
+                                <button className="nav-btn" onClick={onNext} disabled={!hasNext || isSaving} title="다음 주보"><FiChevronRight /></button>
+                            </div>
+                        )}
+                    </div>
                     <button className="modal-close" onClick={onClose} disabled={isSaving}>&times;</button>
                 </div>
                 <div className="modal-body">
@@ -157,7 +165,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) =>
                                         <span className="preview-filename">{currentPreview?.name}</span>
                                         {currentPreview?.isNew && <span className="badge-new">NEW</span>}
                                     </div>
-                                    <div className="preview-media-box">
+                                    <div className="preview-media-box" style={{ height: '400px' }}>
                                         {isPdf ? (
                                             <div className="preview-pdf-placeholder">
                                                 <div className="pdf-icon">📄</div>
@@ -330,7 +338,24 @@ const BulletinManager = () => {
                 </table>
             </div>
             <Pagination totalItems={filteredData.length} itemsPerPage={itemsPerPage} currentPage={currentPage} onPageChange={setCurrentPage} />
-            <BulletinModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} item={selectedItem} onSave={handleSave} onDelete={handleDelete} isSaving={isSaving} />
+            <BulletinModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                item={selectedItem}
+                onSave={handleSave}
+                onDelete={handleDelete}
+                isSaving={isSaving}
+                hasPrev={filteredData.findIndex(b => b.id === selectedItem?.id) > 0}
+                hasNext={filteredData.findIndex(b => b.id === selectedItem?.id) < filteredData.length - 1}
+                onPrev={() => {
+                    const idx = filteredData.findIndex(b => b.id === selectedItem?.id);
+                    if (idx > 0) setSelectedItem(filteredData[idx - 1]);
+                }}
+                onNext={() => {
+                    const idx = filteredData.findIndex(b => b.id === selectedItem?.id);
+                    if (idx < filteredData.length - 1) setSelectedItem(filteredData[idx + 1]);
+                }}
+            />
         </div>
     );
 };

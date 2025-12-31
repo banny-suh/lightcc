@@ -27,8 +27,7 @@ export const fetchGalleryData = async () => {
         const bulletinsQuery = query(
             collection(db, 'bulletins'),
             where('deletedAt', '==', null),
-            orderBy('createdAt', 'desc'),
-            limit(4)
+            orderBy('createdAt', 'desc')
         );
         const bulletinsSnap = await getDocs(bulletinsQuery);
         const bulletins = bulletinsSnap.docs.map(doc => {

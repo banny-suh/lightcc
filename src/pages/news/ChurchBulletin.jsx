@@ -69,7 +69,8 @@ const ChurchBulletin = ({ currentPage, itemsPerPage }) => {
             {/* Bulletin Modal */}
             {selectedBulletin && (
                 <BulletinModal
-                    bulletin={selectedBulletin}
+                    bulletins={bulletinData}
+                    initialIndex={bulletinData.findIndex(b => b.id === selectedBulletin.id)}
                     onClose={handleCloseModal}
                 />
             )}

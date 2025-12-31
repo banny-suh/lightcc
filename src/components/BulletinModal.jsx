@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './BulletinModal.css';
 
-const BulletinModal = ({ bulletin, onClose }) => {
+const BulletinModal = ({ bulletins, initialIndex, onClose }) => {
+    const [currentIndex, setCurrentIndex] = useState(initialIndex);
     const [currentPage, setCurrentPage] = useState(0);
+
+    const bulletin = bulletins[currentIndex];
+
+    // Reset page to 0 when switching bulletin
+    useEffect(() => {
+        setCurrentPage(0);
+    }, [currentIndex]);
 
     // Close modal on ESC key
     useEffect(() => {
@@ -21,23 +29,39 @@ const BulletinModal = ({ bulletin, onClose }) => {
         };
     }, []);
 
-    const goToPrevPage = () => {
+    const goToPrevPage = (e) => {
+        e.stopPropagation();
         setCurrentPage((prev) => (prev > 0 ? prev - 1 : bulletin.pages.length - 1));
     };
 
-    const goToNextPage = () => {
+    const goToNextPage = (e) => {
+        e.stopPropagation();
         setCurrentPage((prev) => (prev < bulletin.pages.length - 1 ? prev + 1 : 0));
+    };
+
+    const goToPrevBulletin = (e) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : bulletins.length - 1));
+    };
+
+    const goToNextBulletin = (e) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev < bulletins.length - 1 ? prev + 1 : 0));
     };
 
     // Handle keyboard navigation
     useEffect(() => {
         const handleKeyPress = (e) => {
-            if (e.key === 'ArrowLeft') goToPrevPage();
-            if (e.key === 'ArrowRight') goToNextPage();
+            if (e.key === 'ArrowLeft') goToPrevPage(e);
+            if (e.key === 'ArrowRight') goToNextPage(e);
+            if (e.key === '[') goToPrevBulletin(e);
+            if (e.key === ']') goToNextBulletin(e);
         };
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [currentPage]);
+    }, [currentPage, currentIndex]);
+
+    if (!bulletin) return null;
 
     return (
         <div className="bulletin-modal-overlay" onClick={onClose}>
@@ -50,9 +74,21 @@ const BulletinModal = ({ bulletin, onClose }) => {
                     </svg>
                 </button>
 
-                {/* Header */}
+                {/* Bulletin Navigation (Top) */}
+                <div className="bulletin-navigation-header">
+                    <button className="bulletin-nav-btn" onClick={goToPrevBulletin}>
+                        &laquo; 이전 주보
+                    </button>
+                    <span className="bulletin-date-info">
+                        {bulletin.title}
+                    </span>
+                    <button className="bulletin-nav-btn" onClick={goToNextBulletin}>
+                        다음 주보 &raquo;
+                    </button>
+                </div>
+
+                {/* Header (Page info) */}
                 <div className="bulletin-modal-header">
-                    <h2 className="bulletin-modal-title">{bulletin.title}</h2>
                     <p className="bulletin-modal-page-info">
                         {currentPage + 1} / {bulletin.pages.length}
                     </p>
@@ -67,7 +103,7 @@ const BulletinModal = ({ bulletin, onClose }) => {
                     />
                 </div>
 
-                {/* Navigation arrows */}
+                {/* Page Navigation arrows */}
                 <button
                     className="bulletin-modal-arrow bulletin-modal-arrow-left"
                     onClick={goToPrevPage}

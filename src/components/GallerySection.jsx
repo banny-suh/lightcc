@@ -119,9 +119,10 @@ const GallerySection = () => {
             </div>
 
             {/* Modals */}
-            {activeBulletin && (
+            {activeBulletin !== null && (
                 <BulletinModal
-                    bulletin={activeBulletin}
+                    bulletins={data.bulletins}
+                    initialIndex={data.bulletins.findIndex(b => b.id === activeBulletin.id)}
                     onClose={() => setActiveBulletin(null)}
                 />
             )}
