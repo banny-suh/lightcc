@@ -132,9 +132,10 @@
 /* Responsive */
 @media (max-width: 768px) {
     .prayer-modal-content {
-        padding: 60px 30px 40px;
-        height: 100vh;
-        max-height: 100vh;
+        padding: 40px 20px 30px;
+        width: calc(100% - 40px);
+        height: 85vh;
+        max-height: 85vh;
     }
 
     .prayer-modal-title {

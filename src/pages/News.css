@@ -428,7 +428,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .news-page {
-        padding: 40px 15px;
+        padding: 40px 20px;
     }
 
     .news-title {
@@ -492,7 +492,7 @@
 .markdown-content {
     line-height: 1.8;
     color: #334155;
-    font-size: 1.1rem;
+    font-size: 1rem;
     word-break: break-all;
 }
 
