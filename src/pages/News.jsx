@@ -27,11 +27,11 @@ const News = () => {
         '교회행사',
         '헌금안내',
         '교회스케줄',
-        '기도요청',
-        '심방요청',
-        '차량등록',
-        '하.동.삶 신청',
-        '영성훈련 피정 신청',
+        // '기도요청',
+        // '심방요청',
+        // '차량등록',
+        // '하.동.삶 신청',
+        // '영성훈련 피정 신청',
         '오늘의기도'
     ];
 
@@ -125,7 +125,7 @@ const News = () => {
             {/* Render appropriate tab component */}
             {renderTabContent()}
 
-            {activeSubTab !== '교회스케줄' && (
+            {/* {activeSubTab !== '교회스케줄' && (
                 <div className="news-footer">
                     <form className="news-search" onSubmit={handleSearch}>
                         <input
@@ -169,7 +169,7 @@ const News = () => {
                         </button>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };
