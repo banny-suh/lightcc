@@ -12,6 +12,8 @@ import Intro from './pages/Intro';
 import News from './pages/News';
 import Welcome from './pages/Welcome';
 import Admin from './pages/Admin';
+import AdminLogin from './pages/AdminLogin';
+import ProtectedRoute from './components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
@@ -48,7 +50,15 @@ function App() {
             <Route path="/intro" element={<Intro />} />
             <Route path="/news" element={<News />} />
             <Route path="/welcome" element={<Welcome />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Layout>
       </div>

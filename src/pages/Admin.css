@@ -87,6 +87,26 @@
     border-left-color: #3b5c6b;
 }
 
+/* Logout Button */
+.sidebar-logout-btn {
+    margin-top: auto;
+    padding: 15px 30px;
+    color: #ef4444;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.sidebar-logout-btn:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
 /* Header adjusted */
 .admin-header {
     margin-bottom: 30px;

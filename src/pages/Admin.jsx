@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { FiHome, FiFileText, FiBook, FiImage } from 'react-icons/fi';
+import { FiHome, FiFileText, FiBook, FiImage, FiLogOut } from 'react-icons/fi';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 import './Admin.css';
 
 // Import Sub-Pages
@@ -18,6 +20,16 @@ const Admin = () => {
 
     const handleTabChange = (tabId) => {
         setSearchParams({ tab: tabId });
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            navigate('/admin/login');
+        } catch (error) {
+            console.error('로그아웃 오류:', error);
+            alert('로그아웃 중 오류가 발생했습니다.');
+        }
     };
 
     const menuItems = [
@@ -47,6 +59,9 @@ const Admin = () => {
                         </li>
                     ))}
                 </ul>
+                <div className="sidebar-logout-btn" onClick={handleLogout}>
+                    <FiLogOut className="sidebar-icon" /> 로그아웃
+                </div>
             </div>
 
             {/* Main Content Area */}
