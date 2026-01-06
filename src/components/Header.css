@@ -72,7 +72,11 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+    .header__container {
+        padding: 0 20px;
+    }
+
     .header__menu {
         gap: 20px;
     }

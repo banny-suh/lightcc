@@ -424,6 +424,15 @@
     background-color: var(--color-dark-red);
 }
 
+@media (max-width: 1200px) {
+    .news-subtabs {
+        padding: 0 20px;
+    }
+
+    .event-gallery-container {
+        padding: 0 20px;
+    }
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

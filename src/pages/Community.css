@@ -290,7 +290,19 @@
     }
 
     .community-gallery {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .community-gallery-item {
+        width: 100%;
+        height: 250px;
+        grid-column: auto !important;
+        grid-row: auto !important;
     }
 
     .community-info-grid {
@@ -438,4 +450,26 @@
 /* Ensure body doesn't scroll when modal is open */
 body:has(.image-modal-overlay) {
     overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    .community-tabs {
+        padding: 0 20px;
+    }
+
+    .community-gallery {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .community-gallery-item {
+        width: 100%;
+        height: 400px;
+        grid-column: auto !important;
+        grid-row: auto !important;
+    }
 }

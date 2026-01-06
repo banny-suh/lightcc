@@ -603,6 +603,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 
+@media (max-width: 1200px) {
+    .welcome-values-grid {
+        padding: 0 20px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .registration-card {
