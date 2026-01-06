@@ -130,7 +130,7 @@ const BulletinModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving, onPr
                             value={formData.title || ''}
                             onChange={handleChange}
                             disabled={isSaving}
-                            placeholder="예: 2025년 3월 첫째주 주보"
+                            placeholder="예: 2026.1.4. 빛의주보"
                         />
                     </div>
                     <div className="form-group">

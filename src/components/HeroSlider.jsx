@@ -62,8 +62,9 @@ const HeroSlider = () => {
                     <div
                         key={slide.id}
                         className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-                        style={{ backgroundImage: `url(${slide.image})` }}
-                    />
+                    >
+                        <img src={slide.image} alt={`Slide ${index + 1}`} />
+                    </div>
                 ))}
 
                 <button className="slider-arrow prev" onClick={prevSlide}>

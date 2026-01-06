@@ -81,7 +81,7 @@ const PrayerModal = ({ isOpen, onClose, item, onSave, onDelete, isSaving }) => {
                             value={formData.title || ''}
                             onChange={handleChange}
                             disabled={isSaving}
-                            placeholder="예: 2024년 3월 첫째주 소망의 기도"
+                            placeholder="제목을 입력해주세요"
                         />
                     </div>
 
