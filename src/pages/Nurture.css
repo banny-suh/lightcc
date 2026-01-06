@@ -519,7 +519,7 @@
         justify-content: flex-start;
         overflow-x: auto;
         padding: 0 20px;
-        gap: 24px;
+        gap: 20px;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
         background-color: #ffffff;
@@ -527,6 +527,8 @@
         border-bottom: 1px solid #f0f0f0;
         height: 60px;
         align-items: center;
+        flex-wrap: nowrap;
+        /* Ensure no wrapping */
     }
 
     .nurture-tabs::-webkit-scrollbar {
